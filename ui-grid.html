@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Grid(Materialize)</title>
+	<link rel="stylesheet" href="base.css">
+</head>
+<style>
+html{
+	font-size: 16px;
+}
+
+div, p {
+	margin: 0;
+	padding: 0;
+}
+
+.container .row {
+    margin-left: -.75rem;
+    margin-right: -.75rem
+}
+.row {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both
+}
+.row .col {
+    float: left;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 .75rem;
+    min-height: 1px;
+}
+.row .col[class*="push-"],
+.row .col[class*="pull-"] {
+    position: relative
+}
+.row .col.s1 {
+    width: 8.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s2 {
+    width: 16.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s3 {
+    width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s4 {
+    width: 33.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s5 {
+    width: 41.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s6 {
+    width: 50%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s7 {
+    width: 58.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s8 {
+    width: 66.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s9 {
+    width: 75%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s10 {
+    width: 83.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s11 {
+    width: 91.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s12 {
+    width: 100%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+
+.grid-example{
+	margin: 7px 0;
+	padding: 0;
+	font-size: 28px;
+	line-height: 50px;
+	text-align: center;
+	background-color: tomato;
+	border: 1px solid #eee;
+	color: #fff;
+
+}
+
+.row .col.offset-s6 {
+    margin-left: 50%;
+}
+
+.row .col.push-s5 {
+    left: 41.6666666667%;
+}
+
+.row .col.pull-s7 {
+    right: 58.3333333333%;
+}
+
+
+/* text */
+.flow-text {
+    font-weight: 300
+}
+@media only screen and (min-width: 360px) {
+    .flow-text {
+        font-size: 1.2rem
+    }
+}
+@media only screen and (min-width: 390px) {
+    .flow-text {
+        font-size: 1.224rem
+    }
+}
+@media only screen and (min-width: 420px) {
+    .flow-text {
+        font-size: 1.248rem
+    }
+}
+@media only screen and (min-width: 450px) {
+    .flow-text {
+        font-size: 1.272rem
+    }
+}
+@media only screen and (min-width: 480px) {
+    .flow-text {
+        font-size: 1.296rem
+    }
+}
+@media only screen and (min-width: 510px) {
+    .flow-text {
+        font-size: 1.32rem
+    }
+}
+@media only screen and (min-width: 540px) {
+    .flow-text {
+        font-size: 1.344rem
+    }
+}
+@media only screen and (min-width: 570px) {
+    .flow-text {
+        font-size: 1.368rem
+    }
+}
+@media only screen and (min-width: 600px) {
+    .flow-text {
+        font-size: 1.392rem
+    }
+}
+@media only screen and (min-width: 630px) {
+    .flow-text {
+        font-size: 1.416rem
+    }
+}
+@media only screen and (min-width: 660px) {
+    .flow-text {
+        font-size: 1.44rem
+    }
+}
+@media only screen and (min-width: 690px) {
+    .flow-text {
+        font-size: 1.464rem
+    }
+}
+@media only screen and (min-width: 720px) {
+    .flow-text {
+        font-size: 1.488rem
+    }
+}
+@media only screen and (min-width: 750px) {
+    .flow-text {
+        font-size: 1.512rem
+    }
+}
+@media only screen and (min-width: 780px) {
+    .flow-text {
+        font-size: 1.536rem
+    }
+}
+@media only screen and (min-width: 810px) {
+    .flow-text {
+        font-size: 1.56rem
+    }
+}
+@media only screen and (min-width: 840px) {
+    .flow-text {
+        font-size: 1.584rem
+    }
+}
+@media only screen and (min-width: 870px) {
+    .flow-text {
+        font-size: 1.608rem
+    }
+}
+@media only screen and (min-width: 900px) {
+    .flow-text {
+        font-size: 1.632rem
+    }
+}
+@media only screen and (min-width: 930px) {
+    .flow-text {
+        font-size: 1.656rem
+    }
+}
+@media only screen and (min-width: 960px) {
+    .flow-text {
+        font-size: 1.68rem
+    }
+}
+@media only screen and (max-width: 360px) {
+    .flow-text {
+        font-size: 1.2rem
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .row .col.m1 {
+        width: 8.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m2 {
+        width: 16.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m3 {
+        width: 25%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m4 {
+        width: 33.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m5 {
+        width: 41.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m6 {
+        width: 50%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m7 {
+        width: 58.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m8 {
+        width: 66.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m9 {
+        width: 75%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m10 {
+        width: 83.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m11 {
+        width: 91.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m12 {
+        width: 100%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+
+}    
+
+@media only screen and (min-width: 993px) {
+    .row .col.l1 {
+        width: 8.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l2 {
+        width: 16.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l3 {
+        width: 25%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l4 {
+        width: 33.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l5 {
+        width: 41.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l6 {
+        width: 50%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l7 {
+        width: 58.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l8 {
+        width: 66.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l9 {
+        width: 75%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l10 {
+        width: 83.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l11 {
+        width: 91.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l12 {
+        width: 100%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+
+ }   
+
+</style>
+<body>
+	<div class="container">
+		<h1>Grid</h1>
+		<p>
+			Note: For now, just know that the s1 stands for small-1 which in plain English means "1 column on small screens".
+		</p>
+		<h2>#1. 12개의 행(Column)</h2>
+		<div class="row">
+			<div class="col s1 grid-example">1</div>
+			<div class="col s1 grid-example">2</div>
+			<div class="col s1 grid-example">3</div>
+			<div class="col s1 grid-example">4</div>
+			<div class="col s1 grid-example">5</div>
+			<div class="col s1 grid-example">6</div>
+			<div class="col s1 grid-example">7</div>
+			<div class="col s1 grid-example">8</div>
+			<div class="col s1 grid-example">9</div>
+			<div class="col s1 grid-example">10</div>
+			<div class="col s1 grid-example">11</div>
+			<div class="col s1 grid-example">12</div>
+		</div>
+		<h2>#2. Column들은 Row 안에</h2>
+		<div class="row">
+		      <div class="col s12 grid-example">This div is 12-columns wide on all screen sizes</div>
+		      <div class="col s6 grid-example">6-columns (one-half)</div>
+		      <div class="col s6 grid-example">6-columns (one-half)</div>
+		</div>
+		<h2>#3. 여백</h2>
+		<div class="row">
+		      <div class="col s12 grid-example"><span class="flow-text">This div is 12-columns wide on all screen sizes</span></div>
+		      <div class="col s6 offset-s6 grid-example"><span class="flow-text">6-columns (offset-by-6)</span></div>
+		</div>
+		<h2>#4. Push and Pull</h2>
+		<div class="row">
+		      <div class="col s7 push-s5 grid-example"><span class="flow-text">This div is 7-columns wide on pushed to the right by 5-columns.</span></div>
+		      <div class="col s5 pull-s7 grid-example"><span class="flow-text">5-columns wide pulled to the left by 7-columns.</span></div>
+		</div>
+
+		<h2>#5. side navigaition layout</h2>
+
+		<!-- Navbar goes here -->
+
+		<!-- Page Layout here -->
+		<div class="row">
+
+			<div class="col s3 grid-example">
+			<!-- Grey navigation panel -->
+				navigation panel
+			</div>
+
+			<div class="col s9 grid-example">
+			<!-- Teal page content  -->
+				page content 
+			</div>
+
+		</div>
+
+		<h2>#6. resposive layout -- 1</h2>
+		
+		<ul>	
+			<li>
+				Mobile Devices <= 600px : .s
+			</li>
+			<li>
+				Tablet Devices > 600px  : .m
+			</li>
+			<li>	
+				Desktop Devices > 992px : .l
+			</li>
+			<li>	
+				Large Desktop Devices > 1200px : .xl
+			</li>
+		</ul>
+
+		<div class="row">
+		      <div class="grid-example col s12"><span class="flow-text">I am always full-width (col s12)</span></div>
+		      <div class="grid-example col s12 m6"><span class="flow-text">I am full-width on mobile (col s12 m6)</span></div>
+		</div>
+
+		
+		<h2>#6. resposive layout -- 2 </h2>
+		<!-- Navbar goes here -->
+
+		<!-- Page Layout here -->
+		<div class="row">
+
+		      <div class="grid-example  col s12 m4 l3"> <!-- Note that "m4 l3" was added -->
+		        <!-- Grey navigation panel
+
+		              This content will be:
+		          3-columns-wide on large screens,
+		          4-columns-wide on medium screens,
+		          12-columns-wide on small screens  -->
+				1
+		      </div>
+
+		      <div class="grid-example  col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
+		        <!-- Teal page content
+
+		              This content will be:
+		          9-columns-wide on large screens,
+		          8-columns-wide on medium screens,
+		          12-columns-wide on small screens  -->
+				2
+		      </div>
+		</div>
+
+
+		<h2>#7. resposive layout -- 3 </h2>
+
+<style>	
+       
+        .grey{ 
+        	background-color: #eee; 
+        	font-size: 28px;
+	line-height: 50px;
+	border: 1px solid #fff;
+        }
+        
+</style>		
+		<div class="row">
+		    <div class="grey col s12"><p>s12</p></div>
+		    <div class="grey col s12 m4 l2"><p>s12 m4</p></div>
+		    <div class="grey col s12 m4 l8"><p>s12 m4</p></div>
+		    <div class="grey col s12 m4 l2"><p>s12 m4</p></div>
+		</div>
+
+		<div class="row">
+		    <div class="grey col s12 m6 l3"><p>s12 m6 l3</p></div>
+		    <div class="grey col s12 m6 l3"><p>s12 m6 l3</p></div>
+		    <div class="grey col s12 m6 l3"><p>s12 m6 l3</p></div>
+		    <div class="grey col s12 m6 l3"><p>s12 m6 l3</p></div>
+		</div>
+
+	</div>
+
+	<p>
+		@ <a href="http://materializecss.com/grid.html" target="_blank">http://materializecss.com/grid.html</a>
+	</p>
+</body>
+</html>
