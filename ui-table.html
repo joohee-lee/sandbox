@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>table(Materialize)</title>
+	<link rel="stylesheet" href="base.css">
+</head>
+<style>
+html{
+	font-size: 16px;
+	font-family:  "Malgun Gothic", "맑은 고딕", sans-serif ;
+}
+
+div, p {
+	margin: 0;
+	padding: 0;
+}
+
+.container .row {
+    margin-left: -.75rem;
+    margin-right: -.75rem
+}
+.row {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both
+}
+.row .col {
+    float: left;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 .75rem;
+    min-height: 1px;
+}
+.row .col[class*="push-"],
+.row .col[class*="pull-"] {
+    position: relative
+}
+.row .col.s1 {
+    width: 8.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s2 {
+    width: 16.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s3 {
+    width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s4 {
+    width: 33.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s5 {
+    width: 41.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s6 {
+    width: 50%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s7 {
+    width: 58.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s8 {
+    width: 66.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s9 {
+    width: 75%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s10 {
+    width: 83.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s11 {
+    width: 91.6666666667%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+.row .col.s12 {
+    width: 100%;
+    margin-left: auto;
+    left: auto;
+    right: auto
+}
+
+.grid-example{
+	margin: 7px 0;
+	padding: 0;
+	font-size: 28px;
+	line-height: 50px;
+	text-align: center;
+	background-color: tomato;
+	border: 1px solid #eee;
+	color: #fff;
+
+}
+
+.row .col.offset-s6 {
+    margin-left: 50%;
+}
+
+.row .col.push-s5 {
+    left: 41.6666666667%;
+}
+
+.row .col.pull-s7 {
+    right: 58.3333333333%;
+}
+
+
+/* text */
+.flow-text {
+    font-weight: 300
+}
+@media only screen and (min-width: 360px) {
+    .flow-text {
+        font-size: 1.2rem
+    }
+}
+@media only screen and (min-width: 390px) {
+    .flow-text {
+        font-size: 1.224rem
+    }
+}
+@media only screen and (min-width: 420px) {
+    .flow-text {
+        font-size: 1.248rem
+    }
+}
+@media only screen and (min-width: 450px) {
+    .flow-text {
+        font-size: 1.272rem
+    }
+}
+@media only screen and (min-width: 480px) {
+    .flow-text {
+        font-size: 1.296rem
+    }
+}
+@media only screen and (min-width: 510px) {
+    .flow-text {
+        font-size: 1.32rem
+    }
+}
+@media only screen and (min-width: 540px) {
+    .flow-text {
+        font-size: 1.344rem
+    }
+}
+@media only screen and (min-width: 570px) {
+    .flow-text {
+        font-size: 1.368rem
+    }
+}
+@media only screen and (min-width: 600px) {
+    .flow-text {
+        font-size: 1.392rem
+    }
+}
+@media only screen and (min-width: 630px) {
+    .flow-text {
+        font-size: 1.416rem
+    }
+}
+@media only screen and (min-width: 660px) {
+    .flow-text {
+        font-size: 1.44rem
+    }
+}
+@media only screen and (min-width: 690px) {
+    .flow-text {
+        font-size: 1.464rem
+    }
+}
+@media only screen and (min-width: 720px) {
+    .flow-text {
+        font-size: 1.488rem
+    }
+}
+@media only screen and (min-width: 750px) {
+    .flow-text {
+        font-size: 1.512rem
+    }
+}
+@media only screen and (min-width: 780px) {
+    .flow-text {
+        font-size: 1.536rem
+    }
+}
+@media only screen and (min-width: 810px) {
+    .flow-text {
+        font-size: 1.56rem
+    }
+}
+@media only screen and (min-width: 840px) {
+    .flow-text {
+        font-size: 1.584rem
+    }
+}
+@media only screen and (min-width: 870px) {
+    .flow-text {
+        font-size: 1.608rem
+    }
+}
+@media only screen and (min-width: 900px) {
+    .flow-text {
+        font-size: 1.632rem
+    }
+}
+@media only screen and (min-width: 930px) {
+    .flow-text {
+        font-size: 1.656rem
+    }
+}
+@media only screen and (min-width: 960px) {
+    .flow-text {
+        font-size: 1.68rem
+    }
+}
+@media only screen and (max-width: 360px) {
+    .flow-text {
+        font-size: 1.2rem
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .row .col.m1 {
+        width: 8.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m2 {
+        width: 16.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m3 {
+        width: 25%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m4 {
+        width: 33.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m5 {
+        width: 41.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m6 {
+        width: 50%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m7 {
+        width: 58.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m8 {
+        width: 66.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m9 {
+        width: 75%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m10 {
+        width: 83.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m11 {
+        width: 91.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.m12 {
+        width: 100%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+
+}    
+
+@media only screen and (min-width: 993px) {
+    .row .col.l1 {
+        width: 8.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l2 {
+        width: 16.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l3 {
+        width: 25%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l4 {
+        width: 33.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l5 {
+        width: 41.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l6 {
+        width: 50%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l7 {
+        width: 58.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l8 {
+        width: 66.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l9 {
+        width: 75%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l10 {
+        width: 83.3333333333%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l11 {
+        width: 91.6666666667%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+    .row .col.l12 {
+        width: 100%;
+        margin-left: auto;
+        left: auto;
+        right: auto
+    }
+
+ }   
+
+
+ /* contents design */
+ table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table,
+th,
+td {
+    border: none
+}
+table {
+    width: 100%;
+    display: table
+}
+
+thead { border-bottom: 1px solid #d0d0d0; }
+td,
+th {
+    padding: 15px 5px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px
+}
+
+table.bordered>thead>tr,
+table.bordered>tbody>tr {
+    border-bottom: 1px solid #d0d0d0
+}
+
+table.striped>tbody>tr:nth-child(odd) {
+    background-color: #f2f2f2
+}
+table.striped>tbody>tr>td {
+    border-radius: 0
+}
+table.highlight>tbody>tr {
+    -webkit-transition: background-color .25s ease;
+    transition: background-color .25s ease
+}
+table.highlight>tbody>tr:hover {
+    background-color: #f2f2f2
+}
+table.centered thead tr th,
+table.centered tbody tr td {
+    text-align: center
+}
+
+
+@media only screen and (max-width: 992px) {
+    table.responsive-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        display: block;
+        position: relative
+    }
+    table.responsive-table td:empty:before {
+        content: '\00a0'
+    }
+    table.responsive-table th,
+    table.responsive-table td {
+        margin: 0;
+        vertical-align: top
+    }
+    table.responsive-table th {
+        text-align: left
+    }
+    table.responsive-table thead {
+        display: block;
+        float: left
+    }
+    table.responsive-table thead tr {
+        display: block;
+        padding: 0 10px 0 0
+    }
+    table.responsive-table thead tr th::before {
+        content: "\00a0"
+    }
+    table.responsive-table tbody {
+        display: block;
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+        white-space: nowrap
+    }
+    table.responsive-table tbody tr {
+        display: inline-block;
+        vertical-align: top
+    }
+    table.responsive-table th {
+        display: block;
+        text-align: right
+    }
+    table.responsive-table td {
+        display: block;
+        min-height: 1.25em;
+        text-align: left
+    }
+    table.responsive-table tr {
+        padding: 0 10px
+    }
+    table.responsive-table thead {
+        border: 0;
+        border-right: 1px solid #d0d0d0
+    }
+    table.responsive-table.bordered th {
+        border-bottom: 0;
+        border-left: 0
+    }
+    table.responsive-table.bordered td {
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0
+    }
+    table.responsive-table.bordered tr {
+        border: 0
+    }
+    table.responsive-table.bordered tbody tr {
+        border-right: 1px solid #d0d0d0
+    }
+}
+
+</style>
+<body>
+	<div class="container">
+		<h1>table</h1>
+		
+		<h2>#1. border - none </h2>
+		<div class="row">
+			<div class="col s12">
+				
+				<table>	
+					 <thead>
+					 	<tr>
+					 		<th>Name</th>
+					 		<th>Item Name</th>
+					 		<th>Item Price</th>
+					 	</tr>
+					 </thead>
+					 <tbody>	
+						<tr>	
+							<td>이름1</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름2</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름3</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름4</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+					 </tbody>
+				</table>
+
+			</div>
+		</div>
+
+		<h2>#2. border - bordered </h2>
+		<div class="row">
+			<div class="col s12">
+				
+				<table class="bordered">	
+					 <thead>
+					 	<tr>
+					 		<th>Name</th>
+					 		<th>Item Name</th>
+					 		<th>Item Price</th>
+					 	</tr>
+					 </thead>
+					 <tbody>	
+						<tr>	
+							<td>이름1</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름2</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름3</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름4</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+					 </tbody>
+				</table>
+
+			</div>
+		</div>
+		
+		<h2>#3. border - striped </h2>
+		<div class="row">
+			<div class="col s12">
+				
+				<table class="striped">	
+					 <thead>
+					 	<tr>
+					 		<th>Name</th>
+					 		<th>Item Name</th>
+					 		<th>Item Price</th>
+					 	</tr>
+					 </thead>
+					 <tbody>	
+						<tr>	
+							<td>이름1</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름2</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름3</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름4</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+					 </tbody>
+				</table>
+
+			</div>
+		</div>
+
+		<h2>#4. highlight  - highlight </h2>
+		<div class="row">
+			<div class="col s12">
+				
+				<table class="highlight">	
+					 <thead>
+					 	<tr>
+					 		<th>Name</th>
+					 		<th>Item Name</th>
+					 		<th>Item Price</th>
+					 	</tr>
+					 </thead>
+					 <tbody>	
+						<tr>	
+							<td>이름1</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름2</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름3</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름4</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+					 </tbody>
+				</table>
+
+			</div>
+		</div>
+
+		<h2>#5. centered  - centered </h2>
+		<div class="row">
+			<div class="col s12">
+				
+				<table class="centered">	
+					 <thead>
+					 	<tr>
+					 		<th>Name</th>
+					 		<th>Item Name</th>
+					 		<th>Item Price</th>
+					 	</tr>
+					 </thead>
+					 <tbody>	
+						<tr>	
+							<td>이름1</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름2</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름3</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름4</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+					 </tbody>
+				</table>
+
+			</div>
+		</div>
+
+		<h2>#6. responsive  - responsive-table </h2>
+		<div class="row">
+			<div class="col s12">
+				
+				<table class="responsive-table">	
+					 <thead>
+					 	<tr>
+					 		<th>Name</th>
+					 		<th>Item Name</th>
+					 		<th>Item Price</th>
+					 	</tr>
+					 </thead>
+					 <tbody>	
+						<tr>	
+							<td>이름1</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름2</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름3</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+						<tr>	
+							<td>이름4</td>
+							<td>내용1</td>
+							<td>내용2</td>
+						</tr>
+					 </tbody>
+				</table>
+
+			</div>
+		</div>
+
+	<p>
+		@ <a href="http://materializecss.com/table.html" target="_blank">http://materializecss.com/table.html</a>
+	</p>
+</body>
+</html>
