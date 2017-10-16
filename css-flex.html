@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>css-ellipsis</title>
+</head>
+<style>
+/*
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed, 
+	figure, figcaption, footer, header, hgroup, 
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+*/	
+	*{ box-sizing: border-box; }
+	body{
+		font-family: Malgun Gothic, '맑은고딕', sans-serif;
+		font-size: 100%;
+		line-height: 1.3;
+	}
+	
+	#flex-container,
+	#flex-container--2 {
+	  display: flex;
+	  flex-direction: row;
+	}
+
+	#flex-container > .flex-item {
+	  flex: auto;
+	}
+
+	#flex-container > .raw-item {
+	  width: 10em;
+	}
+	#flex-container {
+	  width: 100%;
+	  font-family: Consolas, Arial, sans-serif;
+	}
+
+	#flex-container > div,
+	#flex-container--2 > div {
+	  border: 1px solid #f00;
+	  padding: 1rem;
+	}
+
+	#flex-container > .raw-item {
+	  border: 1px solid #000;
+	}
+
+	#flex-container--2 .flex-item{
+		flex: 2;
+	}
+
+	#flex-container--2 .flex-item + .flex-item{
+		margin-left: -1px;
+	}
+
+	ul{ margin:0; padding: 0; }
+	li{ list-style: none; }
+	
+	
+	.ul-list { margin-top: 20px;}
+	.ul-list li:before{
+
+		content: '-';
+		display: inline-block;
+		margin-right: 10px;
+		padding-left: 10px;
+	}
+
+</style>
+
+<body>
+	<h1>flex </h1>
+	<h2>flex - display: flex; / flex-direction: row;</h2>
+	<div id="flex-container">
+		<div class="flex-item" id="flex">Flex box (click to toggle raw box)</div>
+		<div class="raw-item" id="raw">Raw box</div>
+	</div>
+
+	<h2>flex - display: flex; / flex: 2;</h2>
+	<div id="flex-container--2">
+		<div class="flex-item">Flex box--1</div>
+		<div class="flex-item">Flex box--2</div>
+	</div>
+
+	<br />
+
+	<style>
+		.tab-comp{
+			position: relative;
+		}
+
+		.tab-list{ 
+			display: flex;
+			overflow: hidden;
+			width: 100%;
+		}
+		
+		.tab-list:after{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			content:'';
+			display:block;
+			height: 1px;
+			background-color: #ddd;
+		}
+
+		.tab{
+			position: relative;
+			flex: 2;
+			width: 50%;
+			text-align: center;
+		}
+
+		.tab a{ 
+			display: block; 
+			width: 100%;
+			padding: 10px 2px;
+			text-decoration: none;
+		}
+
+		.tab[data-select='true'] a:after {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			content:'';
+			height: 2px;
+			background-color: #000;
+		}
+
+		.tab-panel[data-select='true']{ display: block; }
+		.tab-panel[data-select='flase']{ display: none; }
+
+	</style>
+
+
+	<div class="tab-comp">
+		<ul id="tab-list" class="tab-list">
+			<li class="tab"  data-select="true">
+				<a href="">tab--1</a>
+			</li>
+			<li class="tab" data-select="false">
+				<a href="">tab--2</a>
+			</li>
+		</ul>
+	</div>
+
+
+
+	<script>
+
+		// 초기 셋팅 	
+		var tab_list = document.getElementById("tab-list");
+		var tab = tab_list.getElementsByTagName("li");
+		var tab_length = tab.length;	
+		
+
+			// 이벤트 등록 
+			/*
+			tab[0].addEventListener("click", function(e) {
+				
+				e.preventDefault();
+				reset();
+				tabSelect(0);
+			});
+
+			tab[1].addEventListener("click", function(e) {
+
+				e.preventDefault();
+				reset();
+				tabSelect(1);
+
+			});
+			*/
+		
+			tab[0].onclick = function(e){
+				
+				e.preventDefault();
+				tabSelect(0);
+
+			};
+
+			tab[1].onclick = function(e){
+				
+				e.preventDefault();
+				tabSelect(1);
+
+			};
+
+
+
+			//초기화 함수
+			function reset(){
+								
+				for(var i = 0; i < tab.length; i++) {
+
+					tab[i].setAttribute('data-select', 'false');
+				};
+
+			};
+
+			//tab 선택 함수 		
+			function tabSelect(i){
+
+				reset();
+
+				if ( tab[i].getAttribute('data-select') == "true"){
+
+					tab[i].setAttribute('data-select', 'false');	
+				} else {
+
+					tab[i].setAttribute('data-select', 'true');
+				};
+
+				return false;
+
+			};
+		
+	</script>
+
+	
+	<ul class="ul-list">
+		<li><a href="http://caniuse.com/#search=flex" target="_blank">http://caniuse.com/#search=flex</a></li>
+	</ul>
+
+</body>
+
+
+<script>
+	var flex = document.getElementById("flex");
+	var raw = document.getElementById("raw");
+		
+		flex.addEventListener("click", function() {
+			
+			console.log(raw.style.display );
+
+	  		//raw.style.display = raw.style.display == "none" ? "block" : "none";
+	  		
+	  		if( raw.style.display == "none" ){
+
+	  			raw.style.display = "block";
+
+	  		}else{
+
+	  			raw.style.display = "none";
+	  		}
+	  		
+
+		});
+</script>
+</html>
