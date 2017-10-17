@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>tab</title>
+	<link rel="stylesheet" href="base.css">
+</head>
+<style>
+main {
+  padding: 1rem;
+}
+
+.tab-list {
+  background: #0d8a00;
+  padding: 0;
+  margin: 0;
+}
+
+.tab-item {
+  display: block;
+}
+
+.tab-item[data-tab-active] {
+  background: #036800;
+  -webkit-transition: all 150ms cubic-bezier(0.42, 0, 1, 1);
+  transition: all 150ms cubic-bezier(0.42, 0, 1, 1);
+}
+
+.tab-link {
+  color: #fff;
+  display: block;
+  padding: 1rem 2rem;
+  position: relative;
+  text-decoration: none;
+  -webkit-transition: all 150ms cubic-bezier(0.42, 0, 1, 1);
+  transition: all 150ms cubic-bezier(0.42, 0, 1, 1);
+}
+
+.tab-panel {
+  background: #f0f0f0;
+  padding: 1rem;
+}
+
+.tab-panel h2 {
+  margin-top: 0;
+}
+
+.tab-panel[aria-hidden="true"] {
+  display: none;
+}
+
+@media screen and (min-width: 800px) {
+  .tab-item {
+    display: inline-block;
+  }
+
+  .tab-link {
+    display: inline-block;
+  }
+
+  .tab-link[data-tab-active]:after {
+    content: '';
+    display: inline-block;
+    margin: auto;
+    position: absolute;
+    bottom: -9px;
+    left: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #036800;
+  }
+}
+
+</style>
+<body>
+	<div class="container">
+		<h1>tab--2</h1>
+		
+<main>
+	<div class="js-tab-widget">
+
+		<h1 class="base--h1">A11Y Tabs</h1>
+		
+		<ul class="tab-list">
+			<li class="tab-item">
+			<a class="tab-link" href="#tab-1">Planning</a>
+			</li>
+			<li class="tab-item">
+			<a class="tab-link" href="#tab-2">Feedback</a>
+			</li>
+			<li class="tab-item">
+			<a class="tab-link" href="#tab-3">Retrospective</a>
+			</li>
+		</ul>
+
+		<section id="tab-1" class="tab-panel">
+			<h2>Planning</h2>
+			<p>
+			Pixel pushing game-plan, yet core competencies, or table the discussion quick win. Collaboration through advanced technlogy i also believe it's important for every member to be involved and invested in our company and this is one way to do so but low-hanging fruit reach out. Deliverables t-shaped individual. 
+			</p>
+			<p>
+			Push back drill down. We need distributors to evangelize the new line to local markets productize or game plan drop-dead date we're ahead of the curve on that one nor win-win usabiltiy.
+			</p>
+			<p>
+			Future-proof paddle on both sides i'll book a meeting so we can solution this before the sprint is over so sacred cow productize due diligence. We're ahead of the curve on that one closer to the metal show pony, or mobile friendly. 
+			</p>
+			<p>
+			Strategic high-level 30,000 ft view upsell shotgun approach closer to the metal, we need distributors to evangelize the new line to local markets, yet collaboration through advanced technlogy. Imagineer strategic high-level 30,000 ft view work flows , or quick win, yet curate, but deploy anti-pattern.
+			</p>
+		</section>
+		<section id="tab-2" class="tab-panel">
+			<h2>Feedback</h2>
+			<p>
+			Can you use a high definition screenshot can you make the blue bluer? and I got your invoice...it seems really high, why did you charge so much, for we are your relatives. There are more projects lined up charge extra the next time will royalties in the company do instead of cash. 
+			</p>
+			<p>
+			Make it look like Apple theres all this spanish text on my site can you make the logo bigger yes bigger bigger still the logo is too big but concept is bang on, but can we look at a better execution, and the website doesn't have the theme i was going for or can you pimp this powerpoint, need more geometry patterns make it sexy.
+			</p>
+			<p>
+			Concept is bang on, but can we look at a better execution im not sure, try something else, for remember, everything is the same or better and can you make it stand out more?, nor low resolution? It looks ok on my screen thats not what i saw in my head at all can you make pink a little more pinkish. I need a website. 
+			</p>
+			<p>
+			How much will it cost this looks perfect. Just Photoshop out the dog, add a baby, and make the curtains blue can you make the logo bigger yes bigger bigger still the logo is too big I need a website. How much will it cost, so im not sure, try something else, nor can you make it pop.
+			</p>
+		</section>
+		<section id="tab-3" class="tab-panel">
+			<h2>Retrospective</h2>
+			<p>
+			High turnaround rate globalize first-order optimal strategies. Ramp up game-plan i also believe it's important for every member to be involved and invested in our company and this is one way to do so. Overcome key issues to meet key milestones get buy-in are we in agreeance, and knowledge is power. Into the weeds fire up your browser deploy, or deploy, value-added high-level. 
+			</p>
+			<p>
+			Vertical integration deliverables yet shelfware. It just needs more cowbell we need more paper, but guerrilla marketing, for dogpile that. Organic growth idea shower, yet strategic fit. Can we take this offline where do we stand on the latest client ask come up with something buzzworthy, nor shoot me an email and your work on this project has been really impactful.
+			</p>
+			<p>
+			Can I just chime in on that one bleeding edge drill down, and cross-pollination, or those options are already baked in with this model.
+			</p>
+		</section>
+	</div>
+</main>
+		
+	</div>
+	<p>
+		@ http://a11yproject.com/patterns.html
+	</p>
+<script>
+/** This tab solution is based on Scott Vinkle's Simple Tabs with some modications to  remove the jQuery dependency, as well as modifying the UI look and feel.
+*** https://codepen.io/svinkle/pen/edmDF
+***/
+
+(function() {
+  'use strict';
+
+  var tabWidget = [].slice.call(document.querySelectorAll('.js-tab-widget')) || [];
+
+  var tabClickEvent = function(tabLink, tabLinks, tabPanels, linkIndex, e) {
+
+    // Reset all the tablinks
+    tabLinks.forEach(function(link) {
+      link.setAttribute('tabindex', '-1');
+      link.setAttribute('aria-selected', 'false');
+      link.parentNode.removeAttribute('data-tab-active');
+      link.removeAttribute('data-tab-active');
+    });
+
+    // set the active link attributes
+    tabLink.setAttribute('tabindex', '0');
+    tabLink.setAttribute('aria-selected', 'true');
+    tabLink.parentNode.setAttribute('data-tab-active', '');
+    tabLink.setAttribute('data-tab-active', '');
+
+    // Change tab panel visibility
+    tabPanels.forEach(function(panel, index) {
+      if (index != linkIndex) {
+        panel.setAttribute('aria-hidden', 'true');
+        panel.removeAttribute('data-tab-active');
+      } else {
+        panel.setAttribute('aria-hidden', 'false');
+        panel.setAttribute('data-tab-active', '');
+      }
+    });
+  };
+
+  var keyboardEvent = function(tabLink, tabLinks, tabPanels, tabItems, index, e) {
+    var keyCode = e.key || e.which, // which property is deprecated, e.key is not fully supported
+        currentTab = tabLinks[index],
+        previousTab = tabLinks[index - 1],
+        nextTab = tabLinks[index + 1],
+        firstTab = tabLinks[0],
+        lastTab = tabLinks[tabLinks.length - 1];
+
+    // ArrowRight and ArrowLeft are the values when event.key is supported
+    switch (keyCode) {
+      case 'ArrowLeft':
+      case 37:
+        e.preventDefault();
+
+        if (!previousTab) {
+          lastTab.focus();
+        } else {
+          previousTab.focus();
+        }
+      break;
+
+      case 'ArrowRight':
+      case 39:
+        e.preventDefault();
+
+        if (!nextTab) {
+            firstTab.focus();
+          } else {
+            nextTab.focus();
+          }
+        break;
+    }
+  };
+
+  // set up tab widgets
+  tabWidget.forEach(function(tabWidgetInstance, i) {
+    var tabList = tabWidgetInstance.getElementsByTagName('ul')[0],
+        tabItems = [].slice.call(tabList.getElementsByTagName('li')),
+        tabLinks = [],
+        tabPanels = [].slice.call(tabWidgetInstance.getElementsByTagName('section'));
+
+    // Add accessibility roles and labels
+    tabList.setAttribute('role','tablist');
+    tabItems.forEach(function(item, index) {
+      var link = item.getElementsByTagName('a')[0];
+
+      tabLinks.push(link);
+      item.setAttribute('role', 'presentation');
+
+      if (index == 0) {
+        item.setAttribute('data-tab-active', '');
+      }
+    });
+
+    tabLinks.forEach(function(link, i) {
+      var anchor = link.getAttribute('href').split('#')[1];
+      var attributes = {
+        'id': 'tab-link-' + i,
+        'role': 'tab',
+        'tabIndex': '-1',
+        'aria-selected': 'false',
+        'aria-controls': anchor
+      };
+
+      // if it's the first element update the attributes
+      if (i == 0) {
+        attributes['aria-selected'] = 'true';
+        attributes.tabIndex = '0';
+        link.setAttribute('data-tab-active', '');
+      };
+
+      // Add the various accessibility roles and labels to the links
+      for (var key in attributes) {
+        link.setAttribute(key, attributes[key]);
+       }
+      
+      // Add next section link
+        
+      // Click Event Listener
+       link.addEventListener('click', function(e) {
+        e.preventDefault();
+       });
+      
+       // Click Event Listener
+       link.addEventListener('focus', function(e) {
+        tabClickEvent(this, tabLinks, tabPanels, i, e);
+       });
+
+       // Keyboard event listener
+       link.addEventListener('keydown', function(e) {
+        keyboardEvent(link, tabLinks, tabPanels, tabItems, i, e);
+       });
+    });
+
+    // set up tab panels
+    tabPanels.forEach(function(panel, i) {
+      var nextTabLink = document.createElement('a'),
+          nextTabLinkIndex = (i < tabPanels.length - 1) ? i+1 : 0;
+      
+      var attributes = {
+        'role': 'tabpanel',
+        'aria-hidden': 'true',
+        'aria-labelledby': 'tab-link-' + i
+      };
+      
+      // set up next tab link
+      nextTabLink.setAttribute('href', '#tab-link-' + nextTabLinkIndex);
+      nextTabLink.textContent = 'Next Tab';
+      panel.appendChild(nextTabLink);
+
+      if (i == 0) {
+        attributes['aria-hidden'] = 'false';
+        panel.setAttribute('data-tab-active', '');
+      }
+
+      for (var key in attributes) {
+        panel.setAttribute(key, attributes[key]);
+      }
+    });
+  });
+})();	
+</script>	
+
+</body>
+</html>
