@@ -1,0 +1,64 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title></title>
+ </head>
+ <body>
+
+<div role="toolbar" tabindex="0" aria-activedescendant="button1" id="tb1" 
+     onkeydown="return optionKeyEvent(event);"
+     onkeypress="return optionKeyEvent(event);">
+  <!--
+  <img src="buttoncut" role="button" alt="cut" id="button1">      
+  <img src="buttoncopy" role="button" alt="copy" id="button1">     
+  <img src="buttonpaste" role="button" alt="paste" id="button1">    
+  -->
+  <button id="button1" role="button" alt="cut"><span>버튼 1</span></button> 
+  <button role="button" alt="cut"><span>버튼 2</span></button> 
+  <button role="button" alt="cut"><span>버튼 3</span></button> 
+</div>
+
+
+
+<script>        
+ function optionKeyEvent(event) {
+  var tb = event.target;
+  var buttonid; 
+ 
+  ENTER_KEYCODE = 13;
+  RIGHT_KEYCODE = 39;
+  LEFT_KEYCODE = 37;
+
+
+  // Partial sample code for processing arrow keys.
+  if (event.type == "keydown") {
+
+    console.log( "event.keyCode", event.keyCode );
+
+
+    // Implement circular keyboard navigation within the toolbar buttons
+    if (event.keyCode == ENTER_KEYCODE) {
+      ExecuteButtonAction(getCurrentButtonID());
+      // getCurrentButtonID defined elsewhere 
+    } else if (event.keyCode == event.RIGHT_KEYCODE) {
+      // Change the active toolbar button to the one to the right (circular). 
+      var buttonid = getNextButtonID();
+      // getNextButtonID defined elsewhere 
+      tb.setAttribute("aria-activedescendant", buttonid); 
+    } else if (event.keyCode == event.LEFT_KEYCODE) {
+      // Change the active toolbar button to the one to the left (circular). 
+      var buttonid = getPrevButtonID();
+      // getPrevButtonID defined elsewhere 
+      tb.setAttribute("aria-activedescendant", buttonid); 
+    } else {
+      return true;
+    }
+    return false;
+  }
+}  
+</script>
+
+ </body>
+ </html>
+  

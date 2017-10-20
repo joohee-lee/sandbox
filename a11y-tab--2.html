@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>tab</title>
+	<link rel="stylesheet" href="base.css">
+</head>
+<style>
+
+body{
+      font-family: "맑은 고딕", sans-serif;
+      font-size: 16px;
+}
+div, p{ margin: 0; padding: 0; }
+
+a{ color: #000;  text-decoration: none; }
+
+:focus {
+  outline: 3px solid #c1e0fe;
+  outline: 3px solid rgba(131, 192, 253, 0.5);
+  outline-offset: 1px; }
+  :focus[data-focus-method="mouse"]:not(input):not(textarea):not(select), :focus[data-focus-method="touch"]:not(input):not(textarea):not(select) {
+    outline: none; }
+
+::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+main {
+    padding: 1rem;
+}
+
+.tab-container{ 
+    position: relative;
+}
+.tab-container .inner-div{
+  overflow: hidden;
+}
+
+.inner-div {
+  zoom: 1;
+}
+.inner-div:after{
+  content: '';
+  display: block;
+  clear: both;
+ }
+
+.tabs-container__title{ 
+  float: left;
+  border: 1px solid #ddd;
+  box-sizing: border-box; 
+  padding: 0;
+  margin: 0 0 0 -1px;
+}
+
+.tabs-container__title:first-child{
+  margin-left: 0;
+}
+
+.tabs-container__title a{
+  display: block;
+  padding: 0 20px;
+  height: 50px;
+  line-height: 50px;  
+}
+
+
+.tabs-container__panel{ 
+     display: none;
+     position: absolute;
+     left: 0;
+     top: 52px;
+    
+     width: 100%;
+     background-color: #eee;
+}
+
+.tabs-container__panel .inner-div{ padding: 10px; }
+
+/* 동작 */
+.tab-container[data-current="1"] .tabs-container__title[data-idx="1"],
+.tab-container[data-current="2"] .tabs-container__title[data-idx="2"],
+.tab-container[data-current="3"] .tabs-container__title[data-idx="3"]{
+   background-color: #eee; 
+   border-bottom-color: #eee;
+}
+
+.tab-container[data-current="1"] .tabs-container__title[data-idx="1"] + .tabs-container__panel { display: block; }
+.tab-container[data-current="2"] .tabs-container__title[data-idx="2"] + .tabs-container__panel { display: block; }
+.tab-container[data-current="3"] .tabs-container__title[data-idx="3"] + .tabs-container__panel { display: block; }
+
+/* icon */
+
+.example{ 
+    position: relative;
+    padding-top: 10px;
+    padding-left: 80px;
+    margin-bottom: 20px;
+ }
+.example::before {
+    font-style: normal;
+    content: 'Example';
+    background: green;
+    color: #EEEEEE;
+    padding: 0.15em 0.25em;
+    font: 1em Helvetica Neue, sans-serif, Droid Sans Fallback;
+    position: absolute;
+    top: 0.2em;
+    left: 0;
+    transform: rotate(-5deg);
+}
+</style>
+<body>
+<div class="container">
+	<h1>tab--2</h1>
+     
+     <!--
+	 <p class="example"> 샘플 </p>   
+     -->
+    <main> 
+        <h2> tab--2 style </h2>
+         <div class="tab-container" data-current="1">
+             <div class='inner-div'>
+
+                <h2 class='tabs-container__title' data-idx="1" tabindex="-1"><a href="#tab1">Tab 1</a></h2>
+                <div class='tabs-container__panel' id="tab1" tabindex="-1">
+                      <div class="inner-div"> 
+                          <p>First Tab Panel</p>
+                          <a href='#'>Link</a>
+                      </div>
+                </div>
+
+                <h2 class='tabs-container__title' data-idx="2"><a href="#tab2">Tab 2</a></h2>
+                <div class='tabs-container__panel' id="tab2" tabindex="0"> 
+                    <div class="inner-div"> 
+                      <h3>Tab 2 Content</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+                    </div>
+                </div>
+
+                <h2 class='tabs-container__title' data-idx="3"><a href="#tab3">Tab 3</a></h2>
+                <div class='tabs-container__panel' id="tab3" tabindex="0">
+                    <div class="inner-div"> 
+                        <h3>Tab 3 Content</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et pulvinar eros, ut feugiat lacus. Duis convallis ligula id tempus rhoncus. Curabitur tempus metus sit amet accumsan pulvinar. Pellentesque sed aliquam nisl. Sed libero tortor, posuere quis quam sed, ultrices feugiat nulla. Fusce ullamcorper odio eget tempus rhoncus. Etiam lacinia odio quis faucibus auctor. Curabitur a velit vel nisi facilisis vulputate. Vivamus feugiat, arcu eget accumsan feugiat, purus risus aliquam justo, id fermentum mauris dolor sit amet libero. Aenean laoreet vel justo et eleifend. Nulla facilisi. Quisque sit amet arcu sit amet nibh sagittis viverra. Mauris fringilla cursus ipsum et mollis. Cras eget sapien consequat, tincidunt enim vitae, vehicula lacus. In tristique venenatis urna, nec tincidunt nisl vulputate a. Curabitur dictum neque non tempus rhoncus.</p>
+                    </div>
+                </div>
+            
+             </div>
+         </div>
+    </main>
+
+</div>
+	
+<script>
+
+</script>	
+
+</body>
+</html>
