@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>grid</title>
+</head>
+<style>
+
+html {
+  font-size: 16px;
+  font-size: 100%;
+  font-family: Open Sans, Arial, Helvetica, Sans-serif;
+  color: #222; 
+}
+
+body, div {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary,
+cite,
+code,
+small { display: block; }
+
+body,
+article,
+section,
+footer,
+header,
+div,
+input,
+nav,
+article ol,
+article ul,
+blockquote,
+figure {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden],
+template {
+  display: none; }
+
+.wrapper{
+  margin: 0 1rem;
+}
+
+.section h1 {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        grid-gap: 1rem;
+}
+
+.section h1::before,
+.section h1::after  {
+        content: "";
+        border-bottom: 1px solid #ddd;
+        align-self: center;
+}
+
+.div-panel {
+        border: 1px solid #999;
+        background-color: #eee;
+        border-radius: 3px;
+        padding: 1rem;
+        position: relative;
+        margin-bottom: 1.625rem;
+}
+
+
+@media screen and (min-width: 640px) { 
+    
+    .section{
+      display: grid;
+      grid-column-gap: 2rem;
+      grid-template-columns: repeat( 3, minmax(0, 1fr));
+    }
+
+    .section h1 {
+         grid-column: 1 / -1;
+    }
+
+}
+
+</style>
+<body>
+<div class="container">
+	<h1>Grid-2</h1>
+     <!--
+	 <p class="example"> 샘플 </p>   
+     -->
+    <div class="wrapper">
+        <section class="section">
+            <h1>Get Started</h1>
+            <div class="div-panel">
+                <h2>제목</h2>
+                 <ul>
+                   <li>text1</li>
+                   <li>text2</li>
+                   <li>text3</li>
+                 </ul>
+            </div>
+            <div class="div-panel">
+                <h2>제목</h2>
+                 <ul>
+                   <li>text1</li>
+                   <li>text2</li>
+                   <li>text3</li>
+                 </ul>
+            </div>
+            <div class="div-panel">
+                <h2>제목</h2>
+                 <ul>
+                   <li>text1</li>
+                   <li>text2</li>
+                   <li>text3</li>
+                 </ul>
+            </div>
+        </section>
+    </div>
+
+</div>    
+<script>
+
+</script>	
+
+</body>
+</html>
