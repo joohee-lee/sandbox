@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, viewport-fit=cover">
+
+    <title>career</title>
+    <style>
+        /*
+        body {
+            font-family: "맑은 고딕", malgun gothic, snas-serif;
+            font-size: 14px;
+            lin-height: 1.2;
+            color: #444;
+        }
+        */
+        body, div, ul, li, p, h1, h2, h3{ margin: 0; padding: 0;}
+        h1,h2,h3{ font-weight: 100; }
+
+        .comp-card{
+            font-size: 14px;
+            lin-height: 1.2;
+            color: #444;
+        }
+        .comp-card .card-header{
+            font-size: 24px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            color: #ccc;
+        }
+
+        /*
+        .comp-card .card-header::before{
+            display: inline-block;
+            content: '';
+            height: 0px;
+            width: 0px;
+            border: 8px solid;
+            border-color: #7f0019 #7f0019 transparent transparent;
+            transform: rotate(45deg);
+            margin-right: 10px;
+        }
+        */
+
+        .card-row{
+            position: relative;
+            clear: both;
+        }
+
+        .card-row:after{
+            content: '';
+            display: block;
+            clear: both;
+            overflow: hidden;
+        }
+
+        .card-row::before{
+            position: absolute;
+            top: 0px;
+            bottom: -7px;
+            left: 125px;
+            display: block;
+            border-color: #7f0019;
+            border-right: 2px solid #7f0019;;
+            content: ''
+        }
+        .card-row .span-time{
+            float: left;
+            display: block;
+            width: 110px;
+            padding-top: 7px;
+            text-align: right;
+            color: #666;
+            font-size: 12px;
+        }
+        .card-row .div-conts{
+            margin-left: 140px;
+        }
+
+        .card-row .div-conts::before{
+            position: absolute;
+            top: 7px;
+            left: 120px;
+            content: '';
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+        }
+        .card-row[data-display="true"] .div-conts::before{
+            border: 1px solid #7f0019;
+            border-radius: 100px;
+            background: #7f0019;
+        }
+
+        .card-row[data-display="false"] .div-conts::before{
+            border: 1px solid #7f0019;
+            border-radius: 100px;
+            background: #fff;
+        }
+
+        .card-row[data-display="true"] .pj-conts{
+            display: block;
+        }
+        .card-row[data-display="false"] .pj-conts{
+            display: none;
+        }
+
+        .card-row h3{
+            padding-top: 7px;
+            margin-bottom: 20px;
+        }
+        .card-row .btn-toggle{
+            position: absolute;
+            right: 20px;
+            top: 7px;
+        }
+
+        .first .div-conts::before,
+        .first .btn-toggle{
+            top: 0;
+        }
+        .first .span-time,
+        .first h3{ padding-top: 0; }
+
+        .card-row .div-conts ul{
+            margin: 0 20px 20px;
+        }
+
+        .last::before{
+            border-color: none;
+            border-right: 0;
+        }
+
+        .btn-toggle a{
+            display: block;
+            box-sizing: border-box;
+            color: #888
+        }
+         /*
+        .btn-toggle a::before{
+            content:'';
+            display: inline-block;
+            border: 5px solid transparent;
+            border-top: 5px solid;
+            border-right: 5px solid;
+        }
+
+
+        .card-row[data-display="true"] .btn-toggle a::before{
+            color: #7f0019;
+            transform: rotate(135deg);
+        }
+        .card-row[data-display="false"] .btn-toggle a::before{
+            color: #888;
+            transform: rotate(-45deg);
+        }
+        */
+
+        .el-invisible {
+            background: transparent none !important;
+            border: none !important;
+            display: block !important;
+            height: 1px !important;
+            overflow: hidden !important;
+            padding: 0 !important;
+            position: absolute !important;
+            top: -999999em !important;
+            width: 1px !important;
+            position: absolute;
+            clip: rect(0px 0px 0px 0px);
+        }
+
+        .pj-header a{
+            display: block;
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+            color: #333;
+            font-weight: normal;
+        }
+
+        .pj-header a::before{
+            display: inline-block;
+            content:'';
+            float: right;
+            margin-right: 20px;
+            height: 8px;
+            width: 8px;
+            border: 1px solid #7f0019;
+            border-width: 1px 1px 0 0;
+        }
+
+        .card-row[data-display="true"] .pj-header a::before{
+           transform: rotate(135deg);
+        }
+
+        .card-row[data-display="false"] .pj-header a::before{
+           transform: rotate(-45deg);
+           margin-top: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="comp-card career-card">
+        <h2 class="card-header">Professional experience</h2>
+        <div class="div-inner">
+            <div class="card-row first" data-row="0" data-display="true">
+                <span class="span-time">2017.07 ~ 2017.12</span>
+                <div class="div-conts">
+                    <h3 class="pj-header"><a href="" title="프로젝트 상세보기" onclick="toggleDisplay(0); return false;">프로젝트타이틀</a></h3>
+
+                    <!--
+                    <div class="btn-toggle">
+                        <a href=""><span class="el-invisible">열림/닫힘</span></a>
+                    </div>
+                    -->
+                    <div class="pj-conts">
+                        <ul>
+                            <li>프로젝트 상세 설명 1</li>
+                            <li>프로젝트 상세 설명 2</li>
+                            <li>프로젝트 상세 설명 3</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-row" data-row="1" data-display="true" onclick="toggleDisplay(1); return false;">
+                <span class="span-time">2018.02</span>
+                <div class="div-conts">
+                    <h3 class="pj-header"><a href="" title="프로젝트 상세보기">프로젝트타이틀</a></h3>
+                    <div class="pj-conts">
+                        <ul>
+                            <li>프로젝트 상세 설명 1</li>
+                            <li>프로젝트 상세 설명 2</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-row" data-row="2" data-display="true" onclick="toggleDisplay(2); return false;">
+                <span class="span-time">2018.02</span>
+                <div class="div-conts">
+                    <h3 class="pj-header"><a href="" title="프로젝트 상세보기">프로젝트타이틀</a></h3>
+                    <div class="pj-conts">
+                        <ul>
+                            <li>프로젝트 상세 설명 1</li>
+                            <li>프로젝트 상세 설명 2</li>
+                            <li>프로젝트 상세 설명 3</li>
+                            <li>프로젝트 상세 설명 4</li>
+                            <li>프로젝트 상세 설명 5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-row last" data-row="3" data-display="true" onclick="toggleDisplay(3); return false;">
+                <span class="span-time">1995.02 ~ 1999.03</span>
+                <div class="div-conts">
+                    <h3 class="pj-header"><a href="" title="프로젝트 상세보기">상지대학교 전산학과 졸업</a></h3>
+                    <div class="pj-conts"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //toggle
+    function toggleDisplay(obj){
+
+        var el = document.getElementsByClassName("card-row")[obj];
+        //console.log(el);
+        //el.dataset.display = false;
+        //console.log(el.dataset.display);
+
+        if ( el.dataset.display === "true" ){
+              el.dataset.display = false;
+          }else{
+              el.dataset.display = true;
+          }
+
+          return false;
+    }
+</script>
+</html>
