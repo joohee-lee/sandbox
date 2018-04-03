@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>search-form</title>
+	<style>
+
+	body{
+		font-family: "맑은 고딕", sans-serif;
+		font-size: 16px;
+		margin: 0; padding: 0;
+	}
+
+	div, p, dl, ul,h1, h2, h3, h4, h5, h6, fieldset, button{
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+
+	legend{ display: none; }
+	ul, ul li, dl , dl dd{
+		list-style: none;
+	}
+
+	a{ color: #666; text-decoration: none; }
+	a:hover{ color: #479bf5; }
+	button{ border: 0; }
+
+
+	/** comp-search **/
+	.comp-search{
+		width: 100%;
+		position: relative;
+
+	}
+
+	.comp-search .div-search-form{}
+	.comp-search .div-btn{
+		width: 128px;
+		position: absolute;
+		right: 10px;
+		top: 10px;
+
+	}
+
+	.div-search-form:after{
+		clear:both;
+		content: '';
+		display: block;
+	}
+
+	.div-search-form > ul{
+		margin-right: 165px;
+	}
+
+	.div-search-form > ul > li{
+		float:left;
+		display: inline;
+		width: 33.333%;
+		margin-top: 10px;
+	}
+	.div-search-form .comp-dropdown{
+		margin: 0 10px;
+	}
+
+	.div-search-form, .div-checked-list{
+		background-color: #eef0f8;
+		padding: 0 0 10px 0;
+		min-height: 80px;
+		margin-top: 1px;
+	}
+
+	.comp-dropdown{}
+	.dropdown{
+		position: relative;
+		width: auto;
+		box-sizing: border-box;
+	}
+
+	/* dropdown */
+	.dropdown .h-title{
+		font-size: 14px;
+		line-height: 1.3;
+		font-weight: bold;
+		border: 1px solid #ccc;
+		background-color: #fff;
+		box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+	.dropdown .h-title a{
+		position: relative;
+		display: block;
+		padding: 8px 12px 0;
+		height: 24px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	.dropdown .h-title a::before{
+		display: inline-block;
+		content: '';
+		float: right;
+		height: 6px;
+		width: 6px;
+		margin-top: 5px;
+		margin-left: 5px;
+		border: 1px solid #666;
+		border-width: 1px 1px 0 0;
+	}
+
+	.div-dropdown-menu{
+		z-index: 1;
+		position: absolute;
+		left: 0;
+		top: 33px;
+		width: 100%;
+		padding: 12px;
+		box-sizing: border-box;
+		border: 1px solid #ccc;
+		border-top: 0;
+		background-color: #fff;
+		box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+
+	.div-dropdown-menu .dropdown-item{ padding-bottom: 5px; }
+
+	/* open/close */
+	.comp-dropdown[data-expanded="false"] .div-dropdown-menu{ display: none; }
+	.comp-dropdown[data-expanded="false"] .h-title a::before{
+		transform: rotate(135deg);
+	}
+
+	.comp-dropdown[data-expanded="true"] .div-dropdown-menu{ display: block; }
+	.comp-dropdown[data-expanded="true"] .h-title a::before{
+		transform: rotate(-45deg);
+		border-color: #479bf5;
+	}
+
+	/* button */
+	.btn{
+		padding: 10px 0;
+		text-align: center;
+		background-color: #479bf5;
+		color: #fff;
+	}
+
+	.btn-img{}
+
+	.btn-primery{
+		font-size: 12px;
+		border-radius: 5px;
+		width: 100%;
+	}
+
+	.btn-search{
+		width: 100%;
+		height: 75px;
+		font-size: 16px;
+		box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+	}
+
+	.div-checked{
+		display: inline-block;
+		height: 24px;
+		padding: 0 4px;
+		margin: 4px 0;
+		border-radius: 3px;
+		background: #9da5b6;
+		color: #fff;
+	}
+
+	.div-checked .span-txt{
+		font-size: 12px;
+		line-height: 24px;
+	}
+
+	</style>
+</head>
+<body>
+
+
+	<!-- 검색영역 -->
+	<div class="comp-search">
+		<form name="" action="">
+			<!-- condition list form -->
+			<fieldset class="div-search-form">
+				<legend>검색 선택 폼</legend>
+				<ul>
+					<li>
+						<!-- multiselect  comp -->
+						<div class="comp-dropdown dropdown"  data-expanded="false">
+							<div class="div-inner">
+
+								<h3 class="h-title"><a href="#">타이틀1</a></h3>
+								<div class="div-dropdown-menu">
+									<ul>
+										<li class="dropdown-item">
+											<input id="a1" type="checkbox" name="a1" value="1" />
+											<label for="a1">조건1</label>
+										</li>
+										<li class="dropdown-item">
+											<input id="a2" type="checkbox" name="a2" value="2" />
+											<label for="a2">조건2</label>
+										</li>
+										<li class="dropdown-item" >
+											<input id="a3" type="checkbox" name="a3" value="3" />
+											<label for="a3">조건3</label>
+										</li>
+									</ul>
+									<p><button  class="btn btn-primery" type="button">확인</button></p>
+								</div>
+
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- multiselect  comp -->
+						<div class="comp-dropdown dropdown"  data-expanded="false">
+							<div class="div-inner">
+
+								<h3 class="h-title"><a href="#">타이틀타이틀타이틀3</a></h3>
+								<div class="div-dropdown-menu">
+									<ul>
+										<li class="dropdown-item">
+											<input id="b1" type="checkbox" name="b1" value="1" />
+											<label for="b1">조건1</label>
+										</li>
+										<li class="dropdown-item">
+											<input id="b2" type="checkbox" name="b2" value="2" />
+											<label for="b2">조건2</label>
+										</li>
+									</ul>
+									<p><button  class="btn btn-primery" type="button">확인</button></p>
+								</div>
+
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- multiselect  comp -->
+						<div class="comp-dropdown dropdown"  data-expanded="true">
+							<div class="div-inner">
+
+								<h3 class="h-title"><a href="#">타이틀2</a></h3>
+								<div class="div-dropdown-menu">
+									<ul>
+										<li class="dropdown-item">
+											<input id="b1" type="checkbox" name="b1" value="1" />
+											<label for="b1">조건1</label>
+										</li>
+										<li class="dropdown-item">
+											<input id="b2" type="checkbox" name="b2" value="2" />
+											<label for="b2">조건2</label>
+										</li>
+									</ul>
+									<p><button  class="btn btn-primery" type="button">확인</button></p>
+								</div>
+
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- multiselect  comp -->
+						<div class="comp-dropdown dropdown"  data-expanded="false">
+							<div class="div-inner">
+
+								<h3 class="h-title"><a href="#">타이틀2</a></h3>
+								<div class="div-dropdown-menu">
+									<ul>
+										<li class="dropdown-item">
+											<input id="b1" type="checkbox" name="b1" value="1" />
+											<label for="b1">조건1</label>
+										</li>
+										<li class="dropdown-item">
+											<input id="b2" type="checkbox" name="b2" value="2" />
+											<label for="b2">조건2</label>
+										</li>
+									</ul>
+									<p><button  class="btn btn-primery" type="button">확인</button></p>
+								</div>
+
+							</div>
+						</div>
+					</li>
+				</ul>
+			</fieldset>
+
+			<!-- search btn -->
+			<div class="div-btn">
+				<button class="btn btn-search">조회</button>
+			</div>
+<!-- div-checked-list -->
+<style>
+	.div-checked-list .div-row{  }
+	.div-checked-list .div-row:after,
+	.div-checked-list .checked-item-list:after{
+		content:'';
+		display: block;
+		clear: both;
+	}
+
+	.checked-item-list{ padding: 10px 20px; }
+	.checked-item-list{ clear: both; }
+
+	.checked-item-list dt,
+	.checked-item-list dd{ float: left; }
+	.checked-item{
+		display: inline-block;
+		height: 24px;
+		padding-left: 8px;
+		border-radius: 3px;
+		background: #9da5b6;
+	}
+
+	.div-row{}
+	.checked-item .span-txt{
+		font-size: 12px;
+		line-height: 24px;
+	}
+</style>
+			<!-- display -->
+			<fieldset class="div-checked-list">
+				<legend>선택된 검색 조건 리스트</legend>
+
+				<div class="div-row">
+					<dl class="checked-item-list">
+						<dt>카테고리1</dt>
+						<dd>
+							<span class="checked-item">
+								<span class="span-txt">조건dddd1</span>
+								<button class="btn-img btn-delete"><em class="scrout">삭제</em></button>
+							</span>
+							<span class="checked-item">
+								<span class="span-txt">조건2</span>
+								<button class="btn-img btn-delete"><em class="scrout">삭제</em></button>
+							</span>
+							<span class="checked-item">
+								<span class="span-txt">조건3</span>
+								<button class="btn-img btn-delete"><em class="scrout">삭제</em></button>
+							</span>
+						</dd>
+					</dl>
+				</div>
+
+				<div class="div-row">
+					<dl class="checked-item-list">
+						<dt>카테고리1</dt>
+						<dd>
+							<span class="checked-item">
+								<span class="span-txt">조건dddd1</span>
+								<button class="btn-img btn-delete"><em class="scrout">삭제</em></button>
+							</span>
+							<span class="checked-item">
+								<span class="span-txt">조건2</span>
+								<button class="btn-img btn-delete"><em class="scrout">삭제</em></button>
+							</span>
+							<span class="checked-item">
+								<span class="span-txt">조건3</span>
+								<button class="btn-img btn-delete"><em class="scrout">삭제</em></button>
+							</span>
+						</dd>
+					</dl>
+				</div>
+
+			</fieldset>
+
+
+
+		</form>
+	</div>
+
+<!-- comp-dropdown -->
+	<div class="comp-dropdown dropdown" data-expanded="true">
+		<div class="div-inner">
+
+			<h3 class="h-title"><a href="#">타이틀</a></h3>
+			<div class="div-dropdown-menu">
+				<ul>
+					<li class="dropdown-item">
+						<input id="a1" type="checkbox" name="a1" value="1" />
+						<label for="a1">조건1</label>
+					</li>
+					<li class="dropdown-item">
+						<input id="a2" type="checkbox" name="a2" value="2" />
+						<label for="a2">조건2</label>
+					</li>
+					<li class="dropdown-item">
+						<input id="a3" type="checkbox" name="a3" value="3" />
+						<label for="a3">조건3</label>
+					</li>
+				</ul>
+				<p><button  class="btn btn-primery" type="button">확인</button></p>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- -->
+	<span class="div-checked">
+		<span class="span-txt">조건dddd1</span>
+		<button class="btn-img btn-delete"><em class="scr-out">삭제</em></button>
+	</span>
+
+
+	<script>
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# 검색
+
+1. 마크업 / 구조
+
+# div.frm-sesarch
+
+    h3 제목
+    ul
+        li  / input type=checkbox / label
+
+
+2. evennt
+    2.1 function toggleExpand();
+    2.2 function allHide();
+    2.3 function fc_checked();  / checked  setting
+
+
+

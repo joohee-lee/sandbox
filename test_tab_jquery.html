@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="googlebot" content="noindex,nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>comp-tab &amp; panel</title>
+    <!-- main -->
+    <script src="jquery-1.10.0.js"></script>
+    <style>
+        body, div, ul, li{
+            font-family: "맑은 고딕", sans-serif;
+            margin: 0; padding: 0;
+        }
+        .tabs-list .tabs-item{ float: left; display: inline;}
+
+        .tabs-list .tabs-item a{
+            display: block;
+            padding: 10px 20px;
+        }
+
+        .tabs-list .on a{ color: red; }
+        .tabs-list:after{
+            content:'';
+            clear: both;
+            display: block;
+        }
+
+        .tabs-panel{ display: none; }
+
+
+    </style>
+</head>
+<body>
+    <h1>Tabs</h1>
+    <h2>tab + panel </h2>
+    <div id="comptTabs1" class="tabs">
+        <ul class='tabs-list'>
+            <li class="tabs-item on"><a href="#" onclick="tabsSetCurrent(0); return false;">tab-0</a></li>
+            <li class="tabs-item"><a href="#" onclick="tabsSetCurrent(1); return false;">tab-1</a></li>
+            <li class="tabs-item"><a href="#" onclick="tabsSetCurrent(2); return false;">tab-2</a></li>
+            <li class="tabs-item"><a href="#" onclick="tabsSetCurrent(3); return false;">tab-3</a></li>
+        </ul>
+
+        <div class='tabs-panel'  style="display:block;">
+            <h3 tabindex="0">tab-0-title</h3>
+            tab-0-contents
+        </div>
+        <div class='tabs-panel'>
+            <h3 tabindex="0">tab-1-title</h3>
+            tab-1-contents
+        </div>
+        <div class='tabs-panel'>
+            <h3 tabindex="0">tab-2-title</h3>
+            tab-2-contents
+        </div>
+        <div class='tabs-panel'>
+            <h3 tabindex="0">tab-3-title</h3>
+            tab-3-contents
+        </div>
+<!--
+        <div class="tabs-control">
+            <button type="button" id="btnPre" class="btn" onclick="">prev</button>
+            <button type="button" id="btnNext" class="btn" onclick="">next</button>
+        </div>
+-->
+    </div>
+
+    <style>
+        .open-event-layer{
+
+        }
+        .pop_box{
+            display: none;
+            width: 200px;
+            height: 400px;
+            background-color: #444;
+            color: #fff;
+        }
+    </style>
+    <!-- layer open / close -->
+    <div class="open-event-layer">
+        <a href="#" onclick="layerOpen('pop_box'); return false;">open</a>
+        <div class="pop_box">
+        <a href="#" onclick="layerHide('pop_box'); return false;">close</a>
+내용 컨텐츠
+내용 컨텐츠
+내용 컨텐츠
+내용 컨텐츠
+내용 컨텐츠
+내용 컨텐츠
+
+        </div>
+    </div>
+
+    <script>
+
+        function layerOpen(className){
+
+        //console.log(eObj);
+        var eObj = $("." +className);
+
+        eObj.show();
+        return false;
+
+        }
+
+
+        function layerHide(className){
+        //console.log(eObj);
+        var eObj = $("." +className);
+
+        eObj.hide();
+        //eObj.slideUp();
+        return false;
+        }
+
+
+        function tabsSetCurrent(idx){
+
+            var num = idx;
+
+            $(".tabs-item").removeClass('on');
+            $(".tabs-item").eq(num).addClass('on');
+
+            $(".tabs-panel").hide();
+            $(".tabs-panel").eq(num).show();
+
+        }
+    </script>
+
+</body>
+</html>
