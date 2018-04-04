@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="googlebot" content="noindex,nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>comp-tab &amp; panel</title>
+    <!-- main -->
+    <script src="jquery-1.10.0.js"></script>
+    <style>
+        body, div, ul, li{
+            font-family: "맑은 고딕", sans-serif;
+            margin: 0; padding: 0;
+        }
+
+        /*
+        .tabs-list .tabs-item{ float: left; display: inline;}
+        .tabs-list .tabs-item a{
+            display: block;
+            padding: 10px 20px;
+        }
+        .tabs-list .on a{ color: red; }
+        .tabs-list:after{
+            content:'';
+            clear: both;
+            display: block;
+        }
+        .tabs-panel{ display: none; }
+        */
+        .comp_tabs{ height: 500px; }
+        .tabs-inner{ position: relative; }
+        .tabs-inner h3{ position: absolute; left: 0; top: 0; height: 20px; margin: 0; padding: 0;}
+        .tabs-inner .tabs-item{ border:1px solid #333; width: 200px; height: 30px; line-height: 30px; text-align: center; box-sizing: border-box;}
+        .tabs-inner .tabs-item-0{ position: absolute; left: 100px; top: 0;}
+        .tabs-inner .tabs-item-1{ position: absolute; left: 300px; top: 0;}
+        .tabs-inner .tabs-item-2{ position: absolute; left: 500px; top: 0;}
+        .tabs-inner .tabs-item-3{ position: absolute; left: 700px; top: 0;}
+        .tabs-inner .tabs-cont{ display: none;}
+
+        /* 개발 */
+        .tabs-inner .on .tabs-item a{ color: #000; text-decoration: none; }
+        .tabs-inner .on .tabs-cont { display: block; background-color: yellow; border: 1px solid #ddd; position: absolute; left: 0; top: 35px; width: 100%; min-height: 300px;}
+
+    </style>
+</head>
+<body>
+    <h1>Tabs</h1>
+    <h2>tab + panel </h2>
+    <div id="comp_tabs" class="comp_tabs">
+        <div id="rolling" class="tabs-inner">
+            <h3>타이틀111111</h3>
+
+            <div id="tabs-panel0" class='tabs-panel on'>
+                <h3 tabindex="0" class="tabs-item tabs-item-0"><a href="">tab-0-title</a></h3>
+                <div class="tabs-cont">tab-0-contents</div>
+            </div>
+            <div id="tabs-panel1" class='tabs-panel'>
+                <h3 tabindex="0" class="tabs-item tabs-item-1"><a href="">tab-1-title</a></h3>
+               <div class="tabs-cont">tab-1-contents</div>
+            </div>
+            <div id="tabs-panel2" class='tabs-panel'>
+                <h3 tabindex="0" class="tabs-item tabs-item-2"><a href="">tab-2-title</a></h3>
+               <div class="tabs-cont">tab-2-contents</div>
+            </div>
+            <div id="tabs-panel3" class='tabs-panel'>
+                <h3 tabindex="0" class="tabs-item tabs-item-3"><a href="">tab-3-title</a></h3>
+                <div class="tabs-cont">tab-3-contents</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // 초기설정
+        var next
+        var comp_tabs = document.getElementById("comp_tabs");
+        var rolling = document.getElementById("rolling");
+        var el_tabs = document.getElementsByClassName("tabs-panel");
+        var count = el_tabs.length;
+
+
+        var tabpanel0 = document.getElementById("tabs-panel0");
+        var tabpanel1 = document.getElementById("tabs-panel1");
+        var tabpanel2 = document.getElementById("tabs-panel2");
+        var tabpanel3 = document.getElementById("tabs-panel1");
+
+
+
+        console.log( count );
+        /*
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+        var page = document.getElementById("page");
+        var page_count = document.getElementById("page_count");
+        */
+
+        //이벤트 등록
+
+        //setcurrent();
+        function setcurrent(idx){
+            var el_idx = idx;
+
+
+            document.getElementById("tabs-panel" + el_idx ).className += " " + 'on' ;
+        };
+
+        //autorolling();
+
+    </script>
+
+
+    <style>
+        .open-event-layer{
+        }
+        .pop_box{
+            display: none;
+            width: 200px;
+            height: 400px;
+            background-color: #444;
+            color: #fff;
+        }
+    </style>
+    <!-- layer open / close -->
+    <div class="open-event-layer">
+        <a href="#" onclick="layerOpen('pop_box'); return false;">open</a>
+        <div class="pop_box">
+        <a href="#" onclick="layerHide('pop_box'); return false;">close</a>
+내용 컨텐츠
+내용 컨텐츠
+내용 컨텐츠
+내용 컨텐츠
+내용 컨텐츠
+내용 컨텐츠
+
+        </div>
+    </div>
+
+    <script>
+        function layerOpen(className){
+        //console.log(eObj);
+        var eObj = $("." +className);
+        eObj.show();
+        return false;
+        }
+        function layerHide(className){
+        //console.log(eObj);
+        var eObj = $("." +className);
+        eObj.hide();
+        //eObj.slideUp();
+        return false;
+        }
+        function tabsSetCurrent(idx){
+            var num = idx;
+            $(".tabs-item").removeClass('on');
+            $(".tabs-item").eq(num).addClass('on');
+            $(".tabs-panel").hide();
+            $(".tabs-panel").eq(num).show();
+        }
+    </script>
+
+</body>
+</html>
