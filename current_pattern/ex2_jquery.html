@@ -1,0 +1,115 @@
+<!doctype html>
+	<head>
+		<meta charset="utf-8"></meta>
+		<meta name="viewport" content="width=device-width">
+		<title></title>
+		<style>
+			*{
+				margin: 0; 
+				padding: 0;
+				font-size: 100%;
+				line-height: 1.5;
+				font-family: "맑은고딕", sans-serif;
+				list-style:none;
+			}
+
+			body{margin:1em;}
+
+			#conts{position: relative; width:402px;  height:140px;}
+
+			.pos{position:absolute; left:10px; bottom: 0px;}
+			.nav{position:absolute; right:10px; bottom: 0px;}
+			
+			.rolling { width:400px; }
+			.rolling ul{}
+			.rolling li{width: 400px; height: 20px;  text-align: center; } 
+			
+			.rolling a{text-decoration: none;}
+
+			.hide{ display: none;}
+			.show{ display: block !important;}
+			.show a{font-weight:bold ; color:#000;}
+			.on { position: relative; }
+			.on a{color: orange;}
+			
+		</style>
+	</head>
+	<body>
+		<div id="conts">
+			
+			<div id="rolling" class="rolling">
+				<ul>
+					<li><a href="#">1.I</a></li>
+					<li><a href="#">2.want</a></li>
+					<li><a href="#">3.to </a></li>
+					<li><a href="#">4.know</a></li>
+					<li><a href="#">5.javascript</a></li>
+				</ul>
+			</div>
+
+
+
+		</div>
+
+
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script>
+			//console.log("documet loaded");
+			var conts = document.getElementById("conts");
+			var rolling = document.getElementById("rolling");
+			var li = rolling.getElementsByTagName("li");
+			var count = li.length;
+			var current = 0;
+
+			li[current].className = "on";
+
+			// function setCurrent(idx){
+
+			// 	li[idx].className = "on";
+
+			// 	li[current].className = " ";
+
+			// 	current = idx;
+
+			// }
+
+
+			var setCurrent =  function(){
+
+				li[current].className = "";
+
+				current = current +1;
+
+				if( current === count ){
+
+					current = 0;
+				}
+
+
+				// li[current].className = "on";
+
+				$(li[current])
+					// .slideUp("slow", function() {
+					// 	$(this).addClass("on show");
+					// });
+					.animate({
+						// "height": "0px"
+						"line-height": "+=50px"
+					}, 500, function(){
+
+						// $(this).css("height", "20px").addClass("on");
+						$(this).addClass("on"); 
+
+					});
+
+
+			};
+
+			
+
+
+			var rolling = setInterval( setCurrent, 2000);
+
+		</script>
+	</body>
+</html>

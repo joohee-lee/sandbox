@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+
+	<div><button id="xlog">log()</button></div>
+	<div><button id="xnext">next()</button></div>
+	<div><button id="xprev">prev()</button></div>
+	<script>
+		var paging_item_count = 6; 
+		var current = 0; 
+		var page = 1;
+		var min = 0; 
+		var max = paging_item_count-1;
+		var arr = [
+			'a', 
+			'b', 
+			'c',
+			'd', 
+			'e', 
+			'f', 
+			'g', 
+			'h', 
+			'i', 
+			'j', 
+			'k', 
+			'l', 
+			'm', 
+			'n'
+		];
+
+		var first = false;
+		var last = false;
+
+		xlog.onclick = log;
+		xnext.onclick = next;
+		xprev.onclick = prev;
+
+		console.log('Arr.items :', arr.join(','));
+
+		function log() {
+			var x = [];
+			var template = "[LOG] {num} Page - [{items}], Current : [{idx}/{txt}], Min[{min}] ~ Max[{max}]";
+
+			for(var i = min; i <= max; i++) {
+				x.push(arr[i]);
+			}
+
+			console.log(
+				template
+					.replace("{items}", x.join(','))
+					.replace("{idx}", current)
+					.replace("{txt}", arr[current])
+					.replace("{num}", page)
+					.replace("{min}", min)
+					.replace("{max}", max)
+			);
+		}
+
+		function next() {
+			if(last) { return false; }
+
+			var x = page + 1;
+			var y = x * paging_item_count;
+
+			page = x; 
+
+			if(arr.length < y) {
+
+				max = arr.length - 1;
+				min = max - (paging_item_count-1); 
+
+				log(); 
+
+				last = true; 
+				console.log('좌로 ?칸 이동 : ', min ); 
+
+				return false; 
+			} 
+
+			max = max + paging_item_count; 
+			min = min + paging_item_count; 
+
+			log(); 
+
+			first = false; 
+			console.log('좌로 ?칸 이동 : ', min ); 
+		}
+
+
+
+		function prev() {
+			if(first) { return false; }
+
+			var x = page - 1; 
+			var y = min - paging_item_count; 
+
+			page = x;
+
+			var xx = (page) * paging_item_count; 
+
+
+			if(y < 0) {
+
+				min = 0; 
+				max = paging_item_count - 1; 
+
+				log(); 
+
+				first = true;
+				console.log('좌로 ?칸 이동 : ', min ); 
+
+				return false; 
+			}
+
+			min = y;
+			max = min + paging_item_count -1;
+
+			log(); 
+
+			last = false; 
+			console.log('좌로 ?칸 이동 : ', min ); 
+
+		}
+	</script>
+</body>
+</html>

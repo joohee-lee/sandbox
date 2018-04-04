@@ -1,0 +1,163 @@
+<!doctype html>
+	<head>
+		<meta charset="utf-8"></meta>
+		<meta name="viewport" content="width=device-width">
+		<title></title>
+		<style>
+			*{
+				margin: 0; 
+				padding: 0;
+				font-size: 100%;
+				line-height: 1.5;
+				font-family: "맑은고딕", sans-serif;
+			}
+
+			body{margin:1em;}
+
+			#conts{position: relative; width:402px;  height:140px;}
+
+			.pos{position:absolute; left:10px; bottom: 0px;}
+			.nav{position:absolute; right:10px; bottom: 0px;}
+			
+			.rolling { width:400px; height:100px; border:1px solid #ddd; overflow:hidden;}
+			.rolling li{ width: 400px; height: 100px; text-align: center; line-height:100px;} 
+			.rolling li.on{background-color:#000; color:#fff;}
+			.rolling a{text-decoration: none;}
+
+			.hide{ display: none;}
+			.show{ display: block;}
+			.show a{font-weight:bold ; color:#000;}
+
+		</style>
+	</head>
+	<body>
+		<div id="conts">
+			
+			<div id="rolling" class="rolling">
+				<ul>
+					<li><a href="#">I</a></li>
+					<li><a href="#">want</a></li>
+					<li><a href="#">to </a></li>
+					<li><a href="#">know</a></li>
+					<li><a href="#">javascript</a></li>
+					<li><a href="#">!!!</a></li>
+					<li><a href="#">just in time !</a></li>
+					<li><a href="#">what Object?</a></li>
+					<li><a href="#">what Function?</a></li>
+					<li><a href="#">what Instance?</a></li>
+					<li><a href="#">what Json?</a></li>
+					<li><a href="#">what JavaScript Engine ? </a></li>
+					<li><a href="#">what JavaScript Environment ? </a></li>
+					<li><a href="#">what Lexical Environment ? </a></li>
+					<li><a href="#">what Execute Context ? </a></li>
+				</ul>
+			</div>
+
+			<p class="pos"> <span id="page"></span> / <span id="page_count"> </span></p>
+	
+			<div class="nav">
+				<a id="prev" href="#">이전</a>
+				<a id="next" href="#">다음</a>
+			</div>
+		</div>
+
+		<script>
+			//초기셋팅 
+			var conts = document.getElementById("conts");
+			var rolling = document.getElementById("rolling");
+			var li = rolling.getElementsByTagName("li");
+			var count = li.length;
+			var prev = document.getElementById("prev");
+			var next = document.getElementById("next");
+			var page = document.getElementById("page");
+			var page_count = document.getElementById("page_count"); 
+
+			var current = 0;
+
+
+			/*
+			var conts_obj = {
+				current: 0, 
+				count: 0,
+				autorolling: null
+			};
+
+			clearInterval(conts_obj.autorolling); 
+			*/
+
+			
+			//화면 show 하는 기능 셋팅  
+			function setShow(){
+
+				for(var k=0; k < count; k++){
+
+					li[k].className = "hide";
+
+					if( k === current){
+
+						li[k].className = "show";
+					
+					}
+
+					page.innerHTML = current+1;
+				}
+
+			}
+
+			//다음 이벤트
+			next.onclick = function(){
+
+				//rolling 기능 멈춤
+				clearInterval(conts.autorolling);
+
+				
+				current = current+1;
+
+				//console.log("current  ", current);
+
+				if( current > (count-1) ) {
+
+					current = 0;	
+				}
+
+				setShow();
+
+
+				//자동롤링
+				conts.autorolling = setInterval( next.onclick, 2000);
+			
+			};
+
+
+			//이전 이벤트
+			prev.onclick = function(){
+
+				//rolling 기능 멈춤
+				clearInterval(conts.autorolling);
+
+				current = current -1;
+
+				if( current < 0){
+
+					current = count-1;
+				}
+
+				setShow();
+
+				//자동롤링
+				conts.autorolling = setInterval( next.onclick, 2000);
+				
+			};
+
+
+			
+			setShow();
+
+			conts.autorolling = setInterval( next.onclick, 2000);
+
+
+			page_count.innerHTML = count;
+
+		</script>
+	</body>
+</html>

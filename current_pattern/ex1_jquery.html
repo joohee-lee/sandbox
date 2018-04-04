@@ -1,0 +1,158 @@
+<!doctype html>
+	<head>
+		<meta charset="utf-8"></meta>
+		<meta name="viewport" content="width=device-width">
+		<title></title>
+		<style>
+			*{
+				margin: 0; 
+				padding: 0;
+				font-size: 100%;
+				line-height: 1.5;
+				font-family: "맑은고딕", sans-serif;
+				list-style:none;
+			}
+
+			body{margin:1em;}
+
+			#conts{position: relative; width:402px;  height:140px;}
+
+			.pos{position:absolute; left:10px; bottom: 0px;}
+			.nav{position:absolute; right:10px; bottom: 0px;}
+			
+			.rolling { width:400px; height:100px; border:1px solid #ddd; overflow:hidden;}
+			.rolling ul{width:2000px;}
+			.rolling li{display:none; width: 400px; height: 100px; text-align: center; line-height:100px;} 
+			.rolling li.on{background-color:#000; color:#fff;}
+			.rolling a{text-decoration: none;}
+
+			.hide{ display: none;}
+			.show{ display: block !important;}
+			.show a{font-weight:bold ; color:#000;}
+			
+		</style>
+	</head>
+	<body>
+		<div id="conts">
+			
+			<div id="rolling" class="rolling">
+				<ul>
+					<li><a href="#">I</a></li>
+					<li><a href="#">want</a></li>
+					<li><a href="#">to </a></li>
+					<li><a href="#">know</a></li>
+					<li><a href="#">javascript</a></li>
+					<li><a href="#">!!!</a></li>
+					<li><a href="#">just in time !</a></li>
+					<li><a href="#">what Object?</a></li>
+					<li><a href="#">what Function?</a></li>
+					<li><a href="#">what Instance?</a></li>
+					<li><a href="#">what Json?</a></li>
+					<li><a href="#">what JavaScript Engine ? </a></li>
+					<li><a href="#">what JavaScript Environment ? </a></li>
+					<li><a href="#">what Lexical Environment ? </a></li>
+					<li><a href="#">what Execute Context ? </a></li>
+				</ul>
+			</div>
+
+			<p class="pos"> <span id="page"></span> / <span id="page_count"> </span></p>
+	
+			<div class="nav">
+				<a id="prev" href="#">이전</a>
+				<a id="next" href="#">다음</a>
+			</div>
+		</div>
+
+
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script>
+			//console.log("documet loaded");
+			var ele_li = $(".rolling li");
+			var ele_li_0 = $(".rolling li:eq(0)");
+			var prev = $(".nav a:eq(0)");
+			var next = $(".nav a:eq(1)");
+			var current = 0;
+			var count = $(".rolling li").length;
+			var time = 2000;
+			
+			ele_li_0.addClass("show");
+		
+			
+			prev[0].onclick = function(){
+
+				clearInterval(rolling);
+
+				 current = current - 1;
+
+				 console.log("current1:" + current);
+
+				if( current < 0){
+
+				 	current = count-1;
+
+				 }	
+
+				ele_li
+					.slideUp('slow', function(){
+
+						$(this).removeClass("show");
+					});
+				
+				$(".rolling li:eq("+ current +")")
+					.fadeIn(300)
+					.addClass("show");
+
+				rolling = setInterval( next[0].onclick, time);
+
+			};
+
+
+			//next.on("click",  function(){
+			next[0].onclick = function (){	
+
+
+				clearInterval(rolling);
+
+				 current = current + 1;
+
+				 if (current == count){ 
+				 		current = 0;
+				 		//$(".rolling li").css("margin-left", "0");
+				 }
+
+				 ele_li
+				 	.slideUp("slow", function() {
+				 		$(this).removeClass("show"); 		
+				 	});
+				
+				 //$(".rolling li:eq("+ current +")").css("margin-left" , "-400px");
+
+				 $(".rolling li:eq("+ current +")")
+				 	.fadeIn(300)
+				 	.addClass("show");
+				
+				 console.log("다음" + current);
+
+				 rolling = setInterval(next[0].onclick , time);
+				
+			};
+
+
+			
+			ele_li.mouseover(function(){
+
+				clearInterval(rolling);
+
+			}).mouseout(function(){
+
+				rolling = setInterval(next[0].onclick , time);
+			});
+
+			
+			var rolling = setInterval( next[0].onclick, time);
+
+
+
+		</script>
+	</body>
+</html>

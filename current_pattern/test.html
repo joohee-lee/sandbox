@@ -1,0 +1,93 @@
+<!doctype html>
+	<head>
+		<title></title>
+		<meta charset="utf-8"/>
+		<style>
+			* {margin:0; padding:0; list-style:none; font-size: 100%; line-height:1.6;}
+			h2{}
+			#conts{margin:1em;}
+			.cont_box{clear:both; height:100px; margin-bottom:30px;}
+			.cont_box span{float:left; display: block; width:100px; height:100px; margin-right:10px; 
+			border:1px solid #ddd; text-align:center; line-height:100px;}
+
+			.hide h2{display:none;}
+ 			
+ 			.tab {width:330px; height:30px; margin-bottom:10px; background-color:#ddd; }
+			.tab li{float:left; width:100px; padding:0;  text-align:center;} 
+			.tab li a{display:block; width:100%; line-height:30px; margin-right:2px;}
+			.tab li:last-child{border-right:0;}
+		</style>		
+	</head>
+	<body>
+		<div id="conts">
+			<!--<ul class="tab">
+				<li><a href="#">숫자</a></li>	
+				<li><a href="#">알파벳</a></li>
+				<li><a href="#">한글</a></li>
+			</ul>-->
+		
+			<h2>숫자</h2>
+			<div class="cont_box">
+				<span>1</span>
+				<span>2</span>
+				<span>3</span>
+			</div>
+			
+			
+			<h2>알파벳</h2>
+			<div class="cont_box">
+				<span>A</span>	
+				<span>B</span>
+				<span>C</span>
+			</div>
+			
+			<h2>한글</h2>
+			<div class="cont_box">
+				<span>ㄱ</span>
+				<span>ㄴ</span>
+				<span>ㄷ</span>
+			</div>
+		
+		</div>
+		<script>
+		var conts = document.getElementById("conts");
+		var conts_h2 = conts.getElementsByTagName("h2");
+		
+		var count = conts_h2.length;
+		var txt_h2 = [];// 배열로 할당
+		var tab = [];// 배열로 할당
+
+
+		for (var k = 0 ; k < count; k++){
+
+			//txt_h2 = conts_h2[k];
+			txt_h2.push(conts_h2[k].innerHTML);
+		} 
+
+		conts.className = "hide";
+
+		var tab_html = '<li><a id="{id}" href="#">{text}</a></li>';
+
+		
+		tab.push("<ul class='tab'>");
+			for (var k = 0 ; k < count; k++){
+
+				tab.push(tab_html.replace("{text}", txt_h2[k]).replace("{id}", "id"+k));
+
+			}
+		tab.push("</ul>");
+
+		//conts.innerHTML = tab.join('');
+		//console.log(tab.join(''));
+
+		var div = document.createElement("div");
+		div.className = "navi";
+		div.innerHTML = tab.join('');
+		console.log(div.innerHTML);
+
+		conts.appendChild(div);
+
+
+		</script>
+	</body>
+</html>

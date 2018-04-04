@@ -1,0 +1,298 @@
+<!doctype html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title></title>
+		<style>
+			*{
+				margin: 0; 
+				padding: 0;
+				font-size: 100%;
+				line-height: 1.5;
+				font-family: "맑은고딕", arial, sans-serif;
+			}
+
+			body{margin:1em;}
+
+			li{list-style: none;}
+ 
+ 			a{
+ 				text-decoration: none; 
+ 				color: orange;
+ 			}
+
+			#conts{position: relative; width: 570px;}
+
+			.pos{position:absolute; left:10px; bottom: 0px;}
+			
+
+			.rolling{width: 520px; height: 200px; overflow: hidden; margin-left: 30px;}
+			.rolling:after{content:' '; display: block; clear: both;}
+			.rolling li{float:left; width:150px; margin:0 0 1em 1em; font-size: 0.75em;}
+			.rolling a{ }
+
+			/*
+			.rolling { width:400px; height:100px; border:1px solid #ddd; overflow:hidden;}
+			.rolling li{ width: 400px; height: 100px; text-align: center; line-height:100px;} 
+			.rolling li.on{background-color:#000; color:#fff;}
+			.rolling a{text-decoration: none;}
+			*/
+			
+			.nav a{color: blue;}
+
+
+			.hide{ display: none;}
+			.show{ display: block;}
+			.show a{font-weight: bold;}
+			
+			.nav a.pre{
+				position: absolute;
+				left: 0;
+				top: 50px;
+				display: block; 
+				background: url(http://www.29cm.co.kr/images/icon/nav-prev-main.png) no-repeat  0 0; 
+				background-size: 100%;
+				width:30px; 
+				height:50%;
+			}
+
+			.nav a.nxt{
+				position: absolute;
+				right: 0px;
+				top: 50px;
+				display: block; 
+				background: url(http://www.29cm.co.kr/images/icon/nav-next-main.png) no-repeat  0 0; 
+				background-size: 100%;
+				width:30px; 
+				height:50%;
+			}
+
+			.nav a em{text-indent: -9999em; font-size: 0px;}
+			
+
+		</style>
+	</head>
+	<body>
+		<div id="conts">
+			
+			<div id="rolling" class="rolling">
+				<ul>
+					<li>
+						<a href="#">
+							<span><img src="http://image.29cm.co.kr/contents/itemIcon/201503/20150325194617.jpg?cmd=thumb&width=150&height=150" /></span>
+							<dl>
+								<dt>상품명_A</dt>
+								<dd>상품가격표시_A</dd>
+							</dl>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="http://image.29cm.co.kr/contents/itemIcon/201503/20150325194617.jpg?cmd=thumb&width=150&height=150" /></span>
+							<dl>
+								<dt>상품명_A</dt>
+								<dd>상품가격표시_A</dd>
+							</dl>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="http://image.29cm.co.kr/contents/itemIcon/201503/20150325194617.jpg?cmd=thumb&width=150&height=150" /></span>
+							<dl>
+								<dt>상품명_A</dt>
+								<dd>상품가격표시_A</dd>
+							</dl>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="http://image.29cm.co.kr/contents/itemIcon/201503/20150325194717.jpg?cmd=thumb&width=150&height=150" /></span>
+							<dl>
+								<dt>상품명_B</dt>
+								<dd>상품가격표시_B</dd>
+							</dl>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="http://image.29cm.co.kr/contents/itemIcon/201503/20150325194717.jpg?cmd=thumb&width=150&height=150" /></span>
+							<dl>
+								<dt>상품명_B</dt>
+								<dd>상품가격표시_B</dd>
+							</dl>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="http://image.29cm.co.kr/contents/itemIcon/201503/20150325194717.jpg?cmd=thumb&width=150&height=150" /></span>
+							<dl>
+								<dt>상품명_B</dt>
+								<dd>상품가격표시_B</dd>
+							</dl>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="http://image.29cm.co.kr/contents/itemIcon/201503/20150325194805.jpg?cmd=thumb&width=150&height=150" /></span>
+							<dl>
+								<dt>상품명_C</dt>
+								<dd>상품가격표시_C</dd>
+							</dl>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="http://image.29cm.co.kr/contents/itemIcon/201503/20150325194805.jpg?cmd=thumb&width=150&height=150" /></span>
+							<dl>
+								<dt>상품명_C</dt>
+								<dd>상품가격표시_C</dd>
+							</dl>
+						</a>
+					</li>
+					<!--<li>
+						<a href="#">
+							<span><img src="http://image.29cm.co.kr/contents/itemIcon/201503/20150325194805.jpg?cmd=thumb&width=150&height=150" /></span>
+							<dl>
+								<dt>상품명_C</dt>
+								<dd>상품가격표시_C</dd>
+							</dl>
+						</a>
+					</li>-->
+				</ul>
+			</div>
+
+			<!--<p class="pos"> <span id="page"></span> / <span id="page_count"> </span></p>-->
+	
+			<div class="nav">
+				<a id="prev" class="pre" href="#"><em>이전</em></a>
+				<a id="next" class="nxt" href="#"><em>다음<em></a>
+			</div>
+		</div>
+
+		<script>
+			//3개씩 고정 롤링 
+		 	//초기세팅
+		 	var conts = document.getElementById("conts");
+		 	var rolling = document.getElementById("rolling");
+		 	var prd_li = rolling.getElementsByTagName("li"); 		
+		 	var prev = document.getElementById("prev");
+		 	var next = document.getElementById("next");
+
+		 	//총 li count
+		 	var count = prd_li.length;
+
+		 	//current
+		 	var current = 0;
+		 	var current_sum; 
+
+
+		 	//롤링 셋트 갯수 
+		 	var setnum = 3;
+		 	//롤링 간격 
+		 	var time = 2000;
+
+
+		 	//현재 보여지는 값 가져오기 
+
+		 	//setFirst
+		 	function setFirst(){
+
+		 		//console.log(idx);
+
+		 		//모든 상품을 hide 한다  	
+		 		for(var k=0; k < count; k++){
+
+		 			prd_li[k].className = "hide";
+		 		
+		 			//처음 3개는 show 로 셋팅
+		 			if(  k < setnum){
+
+		 				prd_li[k].className = "show";
+		 			}
+
+		 		}
+
+		 	}
+
+
+		 	//setCurrent 
+		 	function setCurrent(idx){
+
+		 		console.log("idx", idx);
+
+		 		current_sum = idx + setnum;
+
+		 		console.log("current_sum", current_sum);
+
+		 		if(current_sum > count){
+
+		 			current_sum = count;
+
+		 		}	
+
+		 		for(var k=0; k < count; k++){
+
+		 			prd_li[k].className = "hide";
+		 			
+		 		}
+
+
+		 		for(var k = idx ; k < current_sum ; k++){
+
+		 			prd_li[k].className = "show";
+		 		}
+
+
+		 	}
+
+
+		 	//이전
+		 	prev.onclick = function(){
+
+		 		clearInterval(autorolling);
+
+		 		console.log("이전");
+
+		 		current = Number(current - setnum);
+
+		 		if( current < 0){
+
+		 			current = count - setnum;
+		 		}
+
+		 		setCurrent(current);
+
+		 		autorolling = setInterval(next.onclick, time);
+
+		 	};
+
+		 	//다음
+		 	next.onclick = function(){
+
+		 		clearInterval(autorolling);
+
+		 		current = Number(current + setnum);
+
+		 		if( current > count || current === count){
+
+		 		 	current = 0;
+		 		 	current_sum = 0;
+		 		}
+
+		 		setCurrent(current);
+
+		 		autorolling = setInterval(next.onclick, time);
+
+		 	};	
+
+		 	
+		 	//초기 class setting 함수
+		 	setFirst();
+
+		 	//자동롤링
+		 	var autorolling = setInterval(next.onclick, time); 
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width">
+	<style>
+		.site_gomdabang {
+			font-size: 11px; 
+			font-family: '맑은 고딕', arial, sans-serif; 
+			line-height: 1.6; 
+		}
+
+
+		.comp1 { width: 20em; }
+		.comp1-title { font-size: 1em; }
+		.comp1-nav {}
+		.comp1-nav ul {
+			margin: 0; 
+			margin-bottom: 1em;
+			padding: 0; 
+			list-style-type: none; 
+		}
+		.comp1-nav a { 
+			display: block; 
+			border-bottom: 1px solid #aaa;
+			text-decoration: none; 
+			color: #333;
+		}
+		.comp1-section {
+			margin-bottom: 1em;
+			padding: 1em; 
+			border: 1px solid #999;
+		}
+		.comp1-subtitle { 
+			margin: 0; 
+			font-size: 1em; 
+		}
+		.comp1-list {
+			margin: 0; 
+			padding: 0;
+			list-style-type: none;  
+		}
+		.comp1-list:after { content: ""; display: block; clear: both; }
+		.comp1-item {
+			/*float: left; 
+			text-align: center; */
+
+			margin: .5em;  
+			padding: .5em 1em;
+
+			border-bottom: 1px dashed #ccc; 
+		}
+
+		.js-type1 .comp1-subtitle { display: none; }
+
+		.hidden { display: none; }
+	</style>
+</head>
+<body>
+	
+	<div class="site_gomdabang page_comp1">
+
+		<div class="comp1" id="comp1">
+			<!--
+				추가될수 있는 className들 : 
+				js-type1
+			-->
+			<h1 class="comp1-title">큰제목</h1>
+
+			<div class="comp1-nav">
+				<ul>
+					<li><a href="#">작은제목1</a></li>
+					<li><a href="#">작은제목2</a></li>
+					<li><a href="#">작은제목3</a></li>
+				</ul>
+			</div>
+			<!-- comp1-nav -->
+
+			<div class="hidden">
+				<ul>
+					<!-- {#tab} -->
+						<li><a href="#">{.}</a></li>
+					<!-- {/tab} -->
+				</ul>
+			</div>
+
+
+			<div class="comp1-section">
+				<h2 class="comp1-subtitle">작은제목1</h2>
+
+				<ul class="comp1-list">
+					<li class="comp1-item">1</li>
+					<li class="comp1-item">2</li>
+					<li class="comp1-item">3</li>
+				</ul>
+			</div>
+			<!-- comp1-section -->
+
+			<div class="comp1-section">
+				<h2 class="comp1-subtitle">작은제목2</h2>
+
+				<ul class="comp1-list">
+					<li class="comp1-item">A</li>
+					<li class="comp1-item">B</li>
+					<li class="comp1-item">C</li>
+				</ul>
+			</div>
+			<!-- comp1-section -->
+
+			<div class="comp1-section">
+				<h2 class="comp1-subtitle">작은제목3</h2>
+
+				<ul class="comp1-list">
+					<li class="comp1-item">ㄱ</li>
+					<li class="comp1-item">ㄴ</li>
+					<li class="comp1-item">ㄷ</li>
+				</ul>
+			</div>
+			<!-- comp1-section -->
+
+		</div>
+		<!-- comp1 -->
+		
+	</div>
+	<!-- site_gomdabang -->
+	<!-- page_comp1 -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dustjs-linkedin/2.6.0/dust-full.js"></script>
+	<script>
+		var doc = document; 
+		var comp1 = doc.getElementById('comp1'); 
+
+		var comp1_subtitles = comp1.getElementsByTagName('H2'); 
+		var comp1_subtitles_text = []; 
+
+		for(var i = 0; i < comp1_subtitles.length; i++) {
+			comp1_subtitles_text.push(comp1_subtitles[i].innerHTML); 
+		}
+
+		var comp1_nav = comp1.getElementsByTagName('DIV')[0]; 
+
+
+
+	</script>
+
+</body>
+</html>
+
+
+
+
+

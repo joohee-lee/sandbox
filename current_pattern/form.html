@@ -1,0 +1,118 @@
+<!doctype html>
+<head>
+	<title></title>
+	<meta charset="utf-8" />
+	<style>
+		* {margin:0; padding:0; text-align: center; font-size:100%; font-family:dotum; line-height:1.6;}
+		fieldset{margin:0 0 20px 0;}
+		p{padding:0 0 10px 10px; text-align:left;}
+		label {display:inline-block; width: 100px; font-weight:bold;} 
+		input {text-align:left; padding-left:1em; border: 1px solid #ddd;}
+		button{padding:0.5em 1em;}
+	</style>
+</head>
+<body>
+	<form id="form_member" method="get" action="" name="">
+		<fieldset id="">
+			<legend>로그인</legend>
+			<p><label>id </label><input type="text" id="id" name="id" /></p>
+			<p><label>pwd </label><input type="password" id="pwd" name="pwd" /></p>
+		</fieldset>
+		<button>전송</button>
+	</form>
+
+	<div id="viewer"></div>
+
+	<script>
+	//얻고자 하는 id, pwd data 값을 json 헝태로 form_member_data 에 할당한다.
+	var form_member_data = {
+		id: "",
+		pwd: ""
+
+	};
+
+	// var form_member = document.getElementById("form_member");
+	// var id = document.getElementById("id");
+	// var pwd = document.getElementById("pwd");
+
+	//form submit 기능을 custom 한다.
+	form_member.onsubmit = function(){
+
+		// console.log(JSON.stringify(form_member_data));
+		id.onblur();
+		pwd.onblur();
+
+		console.log(form_member_data);
+
+
+		var req = new XMLHttpRequest();
+
+		req.open('GET', 'http://githkdh.github.io/smartwide_bbs/post_list.js', true); 
+		req.send(null); 
+
+		req.onreadystatechange = function(e) {
+			if(req.readyState == 4) {
+				if(req.status == 200) {
+
+					var x = JSON.parse(req.responseText.replace(/[\n\r\t]/g, '').replace(/  /g, ''));
+
+					viewer.innerHTML = x.posts[3].content; 
+
+				}
+			}
+		};
+
+		// $.ajax({
+		// 	type: 'POST',
+		// 	url: 'http://githkdh.github.io/smartwide_bbs/post_list.js', 
+		// 	data: ""
+		// }).done(function(msg) {
+
+		// 	var x = msg; 
+
+		// });
+
+		return false;
+	};
+
+	// id.onfocus = function(){
+
+	// 	id.value = "";
+	// 	form_member_data.id = "";
+
+	// 	console.log( form_member_data );
+	// };
+
+	id.onblur = function(){
+
+		// console.log( id.value );
+
+		if(id.value === "1"){
+
+			alert("다시 입력");
+			id.focus();
+			id.value = "";
+
+			return false;
+		}
+
+		form_member_data.id = id.value;
+
+
+		// 	console.log( form_member_data );
+	};
+
+	pwd.onblur = function(){
+
+		form_member_data.pwd = pwd.value;
+
+		// console.log(form_member_data);
+	};
+
+
+
+
+
+	</script>
+</body>
+</html>

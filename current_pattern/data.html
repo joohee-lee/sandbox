@@ -1,0 +1,264 @@
+<!doctype html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width">
+		<title></title>
+
+		<style>
+			* {	margin: 0; 
+				padding: 0; 
+				font-size: 100%; 
+				font-family: '맑은 고딕', arial, sans-serif; 
+				line-height: 1.6; 
+			}
+
+			a{text-decoration:none;}
+
+			ul li{ list-style: none; }
+			
+			#conts{ margin: 1em; }
+			#conts h2{ display: none; }
+			
+			.cont_box{
+				display: none; 
+				clear:both; 
+				height:100px; 
+				margin-bottom:10px;
+			}
+			
+			.cont_box span{ 
+				float: left; 
+				display: block; 
+				width:30%; 
+				margin-right:0.3em; 
+				height:100px; 
+				line-height:100px;
+				text-align:center;
+				border:1px solid #ddd;
+			}
+
+			.hide h2{ display: none;}
+\			.none{ display: none;}
+			.block{ display: block;}
+ 				
+ 			.tab { 
+ 				width: 100%; 
+ 				height: 30px; 
+ 			}
+			.tab li{
+				float:left; 
+				width:30%; 
+				margin-right:0.3em; 
+				text-align: center;
+			} 
+			.tab li a{
+				display: block; 
+				width:100%; 
+				line-height: 30px; 
+				border:1px solid #000;  
+				background-color: #ddd;
+			}
+
+			.tab li.on a{
+				color:#fff;
+				background-color:#000;
+			}
+			
+			.tab li:last-child{
+				border-right: 0;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="conts">
+			<!--<ul class="tab">
+				<li><a href="#">숫자</a></li>	
+				<li><a href="#">알파벳</a></li>
+				<li><a href="#">한글</a></li>
+			</ul>-->
+		
+			<h2>숫자</h2>
+			<div class="cont_box">
+				<span>1</span>
+				<span>2</span>
+				<span>3</span>
+			</div>
+			
+			
+			<h2>알파벳</h2>
+			<div class="cont_box">
+				<span>A</span>	
+				<span>B</span>
+				<span>C</span>
+			</div>
+			
+			<h2>한글</h2>
+			<div class="cont_box">
+				<span>ㄱ</span>
+				<span>ㄴ</span>
+				<span>ㄷ</span>
+			</div>
+			<!--
+			<div>
+				<span><a href=#>이전</a></span>
+				<span><a href=#>다음</a></span>
+			</div>
+			-->
+			<div id="navi" class="none">
+					<ul class="tab">
+						<!--{#tab}-->
+						<li data-idx="{$idx}"><a href="#">{.}</a></li>
+						<!--{/tab}-->
+					</ul>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dustjs-linkedin/2.6.0/dust-full.js"></script>
+		<script>
+		var conts = document.getElementById("conts");
+		var conts_h2 = conts.getElementsByTagName("h2");
+		//var cont_box_first = document.querySelector(".cont_box");
+		
+		//var navi_li = document.querySelectorAll(".tab li");
+
+		//var cont_box_ = document.getElementsByClassName("cont_box"); 
+
+		//cont_box 를 querySelectorAll 배열로 cont_box_all 에 할당한다.
+		var cont_box_all = document.querySelectorAll(".cont_box");
+		//var navi_li = document.querySelectorAll(".tab li");
+		
+		var count = conts_h2.length;
+		var txt_h2 = [];// 배열로 할당
+		var tab = [];// 배열로 할당
+
+
+		for (var k = 0 ; k < count; k++){
+
+			//txt_h2 = conts_h2[k];
+			txt_h2.push(conts_h2[k].innerHTML);
+		} 
+
+		conts.className = "hide";
+
+		//cont_box_all[0].className = "cont_box";
+
+		for(var k = 0 ; k < count; k++){
+
+		 //	cont_box_all[k].className = "cont_box none";
+
+		 	if (k === 0){ 
+		 	cont_box_all[k].className = "cont_box block";
+		 	}
+		}
+
+
+		
+		//var tab_html = '<ul class="tab">{#tab}<li><a href="#">{.}</a></li>{/tab}</ul>';
+		
+		// var div = document.createElement("div");
+		// div.className = "navi";
+
+		var div_html = document.getElementById("navi");
+
+		var compiled = dust.compile(div_html.innerHTML, "navi");
+
+		
+		dust.loadSource(compiled);
+		
+		dust.render("navi", {tab: txt_h2}, function(err, out) {
+  			//console.log(out);
+			div_html.innerHTML = out;
+			div_html.className = "";
+			tabconts();
+		});
+
+		var navi_li ;
+
+		function tabconts(){
+
+			
+			//tab을 querySelectorAll 배열로 navi_li 에 할당한다. 
+			 navi_li = document.querySelectorAll(".tab li");
+
+
+			//tab 메뉴에 onclick 이벤트를 할당한다. 
+			for(var k = 0; k < count; k++){
+
+				 console.log ("navi_li:"+ k);
+
+				//idx 지정. 	
+				 // navi_li[k].idx = k;
+				 navi_li[0].className = "on";
+			
+				 navi_li[k].onclick = function(){
+
+				 	console.log(this.dataset.idx);
+				 	//alert("navi_li:"+ k);
+				 	//cont_box_all[k].className = "cont_box block";
+
+				 	for(var k=0; k < count; k++){
+
+				 		navi_li[k].className = "";
+				 		cont_box_all[k].className = "cont_box none";
+
+				 		if( this.dataset.idx == k){
+
+				 			navi_li[k].className = "on";
+				 			cont_box_all[k].className = "cont_box block";
+				 		}	
+				 	}
+
+
+				 };			
+
+			}
+
+			// navi_li[0].onclick = function(){
+
+				
+			// 		cont_box_all[0].className = "cont_box block";
+				
+			// };
+
+			// navi_li[1].onclick = function(){
+
+				
+			// 		cont_box_all[1].className = "cont_box block";
+				
+			// };
+
+			// navi_li[2].onclick = function(){
+
+			
+			// 		cont_box_all[2].className = "cont_box block";
+			
+			// };
+
+		}	
+		
+		// tab.push("<ul class='tab'>");
+		// 	for (var k = 0 ; k < count; k++){
+
+		// 		tab.push(tab_html.replace("{text}", txt_h2[k]).replace("{id}", "id"+k));
+
+		// 	}
+		// tab.push("</ul>");
+
+		
+
+		//conts.innerHTML = tab.join('');
+		//console.log(tab.join(''));
+
+		// var div = document.createElement("div");
+		// div.className = "navi";
+
+		//div.innerHTML = tab.join('');
+		//console.log(div.innerHTML);
+
+		//conts.appendChild(div);
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width">
+	<style>
+		.site_gomdabang {
+			font-size: small; 
+			font-family: '맑은 고딕', arial, sans-serif; 
+			line-height: 1.6;
+		}
+		.site_gomdabang h1 { font-size: 1em; }
+	</style>
+</head>
+<body>
+	
+	<div class="site_gomdabang page_comp2">
+
+		<style>
+			.comp1 {}
+			.comp1 .outline {
+				position: relative;
+				border: 1px solid green;
+			}
+			.comp1 ul { 
+				margin: 0; 
+				padding: 0; 
+				list-style-type: none;
+			}
+			.comp1 ul:after { content: ""; display: block; clear: both; }
+			.comp1 li {
+				float: left; 
+				padding: .2em .5em; 
+				outline: 1px solid orange;
+			}
+
+			.comp1[data-js="false"] .control { display: none; }
+			.comp1[data-js="true"] .control { 
+				display: block; 
+				position: absolute;
+				top: 0; 
+				right: 0; 
+				margin: 0; 
+				padding: .4em;
+				background-color: #eee; 
+			}
+
+			/*.comp1[data-current="1"] .item1 ~ li,
+			.comp1[data-current="2"] .item2 ~ li,
+			.comp1[data-current="3"] .item3 ~ li { display: none; }*/
+
+			.item4 { float: right; }
+		</style>
+		<div class="comp1" id="comp1" data-js="true" data-init="true" data-current="x">
+
+			<h1>Component</h1>
+			
+			<div class="outline">
+				<ul>
+					<li>Elements</li>
+					<li>Network</li>
+					<li>Sources</li>
+					<li>Timeline</li>
+					<li>Profiles</li>
+					<li>Resources</li>
+					<li>Aduits</li>
+					<li>Console</li>
+				</ul>
+				<p class="control">&gt;</p>
+			</div>
+
+		</div>
+		<!-- comp1 -->
+		
+	</div>
+	<!-- site_gomdabang -->
+	<!-- page_comp1 -->
+
+	<script>
+		var doc = document; 
+		var comp1 = doc.getElementById('comp1'); 
+		
+
+		var obj = {
+			parentWidth: null, 
+			child: null, 
+			sum: 0,
+			itemWidth: [], 
+			itemArr: [], 
+			itemArrHdn: []
+		}; 
+
+		/* .outline의 width값을 obj.parentWidth에 할당한다 */
+		obj.parentWidth = comp1.getElementsByTagName('DIV')[0].clientWidth; 
+
+		/* item마다의 width값을 구하기 위해 TagaName이 LI인 element를 NodeList로 반환하여 comp1Items에 할당한다 */
+		var comp1Items = comp1.getElementsByTagName('LI');
+
+		/* for문 안에서 사용할 임시 변수들 */
+		var _sum = 0; 
+		var _su = 0;
+		var _idx = 0; 
+
+		/* element 마다 갖고 있는 width 사이즈를 obj.itemWidth 배열에 추가 한다. */
+		for(var i = 0; i < comp1Items.length; i++) {
+			obj.itemWidth.push(comp1Items[i].clientWidth);
+			obj.itemArr.push(comp1Items[i]);
+		}
+
+		/* obj.itemWidth의 값을 이용하여 현재 페이지 width값보다 커지는 item의 index 번호를 알아낸다 */
+		for(var i = 0; i < comp1Items.length; i++) {
+			_su = obj.itemWidth[i];
+			_sum = _sum + _su; 
+
+			/* 번호를 알아내고 알아낸뒤 _sum, _su 변수값을 초기화하고 for 문에서 break로 빠져나온다 */
+			if(obj.parentWidth < _sum) {
+				console.log('전체길이보다 커지는 아이템의 index는 :', i);
+
+				_sum = 0; 
+				_su = 0; 
+				_idx = i;
+
+				break;
+			}
+		}
+		
+		for(var i = _idx; i < comp1Items.length; i++) {
+			obj.itemArrHdn.unshift( obj.itemArr.pop() );
+		}
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>
+
+
+
+
+

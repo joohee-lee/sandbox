@@ -1,0 +1,434 @@
+<!doctype html>
+	<head>
+		<meta charset="utf-8"></meta>
+		<meta name="viewport" content="width=device-width">
+		<title></title>
+		<style>
+			* {
+				margin: 0; 
+				padding: 0; 
+				font-size: 100%; 
+				font-family:"맑은 고딕", arial, sans-serif; 
+				line-height: 1.6;
+			}
+
+			body{
+				margin:10px 20px 10px 10px;
+			}
+
+			ul li{ list-style-type: none;}
+			a{ color:#000; text-decoration: none;}
+
+
+			.num_box{width: 120px; height:250px; overflow:hidden; border:1px solid #000;}
+			
+
+			.num_box:after{ content:' '; display: block; clear: both; }
+
+			
+			.num_box li{
+				float: left;
+				display: inline;
+			}
+			
+			
+			.num_box li{padding: 1em 0.2em;}
+
+			.num_box li a{
+				display: block;
+				text-align: center;
+				border: 1px solid #ddd;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+			}
+
+			li.on{background:#ddd;}
+
+
+			.paging a{
+				display: inline-block; 
+				width: 20px; 
+				height: 20px; 
+				font-size: 11px; 
+				margin-right: 5px; 
+				line-height: 20px; 
+				background: #ddd; 
+				text-align: center;
+			}
+			
+			.paging a.on{
+				color:#fff; 
+				font-weight:bold; 
+				background: #000;
+			}
+
+			.r1{color:red;}
+		</style>
+	</head>
+	<body>
+	
+	<div id="conts" class="num_box">
+		<ul>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+			<li><a href="#">7</a></li>
+			<li><a href="#">8</a></li>
+			<li><a href="#">9</a></li>
+			<li><a href="#">10</a></li>
+			<li><a href="#">11</a></li>
+			<li><a href="#">12</a></li>
+			<li><a href="#">13</a></li>
+			<li><a href="#">14</a></li>
+			<li><a href="#">15</a></li>
+			<li><a href="#">16</a></li>
+			<li><a href="#">17</a></li>
+			<li><a href="#">18</a></li>
+			<li><a href="#">19</a></li>
+			<li><a href="#">20</a></li>
+		</ul>
+	</div>	
+	
+	<div>		
+	<a href="" id="pre" >이전</a>
+	<a href="" id="next">다음</a>
+	</div>
+
+	<div class="record_count_display">
+			<span id="r1" class="r1">1</span> /
+			<span id="r2" class="r2">20</span>
+	</div>
+
+	<div id="page_display" class="paging">
+			<!--<a href="#">1</a>
+			<a href="#">2</a>
+			<a href="#">3</a> -->
+	</div>
+
+
+	<div class="dev_def">
+			<h2>Developement Def.</h2>
+			<h3>current_pattern_4  : 한 화면에 item은 6개씩 노출, 이전&다음 기능,  페이징. </h3>
+			<dl>
+				<dt>1. 데이타 정의</dt>
+				<dd>
+					item_obj = {
+
+					title-url: url,
+					title: ***,
+				};
+				
+				</dd>
+			</dl>
+			<dl>
+				<dt>2. dom element select</dt>
+				<dd>기능 구현을 위한 필요한 element 를 가져온 후 변수명으로 대체한다.</dd>
+				<dd>
+					var conts = document.getElementById("conts");<br />
+					var ul = conts.getElementsByTagName("ul")[0];<br />
+					var li = conts.getElementsByTagName("li");<br />
+					var pre = document.getElementById("pre");<br />
+					var next = document.getElementById("next");<br />
+					var page_display = document.getElementById("page_display");
+				</dd>
+			</dl>
+			
+
+			<dl>
+				<dt>3. 변수 정의</dt>
+				<dd>count : 총 item 갯수</dd>
+				<dd>current : 현재 item 의 위치, 초기값은 "0" 으로 setting.</dd>
+				<dd>page_current :  현재 page 의 위치, 초기값은 "0" 으로 setting. </dd>
+				<dd>page_view_num : 한 페이지에 보여지는 item의 수.  초기값은 "6" 으로 setting. </dd> 
+				<dd>page_num_count : count(item 총 갯수) / page_view_num(화면에 보여지는 item 갯수) </dd> 
+			</dl>
+			
+			<dl>
+				<dt>4. 함수 정의</dt>
+				<dd>각 item 에 dataset.idx 값 생성.</dd>
+				
+				<dd>setCurrent(idx)  </dd>
+				<dd>: current 위치에 해당하는 item 은 "" 클래스 지정 </dd>
+				<dd>: 파라미터로 받은 idx값에 해당하는 item 표시("on" 클래스 지정) </dd>
+				<dd>: current 값에 this.dataset.idx 값 할당 </dd>
+				
+				<dd>setPaging(idx) </dd>
+				<dd>: 다음페이지에 해당하는 item들 보여주기.  </dd>
+				<dd>: 한 화면에 보여지는 item 갯수는 ul 에 margin-top : -((li[0].clientHeight * 3) * idx)px 값으로 조정 </dd>
+				<dd>: page_current 에 해당하는 클래스는 "" 클래스로 지정.</dd>
+				<dd>: 파라미터로 받은  idx 에 해당하는 클래스는 "on" 클래스로 지정 후 page_current = idx; 값을 할당.</dd>
+				
+				<dd>paging()  </dd>
+				<dd>paging 계산 : page_num_count = count(item 총 갯수) / page_view_num(화면에 보여지는 item 갯수) </dd>
+				<dd>paging 배열을 이용해서 innerHtml 로 생성 </dd>
+				<dd>화면에 paging 을 innerHTML 로 만들려면, </dd>
+				<dd>1) 페이징을 계산해서 page_view_count 에 값을 할당한다. </dd>
+				<dd>2) 페이징은 배열을 이용해서 page_html push.</dd>
+				<dd>3) page_display 에 page_list.join('') 한 것을 innerHTML  </dd>
+				<dd>paging dataset.idx 생성 </dd>
+				<dd>setCurrent(Number(this.dataset.idx) * page_view_num); 함수 호출</dd>
+				<dd>setPaging(Number(this.dataset.idx)); 함수 호출</dd>
+				
+			</dl>
+
+			<dl>
+				<dt>5. 이벤트  정의</dt>
+				<dd>prev.onclick = function(){}; : 이전버튼에  클릭 이벤트</dd>
+				<dd>이전 item은 preidx = current - 1;</dd>
+				<dd>특이사항 : 이전 페이지라는 조건을 알아야 한다. </dd>	
+				<dd>이전 페이징이 넘어가는 시점은 총 item 갯수와 nextidx 값이 같으면 다음페이지는 page_current + 1(현재페이지 - 1) 을 파라미터로 넘긴다. 
+				
+				<dd>next.onclick = function(){}; : 다음버튼에 클릭 이벤트</dd>
+				<dd>다음 item은 nextidx = current + 1;</dd>
+				<dd>특이사항 : 다음 페이지라는 조건을 알아야 한다. </dd>	
+				<dd>다음 페이징이 넘어가는 시점 총 item 갯수와 nextidx 값이 같으면 다음페이지는 page_current + 1(현재페이지 + 1) 을 파라미터로 넘긴다. 
+				</dd>
+			</dl> 
+
+			<dl>
+				<dt>6.로직 정의</dt>
+			</dl> 
+		</div>
+
+	<script>
+		//변수 셋팅 
+		var conts = document.getElementById("conts");
+		var ul = conts.getElementsByTagName("ul")[0];
+		var li = conts.getElementsByTagName("li");
+		var pre = document.getElementById("pre");
+		var next = document.getElementById("next");		
+
+		//총 record(li) count 
+		var current = 0; //  레코드 idx 초기값 
+		var record_count = li.length;
+
+		
+		//paging display
+		var page_current = 0; //  page current 초기값
+		var page_view_count ; // 총 페이지 수 
+		var page_view_record = 6; // 한 페이지에 보여질 레코드 수 
+
+		var page_display = document.getElementById("page_display");
+		var page_list = [];
+		var page_html = "<a href='#'>{text}</a>";
+
+		//r1, r2
+		var r1 = document.getElementById("r1");
+		var r2 = document.getElementById("r2");
+
+		//idx 값 세팅
+		for(var k=0; k < record_count; k++){
+
+			li[k].dataset.idx = k; 
+
+			//onmouseover 일경우 
+			li[k].onmouseover = function (){
+
+
+				clearInterval(autorolling);
+
+				setCurrent(this.dataset.idx);	
+				// li[current].className = " ";
+				// this.dataset.idx.className= 'on';
+				// current = this.dataset.idx;
+			};
+
+
+			li[k].onmouseout = function(){
+
+				autorolling = setInterval(next.onclick, 1000);
+				//console.log(this.dataset.idx);
+			
+			};
+
+			li[k].onclick = function (){
+
+				setCurrent(this.dataset.idx);
+
+				// li[current].className = " ";
+				// this.dataset.idx.className= 'on';
+				// current = this.dataset.idx;
+			};
+		}
+
+		//기능별 함수 정의
+		//setCurrent() ; 
+		//1) "on" class 초기화 
+		//2) 이벤트 할당한 레코드 idx 값을 가져온다. class = "on" 할당  
+		//3) current 값에 this.dataset.idx 값 할당 
+		function setCurrent( idx ){
+
+			li[current].className = " ";
+			li[idx].className= "on";
+			current = Number(idx);
+
+			//화면에 보여지는 현재 레코드 index 값 
+			r1.innerHTML = Number(idx) +1;
+			
+		}
+		
+
+		//이전 버튼 클릭 이벤트 바인딩.
+		pre.onclick = function(){
+
+			//autorolling 멈춤
+			clearInterval(autorolling);
+
+			preidx = Number(current-1);
+
+			//이전 페이지 넘어가는 시점의 조건을 알아야한다. 
+			var z = (page_view_record * page_current) - 1;
+
+			if( preidx < 0){
+
+				preidx = record_count -1;
+
+				setPaging(page_list.length - 1);
+			}
+
+			if( z === preidx ){
+
+				setPaging(page_current-1);
+
+			}
+
+			
+			setCurrent(preidx);
+
+			autorolling = setInterval(next.onclick, 1000);
+
+			return false;
+
+		}
+
+		
+		//다음 버튼 클릭 이벤트 바인딩`
+		next.onclick = function(){
+
+			//autorolling 멈춤
+			clearInterval(autorolling);
+
+			nextidx = Number(current + 1);
+
+			//다음 페이지라는 조건을 알아야한다. 
+			//다음 페이징이 넘어가느 시점의 총 레코드 카운트 값과 nextidx 값 비교 
+			//같으면 setPaging 함수를 호출 : 파라미터값으로는  다음페이지인 (page_current+1) 현재페이지에 +1 을 한 파라미터를 넘긴다. 
+			var z = page_view_record * (page_current +1) ; 
+
+			//console.log(z);
+
+			if( z === nextidx){
+
+				setPaging(page_current+1);
+
+			}
+
+
+			//마지막 레코드 일 경우 예외 처리 
+			if( nextidx === record_count){
+
+				nextidx = 0;
+
+				setPaging(0); 
+			
+			}
+
+
+			setCurrent(nextidx);
+
+			//autorolling play
+			autorolling = setInterval(next.onclick, 1000);
+
+			return false;
+		};
+
+		
+		
+		//paging 기능 
+		function paging(){
+
+			// 화면에 paging 을 innerHTML 로 만들려면, 
+			//1) 페이징을 계산해서 page_view_count 에 값을 할당한다. 
+			//2) 페이징을 배열을 이용해서 page_html push.
+			//3) page_display 에 page_list.join('') 한 것을 innerHTML  
+			page_view_count = Number(record_count/page_view_record);
+
+			for(var k=0; k < page_view_count ; k++){
+
+				page_list.push(page_html.replace("{text}" , k+1));
+			}
+
+			page_display.innerHTML = page_list.join('');  
+
+			
+			//이벤트 대상이 되는 값을  select 한다. 
+			page_list = page_display.getElementsByTagName("a");
+
+			for(k=0; k < page_view_count; k++){
+
+				page_list[k].dataset.idx = k; 
+
+				page_list[k].onclick = function(){
+
+					clearInterval(autorolling);
+
+					var pageidx = this.dataset.idx;
+
+					//console.log (Number(pageidx) * page_view_record);
+
+					//paging 이 넘어가는 시점 레코드 표시 
+					setCurrent( Number(pageidx) * page_view_record );
+
+					setPaging(Number(pageidx));
+
+					autorolling = setInterval(next.onclick, 1000);
+
+					return false;
+				}
+
+			}
+
+			setPaging(page_current);
+
+		}
+
+		//setPaging() 기능 : 
+		//1)화면에 6개 record만 보여준다. 
+		//2)한 화면에 뿌려지는 record 갯수는 ul 에 margin-top : -((li[0].clientHeight * 3) * idx)px 값으로 조정   
+		//3) 이벤트를 준 page 에 class="on" 을 할당하는 함수.
+		function setPaging(idx){
+
+			console.log("idx", idx);
+
+			var margintop = (li[0].clientHeight * 3) * idx;
+
+			ul.style.marginTop = "-" + margintop + "px"; 
+
+			page_list[page_current].className=" ";
+			page_list[idx].className = "on";
+
+			page_current  = idx;
+
+
+		}
+
+		
+		//함수실행
+		r2.innerHTML = record_count;
+
+		setCurrent(current);
+
+		paging();
+
+
+		//autorolling /1초
+		var autorolling = setInterval(next.onclick, 1000);
+
+
+	</script>
+	</body>
+</html>

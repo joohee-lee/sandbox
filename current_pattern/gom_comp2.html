@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width">
+	<style>
+		.site_gomdabang {
+			font-size: small; 
+			font-family: '맑은 고딕', arial, sans-serif; 
+			line-height: 1.6;
+		}
+		.site_gomdabang h1 { font-size: 1em; }
+	</style>
+</head>
+<body>
+	
+	<div class="site_gomdabang page_comp2">
+
+		<style>
+			.comp1 {}
+			.comp1 .outline {
+				position: relative;
+				border: 1px solid green;
+				overflow: hidden;
+			}
+			.comp1 ul { 
+				margin: 0; 
+				padding: 2px; 
+				width: 1000px;
+				list-style-type: none;
+			}
+			.comp1 ul:after { content: ""; display: block; clear: both; }
+			.comp1 li {
+				float: left; 
+				margin-right: 1px;
+				padding: .2em .5em; 
+				border: 1px solid orange; 
+			}
+			.comp1 li span { 
+				background-color: #eee; 
+			}
+
+			.comp1[data-js="false"] .control { display: none; }
+			.comp1[data-js="true"] .control { 
+				display: block; 
+				position: absolute;
+				top: 0; 
+				right: 0; 
+				margin: 0; 
+				padding: .5em;
+				background-color: #eee; 
+			}
+
+			.comp1[data-current="1"] .item1 ~ li,
+			.comp1[data-current="2"] .item2 ~ li,
+			.comp1[data-current="3"] .item3 ~ li { display: none; }
+		</style>
+		<div class="comp1" id="comp1" data-js="false" data-init="true" data-current="x">
+
+			<h1>Component</h1>
+			
+			<div class="outline">
+				<ul>
+					<li class="item1"><span>동해물과 백두산이 마르고 닳도록 </span></li>
+					<li class="item2"><span>하느님이 보우하사</span></li>
+					<li class="item3"><span>우리나라 만세 무궁화 삼천리 화려강산</span></li>
+					<li class="item4"><span>대한사람 대한으로 길입전하세.</span></li>
+				</ul>
+
+				<p class="control">
+					<button class="prev">이전</button>
+					<button class="next">다음</button>
+				</p>
+			</div>
+
+		</div>
+		<!-- comp1 -->
+		
+	</div>
+	<!-- site_gomdabang -->
+	<!-- page_comp1 -->
+
+	<script>
+		var doc = document; 
+		var comp1 = doc.getElementById('comp1'); 
+		
+
+		var comp1Data = {
+			parentWidth: null, 
+			child: null, 
+			sum: 0,
+			itemWidth: []
+		}; 
+
+
+		comp1Data.parentWidth = comp1.getElementsByTagName('DIV')[0].clientWidth;
+		comp1Data.child = comp1.getElementsByTagName('LI'); 
+		for(var i = 0; i < comp1Data.child.length; i++) {
+
+			var su = comp1Data.child[i].clientWidth;
+			// console.log(su);
+
+			comp1Data.itemWidth.push(su);
+
+			// comp1Data.width = comp1Data.width + comp1Data.child[i].clientWidth; 
+			comp1Data.sum = comp1Data.sum + su;
+		}
+
+		console.log(comp1Data.sum); 
+		var xx = 0; 
+
+		for(var i = 0; i < comp1Data.itemWidth.length; i++) {
+			xx = xx + comp1Data.itemWidth[i]; 
+
+			if( (comp1Data.parentWidth - 87) < xx && comp1Data.parentWidth < comp1Data.sum) {
+				console.log(i); 
+				comp1.dataset.current = i;
+				break;
+			}
+
+
+		}
+
+
+		function change_() {
+
+			comp1.dataset.js = 'true';
+
+			// var bbox = document.createElement('p'); 
+			// var button1 = document.createElement('button'); 
+			// var button2 = document.createElement('button');
+
+			// button1.innerHTML = '이전';
+			// button2.innerHTML = '다음'; 
+
+			// bbox.className = 'control'; 
+			// button1.className = 'prev'; 
+			// button2.className = 'next'; 
+
+			comp1.getElementsByTagName('BUTTON')[0].onclick = function() {
+				console.log('xxx');
+			};
+			comp1.getElementsByTagName('BUTTON')[1].onclick = function() {
+				console.log('yyy');
+			};
+
+			// bbox.appendChild(button1); 
+			// bbox.appendChild(button2); 
+
+			// comp1.getElementsByTagName('DIV')[0].appendChild(bbox);
+		}
+		
+
+		if(comp1Data.parentWidth < comp1Data.sum) {
+			change_(); 
+		}
+
+
+
+
+
+		comp1Data.width = 0; 
+
+		// window.onresize = function() {
+		// 	comp1Data.parentWidth = comp1.getElementsByTagName('DIV')[0].clientWidth;
+		// 	comp1Data.child = comp1.getElementsByTagName('LI'); 
+		// 	for(var i = 0; i < comp1Data.child.length; i++) {
+				
+		// 		comp1Data.width = comp1Data.width + comp1Data.child[i].clientWidth; 
+		// 	}	
+
+		// 	if(comp1Data.parentWidth < comp1Data.width) {
+		// 		change_(); 
+		// 	} else {
+		// 		comp1.dataset.js = "false"; 
+		// 	}
+
+		// 	comp1Data.width = 0; 
+		// };
+
+
+	</script>
+
+</body>
+</html>
+
+
+
+
+
