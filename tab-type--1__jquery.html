@@ -8,7 +8,8 @@
     <meta name="googlebot" content="noindex,nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>comp-tab &amp; panel</title>
-    <!-- main -->
+    <!-- jquery lib -->
+    <script src="jquery-1.10.0.js"></script>
     <style>
         body, div, ul, li{
             font-family: "맑은 고딕", sans-serif;
@@ -79,7 +80,7 @@
     </style>
 </head>
 <body>
-    <h1>____Tabs type 1</h1>
+    <h1>____Tabs type 1__jquery</h1>
 
     <div class="dev-exp">
         <div class="dev-exp-inner">
@@ -93,12 +94,12 @@
                 4. .tabs-panel h3.tabs-item  div.tabs-conts 로
             </li>
         </ul>
-        <h3> JS </h3>
+        <h3> script + jquery </h3>
         <ul>
-            <li> only script </li>
-            <li>1. tab-panel show/hide 클래스 on 으로 control 한다. / 고전적인 방법 / 일반적으로 많이 사용. ex. class="tabs-panel on"   </li>
-            <li>2. 기능 1 - 이전 / 다음 함수 추가 </li>
-            <li>3. 기능 2 - 자동롤링   </li>
+            <li>1. dom element select <li>
+            <li>2. tab-panel show/hide 클래스 on 으로 control 한다. / 고전적인 방법 / 일반적으로 많이 사용. ex. class="tabs-panel on"   </li>
+            <li>3. 기능 1 - 이전 / 다음 함수 추가 </li>
+            <li>4. 기능 2 - 자동롤링   </li>
         </ul>
         </div>
     </div>
@@ -132,78 +133,100 @@
     </div>
 
     <script>
-        // 초기설정
-        var comp_tabs = document.getElementById("comp_tabs");
-        var el_tabs = document.getElementsByClassName("tabs-panel");
-        var el_tabs_length = el_tabs.length;
 
-        //current
+        var el_tabs_panel = $('.tabs-panel');
+        var el_tabs_item = $('.tabs-item a');
+        var el_tabs_panel_len = $('.tabs-panel').length;
+
         var current = 0;
-
-        var prev = document.getElementById("prev");
-        var next = document.getElementById("next");
+        var prev = $('#prev');
+        var next = $('#next');
 
         //rolling time
+        var autorolling ;
+        var stop ;
         var time = 3000;
 
-        console.log( el_tabs_length );
 
-
-        //이벤트 등록
-        //tabsSetcurrent;
+        //tab show setting
         function tabsSetcurrent(idx){
 
             var el_idx = idx;
 
-            console.log(el_idx);
+            console.log( el_idx );
 
-            for (var k = 0; k < el_tabs_length ; k++){
+            for (var i = 0; i < el_tabs_panel_len ; i++) {
 
-                document.getElementById("tabs-panel" + k ).className = 'tabs-panel';
+                 el_tabs_panel.eq(i).removeClass('on');
             }
 
-            document.getElementById("tabs-panel" + el_idx ).className += " " + 'on' ;
-        };
+            el_tabs_panel.eq(el_idx).addClass('on');
+        }
 
-        // next tab
-        next.onclick = function(){
+        //next click
+        function tabsNext(){
 
-            //clearinterval
             clearInterval(autorolling);
 
             current = Number(current + 1);
 
-            if( current === el_tabs_length ){
-                    current = 0;
+            if (current === el_tabs_panel_len) {
+                current = 0;
             }
 
-            // tabcontent setting function
             tabsSetcurrent(current);
 
-           // 자동롤링
-           autorolling = setInterval(next.onclick, time);
+            autorolling = setInterval(tabsNext, time);
         }
 
-        //prev tab
-        prev.onclick = function(){
+        //prev click
+        function tabsPrev(){
 
             clearInterval(autorolling);
 
-            current = Number(current - 1);
+           current = Number(current -1);
 
-            if( current < 0 ){
-                    current =  Number(el_tabs_length-1);
+            if (current < 0 ) {
+                current = Number(el_tabs_panel_len -1) ;
             }
 
-            // tabcontent setting function
             tabsSetcurrent(current);
 
-            // 자동롤링
-           autorolling = setInterval(next.onclick, time);
+            autorolling = setInterval(tabsNext, time);
         }
 
-        //autorolling();
-        var autorolling = setInterval(next.onclick, time);
+        //autorolling
+        function autorolling() {
+            autorolling = setInterval(tabsNext, time);
+        }
+
+        //rolling stop
+        function stop(){
+            stop = clearInterval(autorolling);
+        }
+
+
+        $(document).ready(function(){
+
+            //next
+            next.on("click", function(e){
+
+                e.preventDefault();
+                tabsNext();
+            });
+
+            //prev
+            prev.on("click", function(e){
+
+                e.preventDefault();
+                tabsPrev();
+            });
+
+            //rolling
+            autorolling();
+
+        });
+
 
     </script>
 
