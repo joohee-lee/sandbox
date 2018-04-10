@@ -175,6 +175,8 @@
             <div class="btns">
                 <a href="#" id="prev" ><span>이전</span></a>
                 <a href="#" id="next" ><span>다음</span></a>
+                <a href="#" id="stop" ><span>stop</span></a>
+                <a href="#" id="play" ><span>play</span></a>
             </div>
 
         </div>
@@ -193,6 +195,8 @@
 
         var prev = document.getElementById("prev");
         var next = document.getElementById("next");
+        var stop = document.getElementById("stop");
+        var play = document.getElementById("play");
 
         var time = 3000;
 
@@ -257,12 +261,23 @@
             autorolling = setInterval(next.onclick , time);
 
             return false;
-
-
         }
+
+        stop.onclick = function(e){
+            e.preventDefault();
+            clearInterval(autorolling);
+        }
+
+        play.onclick = function(e){
+            e.preventDefault();
+            autorolling = setInterval(next.onclick , time);
+        }
+
+
 
         //autorolling
         var autorolling = setInterval(next.onclick , time);
+
 
     </script>
 
