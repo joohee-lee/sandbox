@@ -36,18 +36,19 @@
 
         .comp_tabs .tabs-item{
             background-color: #ccc;
-            width: 198px; height: 40px;
+            width: 98px; height: 40px;
             margin-right: 2px;
             text-align: center;
             box-sizing: border-box;
             border-top-right-radius: 4px;
             border-top-left-radius: 4px;
+            font-size: 14px;
 
         }
         .comp_tabs .tabs-item-0{ position: absolute; left: 100px; top: 0;}
-        .comp_tabs .tabs-item-1{ position: absolute; left: 300px; top: 0;}
-        .comp_tabs .tabs-item-2{ position: absolute; left: 500px; top: 0;}
-        .comp_tabs .tabs-item-3{ position: absolute; left: 700px; top: 0;}
+        .comp_tabs .tabs-item-1{ position: absolute; left: 200px; top: 0;}
+        .comp_tabs .tabs-item-2{ position: absolute; left: 300px; top: 0;}
+        .comp_tabs .tabs-item-3{ position: absolute; left: 400px; top: 0;}
         .comp_tabs .tabs-cont{
             display: none;
             position: absolute; left: 0; top: 40px;
@@ -58,6 +59,15 @@
 
         .comp_tabs .tabs-item a{ display: block; width: 100%; line-height: 40px; color:#fff; text-decoration: none;}
         .btns{ position: absolute; right: 0; top: 0; }
+
+        @media screen and (max-width: 600px) {
+            .comp_tabs .tabs-item{ width: 100%; border-radius: 0;}
+            .comp_tabs .tabs-item-0{ position: absolute; left: 0; top: 40px;}
+            .comp_tabs .tabs-item-1{ position: absolute; left: 0; top: 80px;}
+            .comp_tabs .tabs-item-2{ position: absolute; left: 0; top: 120px;}
+            .comp_tabs .tabs-item-3{ position: absolute; left: 0; top: 160px;}
+            .comp_tabs .tabs-cont{top: 200px;}
+        }
 
 
         /* 개발 */
