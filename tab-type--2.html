@@ -11,7 +11,7 @@
     <style>
 
         body, div, ul, li{
-            font-family: "맑은 고딕", sans-serif;
+            font-family: HelveticaNeue-Light,AppleSDGothicNeo-Light,'Malgun Gothic','맑은 고딕',sans-serif;
             margin: 0; padding: 0;
             list-style: none;
         }
@@ -268,11 +268,13 @@
         stop.onclick = function(e){
             e.preventDefault();
             clearInterval(autorolling);
+            return false;
         }
 
         play.onclick = function(e){
             e.preventDefault();
             autorolling = setInterval(next.onclick , time);
+            return false;
         }
 
         //autorolling
