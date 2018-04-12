@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="googlebot" content="noindex,nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>comp-tab &amp; panel</title>
+    <!-- main -->
+    <style>
+
+        body, div, ul, li{
+            font-family: HelveticaNeue-Light,AppleSDGothicNeo-Light,'Malgun Gothic','맑은 고딕',sans-serif;
+            margin: 0; padding: 0;
+            list-style: none;
+        }
+
+        /* dev-exp */
+        .dev-exp{
+            margin: 20px ;
+            background-color: #eee;
+        }
+        .dev-exp-inner {
+            padding: 10px;
+        }
+
+        .dev-exp-inner ul{ margin: 0; padding: 0; }
+        .dev-exp-inner li { list-style: none; margin-left: 0; padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>____Tabs type 3</h1>
+
+    <div class="dev-exp">
+        <div class="dev-exp-inner">
+        <h2>tab </h2>
+        <h3> Markup / CSS </h3>
+        <ul>
+            <li># 이커머스에서 흔히 볼 수 있는 UI - 카테고리 + 해당이미지 셋 / 롤링 </li>
+            <li># only pc </li>
+            <li>1. tab/s normal type </li>
+            <li>2. tab 을  ul li element 로 마크업 </li>
+            <li>3. tabs - float 으로 css 디자인 </li>
+            <li>
+                4. .tabs-list ul li a / .tab-panel
+            </li>
+        </ul>
+        <h3> JS </h3>
+        <ul>
+            <li> only script </li>
+        </ul>
+
+        </div>
+    </div>
+    <div id="comp_tabs" class="comp-tabs">
+        <div class="tabs-inner">
+
+            <div class="tabs-list">
+                <ul>
+                    <li class="tabs-item" data-selected="true"><a href="#">카테고리-1</a></li>
+                    <li class="tabs-item"><a href="#">카테고리-2</a></li>
+                    <li class="tabs-item"><a href="#">카테고리-3</a></li>
+                    <li class="tabs-item"><a href="#">카테고리-4</a></li>
+                    <li class="tabs-item"><a href="#">카테고리-5</a></li>
+                    <li class="tabs-item"><a href="#">카테고리-6</a></li>
+                    <li class="tabs-item"><a href="#">카테고리-7</a></li>
+                    <li class="tabs-item"><a href="#">카테고리-8</a></li>
+                    <li class="tabs-item"><a href="#">카테고리-9</a></li>
+                    <li class="tabs-item"><a href="#">카테고리-10</a></li>
+                </ul>
+            </div>
+
+            <!--
+            <div id="tabs-panel0" class='tabs-panel show' >
+                <div class="tabs-cont"><img src="img/p1.jpg" alt=""></div>
+            </div>
+            <div id="tabs-panel1" class='tabs-panel'>
+               <div class="tabs-cont"><img src="img/p2.jpg" alt=""></div>
+            </div>
+            <div id="tabs-panel2" class='tabs-panel'>
+               <div class="tabs-cont"><img src="img/p3.jpg" alt=""></div>
+            </div>
+            <div id="tabs-panel3" class='tabs-panel'>
+                <div class="tabs-cont"><img src="img/p4.jpg" alt=""></div>
+            </div>
+
+            -->
+
+            <div class="btns">
+                <a href="#" id="prev" ><span>이전</span></a>
+                <a href="#" id="next" ><span>다음</span></a>
+              </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>
