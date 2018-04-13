@@ -47,7 +47,7 @@
 
     <div class="dev-exp">
         <div class="dev-exp-inner">
-        <h2>tab scrolling</h2>
+        <h2>tab scrolling + tab-panel </h2>
         <h3> Markup / CSS </h3>
         <ul>
             <li># tab scrolling  </li>
@@ -159,40 +159,68 @@
             bottom: 20px;
          }
 
+         .tabs-panel{
+            width: 100%;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            background-color: #ccc;
+         }
+
+         .tabs-panel[data-display=true]{ display: block; }
+         .tabs-panel[data-display=false]{ display: none; }
     </style>
     <div id="comp_tabs" class="comp-tabs">
         <div class="tabs-inner">
 
             <div class="tabs-list">
                 <ul id="ulTabs" class="ul-tabs">
-                    <li class="tabs-item" data-index="0" data-selected="true"><a href="#">카테고리-1</a></li>
-                    <li class="tabs-item" data-index="1" data-selected="false"><a href="#">카테고리-2</a></li>
-                    <li class="tabs-item" data-index="2" data-selected="false"><a href="#">카테고리-3</a></li>
-                    <li class="tabs-item" data-index="3" data-selected="false"><a href="#">카테고리-4</a></li>
-                    <li class="tabs-item" data-index="4" data-selected="false"><a href="#">카테고리-5</a></li>
-                    <li class="tabs-item" data-index="5" data-selected="false"><a href="#">카테고리-6</a></li>
-                    <li class="tabs-item" data-index="6" data-selected="false"><a href="#">카테고리-7</a></li>
-                    <li class="tabs-item" data-index="7" data-selected="false"><a href="#">카테고리-8</a></li>
-                    <li class="tabs-item" data-index="8" data-selected="false"><a href="#">카테고리-9</a></li>
-                    <li class="tabs-item" data-index="9" data-selected="false"><a href="#">카테고리-10</a></li>
+                    <li class="tabs-item" data-index="0" data-selected="true"><a href="#" onclick="setTabsCurrent(0); return false;">카테고리-1</a></li>
+                    <li class="tabs-item" data-index="1" data-selected="false"><a href="#" onclick="setTabsCurrent(1); return false;">카테고리-2</a></li>
+                    <li class="tabs-item" data-index="2" data-selected="false"><a href="#" onclick="setTabsCurrent(2); return false;">카테고리-3</a></li>
+                    <li class="tabs-item" data-index="3" data-selected="false"><a href="#" onclick="setTabsCurrent(3); return false;">카테고리-4</a></li>
+                    <li class="tabs-item" data-index="4" data-selected="false"><a href="#" onclick="setTabsCurrent(4); return false;">카테고리-5</a></li>
+                    <li class="tabs-item" data-index="5" data-selected="false"><a href="#" onclick="setTabsCurrent(5); return false;">카테고리-6</a></li>
+                    <li class="tabs-item" data-index="6" data-selected="false"><a href="#" onclick="setTabsCurrent(6); return false;">카테고리-7</a></li>
+                    <li class="tabs-item" data-index="7" data-selected="false"><a href="#" onclick="setTabsCurrent(7); return false;">카테고리-8</a></li>
+                    <li class="tabs-item" data-index="8" data-selected="false"><a href="#" onclick="setTabsCurrent(8); return false;">카테고리-9</a></li>
+                    <li class="tabs-item" data-index="9" data-selected="false"><a href="#" onclick="setTabsCurrent(9); return false;">카테고리-10</a></li>
                 </ul>
             </div>
 
-            <!--
-            <div id="tabs-panel0" class='tabs-panel show' >
-                <div class="tabs-cont"><img src="img/p1.jpg" alt=""></div>
+
+            <div class='tabs-panel' data-index="0" data-display="true">
+                <div class="tabs-cont">content--1</div>
             </div>
-            <div id="tabs-panel1" class='tabs-panel'>
-               <div class="tabs-cont"><img src="img/p2.jpg" alt=""></div>
+            <div class='tabs-panel' data-index="1" data-display="false">
+                <div class="tabs-cont">content--2</div>
             </div>
-            <div id="tabs-panel2" class='tabs-panel'>
-               <div class="tabs-cont"><img src="img/p3.jpg" alt=""></div>
+            <div class='tabs-panel' data-index="2" data-display="false">
+                <div class="tabs-cont">content--3</div>
             </div>
-            <div id="tabs-panel3" class='tabs-panel'>
-                <div class="tabs-cont"><img src="img/p4.jpg" alt=""></div>
+            <div class='tabs-panel' data-index="3" data-display="false">
+                <div class="tabs-cont">content--4</div>
+            </div>
+            <div class='tabs-panel' data-index="4" data-display="false">
+                <div class="tabs-cont">content--5</div>
+            </div>
+            <div class='tabs-panel' data-index="5" data-display="false">
+                <div class="tabs-cont">content--6</div>
+            </div>
+            <div class='tabs-panel' data-index="6" data-display="false">
+                <div class="tabs-cont">content--7</div>
+            </div>
+            <div class='tabs-panel' data-index="7" data-display="false">
+                <div class="tabs-cont">content--8</div>
+            </div>
+            <div class='tabs-panel' data-index="8" data-display="false">
+                <div class="tabs-cont">content--9</div>
+            </div>
+            <div class='tabs-panel' data-index="9" data-display="false">
+                <div class="tabs-cont">content--10</div>
             </div>
 
-            -->
+
         </div>
 
         <div class="tabs-control">
@@ -209,6 +237,8 @@
     <script>
         var compTabs = document.getElementById('comp_tabs');
         var el_tabs = document.querySelectorAll(".tabs-item");
+        var el_tabs_panel = document.querySelectorAll(".tabs-panel");
+
         var el_tabs_length = el_tabs.length;
 
         //ulTabs
@@ -241,7 +271,9 @@
             var el_idx = idx;
 
             for (var k = 0; k < el_tabs_length ; k++){
+
                 el_tabs[k].dataset.selected = "false";
+                el_tabs_panel[k].dataset.display="false";
             }
 
             //move
@@ -249,6 +281,7 @@
 
             //setting
             el_tabs[el_idx].dataset.selected = "true";
+            el_tabs_panel[el_idx].dataset.display="true";
 
             return false;
         }
