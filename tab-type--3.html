@@ -115,11 +115,12 @@
         }
 
         .ul-tabs{
-            width: 1000px;
+            /* width: 1000px; */
             overflow: hidden;
          }
         .ul-tabs .tabs-item{
             float: left;
+            width: auto;
         }
         .ul-tabs .tabs-item a{
             display: block;
@@ -133,8 +134,10 @@
             margin: 10px 20px;
         }
         .btn{
+            background-color: #fff;
             border: 1px solid #ddd;
             padding: 10px;
+            cursor: pointer;
         }
 
     </style>
@@ -142,7 +145,7 @@
         <div class="tabs-inner">
 
             <div class="tabs-list">
-                <ul class="ul-tabs">
+                <ul id="ulTabs" class="ul-tabs">
                     <li class="tabs-item" data-index="0" data-selected="true"><a href="#">카테고리-1</a></li>
                     <li class="tabs-item" data-index="1" data-selected="false"><a href="#">카테고리-2</a></li>
                     <li class="tabs-item" data-index="2" data-selected="false"><a href="#">카테고리-3</a></li>
@@ -182,6 +185,11 @@
     <script>
         var compTabs = document.getElementById('comp_tabs');
         var el_tabs = document.querySelectorAll(".tabs-item");
+        var el_tabs_length = el_tabs.length;
+
+        //ulTabs
+        var el_tab_width = el_tabs[0].clientWidth + 5;
+        var ulTabs = document.getElementById('ulTabs');
 
         //prev, next
         var current = 0;
@@ -190,22 +198,66 @@
 
          el_tabs.forEach(function(element) {
               console.log(element);
+              //el_tabs.dataset.selected = false ;
+              //console.log(el_tabs_length);
          });
+
+         console.log(el_tabs_length);
+         console.log( el_tab_width * el_tabs_length );
+
+         //초기값 셋팅
+         ulTabs.style.width = Number( el_tab_width * el_tabs_length ) + "px";
+         //ulTabs.style.backgroundColor = "red";
 
         //이벤트
         function setTabsCurrent(idx){
             var el_idx = idx;
 
+            for (var k = 0; k < el_tabs_length ; k++){
+                el_tabs[k].dataset.selected = "false";
+            }
 
+            //idx 값 비교 // ulTabs marginLeft  값으로  왼쪽으로 이동.
+            if ( el_idx > 1){
+                var slideWidth =  el_tab_width * ( el_tabs[el_idx].dataset.index - 1);
+                ulTabs.style.marginLeft = "-" + slideWidth + "px";
 
+            }else if( el_idx === 0 ){
+                //alert ("0");
+                ulTabs.style.marginLeft = "0";
+            }
 
+            //setting
+            el_tabs[el_idx].dataset.selected = "true";
+
+            return false;
         }
 
         //next
+        next.onclick = function(){
+
+            current = Number(current + 1);
+
+            if( current === el_tabs_length ){
+                current = 0;
+            }
+
+            setTabsCurrent(current);
+            //alert("next");
+        }
 
         //prev
+        prev.onclick = function(){
+            //alert("prev");
 
+             current = Number(current - 1);
 
+            if( current < 0 ){
+                current = Number(el_tabs_length - 1);
+            }
+
+            setTabsCurrent(current);
+        }
 
     </script>
 
