@@ -8,6 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
     <title>comp-tab &amp; tab scrolling</title>
+     <!-- jquery lib -->
+    <script src="jquery-1.10.0.js"></script>
     <!-- main -->
     <style>
 
@@ -64,10 +66,11 @@
         </div>
         <h3> JS </h3>
         <ul>
-            <li> only script </li>
+            <li>  script + jquery add  </li>
             <li> function :  이전 / 다음 구현  </li>
             <li> 조건1 :  ul 엘리먼트 style.width 값을 동적으로 setting. </li>
-            <li> 조건2 : 3번째 탭 다음부터는 왼쪽으로 이동 ( ul 엘리먼트 style.marginLeft 로 move.)</li>
+            <li> 조건2 : 3번째 탭 다음부터는 왼쪽으로 이동 ( ul 엘리먼트 style.marginLeft 로 move.) </li>
+            <li> 조건3 : move 시 jquery animate 적용 </li>
         </ul>
 
         <h3> 고민할 것! </h3>
@@ -244,11 +247,15 @@
             //el_tabs[el_idx].dataset.index
             if ( el_idx > 1){
                 var slideWidth =  el_tab_width * ( el_idx - 1);
-                ulTabs.style.marginLeft = "-" + slideWidth + "px";
+
+               //ulTabs.style.marginLeft = "-" + slideWidth + "px";
+               //jquery aniamte add
+               $('#ulTabs').animate({marginLeft: "-" + slideWidth + "px" }, 500 );
+
 
             }else if( el_idx === 0 ){
-                //alert ("0");
-                ulTabs.style.marginLeft = "0";
+
+                $('#ulTabs').animate({marginLeft: 0 }, 300 );
             }
 
             return false;
