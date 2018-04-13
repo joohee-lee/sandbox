@@ -58,13 +58,6 @@
 
             <p>- webkit-overflow-scrolling 은 주어진 요소에서 터치 기기가 가속도 기반 momentum-based​ 스크롤을 사용할지를 제어한다. <br>
                 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/-webkit-overflow-scrolling" target="_blank">-webkit-overflow-scrolling</a>
-
-            <p>
-                ::-webkit-scrollbar {
-                  display: none;
-                }
-            </p>
-
             </p>
         </div>
         <h3> JS </h3>
@@ -135,6 +128,15 @@
         }
         .ul-tabs .tabs-item[data-selected="true"] { border-bottom: 2px solid orange; }
 
+        .tabs-control{
+            text-align: right;
+            margin: 10px 20px;
+        }
+        .btn{
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
     </style>
     <div id="comp_tabs" class="comp-tabs">
         <div class="tabs-inner">
@@ -172,13 +174,40 @@
         </div>
 
         <div class="tabs-control">
-            <a href="#" id="prev" ><span>이전</span></a>
-            <a href="#" id="next" ><span>다음</span></a>
+            <button type="button" id="prev" class="btn btn-pre"><span>이전</span></button>
+            <button type="button" id="next" class="btn btn-next"><span>다음</span></button>
        </div>
 
     </div>
+    <script>
+        var compTabs = document.getElementById('comp_tabs');
+        var el_tabs = document.querySelectorAll(".tabs-item");
+
+        //prev, next
+        var current = 0;
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+
+         el_tabs.forEach(function(element) {
+              console.log(element);
+         });
+
+        //이벤트
+        function setTabsCurrent(idx){
+            var el_idx = idx;
 
 
+
+
+        }
+
+        //next
+
+        //prev
+
+
+
+    </script>
 
 </body>
 </html>
