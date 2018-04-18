@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="googlebot" content="noindex,nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>comp-tab &amp; tabs </title>
+    <!-- main -->
+    <style>
+
+        body, div, ul, li{
+            font-family: HelveticaNeue-Light,AppleSDGothicNeo-Light,'Malgun Gothic','맑은 고딕',sans-serif;
+            margin: 0; padding: 0;
+            list-style: none;
+            word-spacing: break-word;
+
+        }
+
+        body{ padding-bottom: 40px; }
+
+        /* dev-exp */
+        .dev-exp{
+            margin: 20px ;
+            background-color: #eee;
+        }
+        .dev-exp-inner {
+            padding: 10px;
+        }
+
+        .dev-exp-inner ul{ margin: 0; padding: 0; }
+        .dev-exp-inner li { list-style: none; margin-left: 0; padding-left: 20px; }
+        .dev-exp-inner li:before{
+            content:' - ';
+            display: inline-block;
+            width: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>____Tabs </h1>
+
+    <style>
+
+        a { text-decoration: none; color: #666;}
+
+
+        .tabs-inner{}
+        .comp-tabs .tabs-inner{
+            position: relative;
+            margin: 0 20px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+            background-color: #fff;
+            width: 550px;
+        }
+
+        .comp-tabs .tabs-inner:before{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 42x;
+            width: 20px;
+            background:-webkit-gradient(linear,left top,right top,color-stop(16.66%,#fff),color-stop(100%,rgba(255,255,255,0)));
+        }
+
+        .comp-tabs .tabs-inner:after{
+            content: "";
+            display: block;
+            position: absolute;
+            height: 42px;
+            width: 20px;
+            top: 0;
+            right: 0;
+            background: -webkit-gradient(linear,left top,right top,color-stop(0,rgba(255,255,255,0)),color-stop(60%,#fff));
+        }
+
+        .tabs-list{
+             overflow-x: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tabs-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ul-tabs{
+           width: 1000px;
+            overflow: hidden;
+         }
+        .ul-tabs .tabs-item{
+            float: left;
+            width: auto;
+        }
+        .ul-tabs .tabs-item a{
+            display: block;
+            padding: 10px 0;
+            margin: 0 10px;
+        }
+        .ul-tabs .tabs-item[data-selected="true"] { border-bottom: 2px solid orange; }
+
+        .tabs-control{
+            text-align: right;
+            margin: 10px 20px;
+        }
+        .btn{
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <h3>tab--1</h3>
+    <div id="comp_tabs--1" class="comp-tabs tabs-pattern--1">
+        <div class="tabs-inner">
+
+            <div class="tabs-list">
+                <ul class="ul-tabs">
+                    <li class="tabs-item" data-index="0" data-selected="true"><a href="#">카테고리-1</a></li>
+                    <li class="tabs-item" data-index="1" data-selected="false"><a href="#">카테고리-2</a></li>
+                    <li class="tabs-item" data-index="2" data-selected="false"><a href="#">카테고리-3</a></li>
+                    <li class="tabs-item" data-index="3" data-selected="false"><a href="#">카테고리-4</a></li>
+                    <li class="tabs-item" data-index="4" data-selected="false"><a href="#">카테고리-5</a></li>
+                    <li class="tabs-item" data-index="5" data-selected="false"><a href="#">카테고리-6</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="tabs-control">
+            <button type="button" id="prev--1" class="btn btn-pre"><span>이전</span></button>
+            <button type="button" id="next--1"  class="btn btn-next"><span>다음</span></button>
+       </div>
+
+    </div>
+    <script>
+        var elPrev_1 = document.getElementById('prev--1');
+        var elNext_1 = document.getElementById('next--1');
+        elPrev_1.addEventListener('click', function (e){  prev('comp_tabs--1'); });
+        elNext_1.addEventListener('click', function (e){  next('comp_tabs--1'); });
+    </script>
+
+
+
+    <h3>tab--2</h3>
+    <div id="comp_tabs--2" class="comp-tabs tabs-pattern--2">
+        <div class="tabs-inner">
+
+            <div class="tabs-list">
+                <ul class="ul-tabs">
+                    <li class="tabs-item" data-index="0" data-selected="true"><a href="#">카테고리-1</a></li>
+                    <li class="tabs-item" data-index="1" data-selected="false"><a href="#">카테고리-2</a></li>
+                    <li class="tabs-item" data-index="2" data-selected="false"><a href="#">카테고리-3</a></li>
+                    <li class="tabs-item" data-index="3" data-selected="false"><a href="#">카테고리-4</a></li>
+                    <li class="tabs-item" data-index="4" data-selected="false"><a href="#">카테고리-5</a></li>
+                    <li class="tabs-item" data-index="5" data-selected="false"><a href="#">카테고리-6</a></li>
+                    <!--
+                    <li class="tabs-item" data-index="6" data-selected="false"><a href="#">카테고리-7</a></li>
+                    <li class="tabs-item" data-index="7" data-selected="false"><a href="#">카테고리-8</a></li>
+                    <li class="tabs-item" data-index="8" data-selected="false"><a href="#">카테고리-9</a></li>
+                    <li class="tabs-item" data-index="9" data-selected="false"><a href="#">카테고리-10</a></li>
+                    -->
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="tabs-control">
+            <button type="button" id="prev--2" class="btn btn-pre"><span>이전</span></button>
+            <button type="button" id="next--2" class="btn btn-next"><span>다음</span></button>
+        </div>
+
+    </div>
+    <script>
+        var elPrev_2 = document.getElementById('prev--2');
+        var elNext_2 = document.getElementById('next--2');
+        elPrev_2.addEventListener('click', function (e){  prev('comp_tabs--2'); });
+        elNext_2.addEventListener('click', function (e){  next('comp_tabs--2'); });
+
+    </script>
+
+
+    <script>
+
+        //prev, next
+        var current = 0;
+
+        //이벤트
+        function setTabsCurrent(idx, count, tabs){
+            var el_idx = idx;
+            var el_tabs_length = count;
+            var el_tabs = tabs;
+
+            //repaint(el_tabs);
+
+            for (var k = 0; k < el_tabs_length ; k++){
+                el_tabs[k].dataset.selected = "false";
+            }
+
+            //move
+            //setTabsMove(el_idx);
+
+            //setting
+            console.log(el_idx);
+            el_tabs[el_idx].dataset.selected = "true";
+
+            return false;
+        }
+
+        //next
+       function next(id){
+
+            var el = id;
+            var el_tabs = document.getElementById(el).querySelectorAll(".tabs-item");
+            var el_tabs_length = el_tabs.length;
+
+            current = Number(current + 1);
+
+            if( current === el_tabs_length ){
+                current = 0;
+            }
+
+            setTabsCurrent(current, el_tabs_length, el_tabs);
+            //alert("next");
+        }
+
+        //prev
+        function prev(id){
+            //alert("prev");
+            var el = id;
+            var el_tabs = document.getElementById(el).querySelectorAll(".tabs-item");
+            var el_tabs_length = el_tabs.length;
+
+             current = Number(current - 1);
+
+            if( current < 0 ){
+                current = Number( el_tabs_length - 1);
+            }
+
+            setTabsCurrent(current, el_tabs_length, el_tabs);
+        }
+
+        //reaint
+        function repaint( el ) {
+            el.className = el.className;
+        }
+    </script>
+
+<!--
+ # Event 를 다루는 방법
+
+
+1. HTML에 inline으로 등록
+    <a href="#" onclikc="setTab(); return false;">tab click</a>
+
+
+2. element의 onload 속성을 통한 등록
+    <button type="button" id='prev' class="btn prev">이전</butotn>
+
+    var prev = document.getElemntById('prev');
+    prev.onclick = function(){
+        ......
+    }
+
+
+3. addEventListener/attachEvent를 이용한 등록
+
+    var prev = document.getElemntById('prev')
+
+    prev.addEventListener( "click", function (e) { alert("do process #1")}; );
+
+    prev.attachEvent( "onclick", function (e) { alert("do process #1")}; );
+
+    addEvent(el, 'click', function() {
+        if ( brw < IE10) {
+            el.attch~
+            return false;
+        }
+
+        el.addeventliste~
+    });
+
+https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener
+
+IE 9 이전의 인터넷 익스플로러 버전들에서, 표준인 addEventListener 보다는 attachEvent 를 사용해야만한다.
+
+-->
+
+</body>
+</html>
