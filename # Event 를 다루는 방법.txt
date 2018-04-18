@@ -1,0 +1,40 @@
+# Event 를 다루는 방법
+
+
+1. HTML에 inline으로 등록
+    <a href="#" onclikc="setTab(); return false;">tab click</a>
+
+
+2. element의 onload 속성을 통한 등록
+    <button type="button" id='prev' class="btn prev">이전</butotn>
+
+    var prev = document.getElemntById('prev');
+    prev.onclick = function(){
+        ......
+    }
+
+
+3. addEventListener/attachEvent를 이용한 등록
+
+    var prev = document.getElemntById('prev')
+
+    prev.addEventListener( "click", function (e) { alert("do process #1")}; );
+
+    prev.attachEvent( "onclick", function (e) { alert("do process #1")}; );
+
+    addEvent(el, 'click', function() {
+        if ( brw < IE10) {
+            el.attch~
+            return false;
+        }
+
+        el.addeventliste~
+    });
+
+https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener
+
+IE 9 이전의 인터넷 익스플로러 버전들에서, 표준인 addEventListener 보다는 attachEvent 를 사용해야만한다.
+
+
+
+

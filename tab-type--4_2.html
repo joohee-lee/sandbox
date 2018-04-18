@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -115,7 +114,36 @@
             cursor: pointer;
         }
 
+        .tabs-panel{
+            width: 100%;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            background-color: #ccc;
+         }
+        .tabs-panel[data-display=true]{ display: block; }
+         .tabs-panel[data-display=false]{ display: none; }
+
     </style>
+    <script>
+        //공통함수
+        //reaint
+        function repaint( el ) {
+            el.className = el.className;
+        }
+
+        //addEventListener attachevent ( IE10 이하 호환 )
+        function addEvent(el, eventName, cb, isCapture) {
+            if (window.addEventListener) {
+                el.addEventListener(eventName, cb, isCapture);
+            } else if (window.attachEvent) {
+                el.attachEvent("on" + eventName, cb);
+            } else {
+                el["on" + eventName] = cb;
+            }
+       }
+
+    </script>
 
     <h3>tab--1</h3>
     <div id="comp_tabs--1" class="comp-tabs tabs-pattern--1">
@@ -133,6 +161,25 @@
                 </ul>
             </div>
 
+             <div class='tabs-panel' data-index="0" data-display="true">
+                <div class="tabs-cont">content--1</div>
+            </div>
+            <div class='tabs-panel' data-index="1" data-display="false">
+                <div class="tabs-cont">content--2</div>
+            </div>
+            <div class='tabs-panel' data-index="2" data-display="false">
+                <div class="tabs-cont">content--3</div>
+            </div>
+            <div class='tabs-panel' data-index="3" data-display="false">
+                <div class="tabs-cont">content--4</div>
+            </div>
+            <div class='tabs-panel' data-index="4" data-display="false">
+                <div class="tabs-cont">content--5</div>
+            </div>
+            <div class='tabs-panel' data-index="5" data-display="false">
+                <div class="tabs-cont">content--6</div>
+            </div>
+
         </div>
 
         <div class="tabs-control">
@@ -141,11 +188,15 @@
        </div>
 
     </div>
+
     <script>
         var elPrev_1 = document.getElementById('prev--1');
         var elNext_1 = document.getElementById('next--1');
-        elPrev_1.addEventListener('click', function (e){  prev('comp_tabs--1'); });
-        elNext_1.addEventListener('click', function (e){  next('comp_tabs--1'); });
+        //elPrev_1.addEventListener('click', function (e){  prev('comp_tabs--1'); });
+        //elNext_1.addEventListener('click', function (e){  next('comp_tabs--1'); });
+
+         addEvent(elPrev_1, "click", function (e) { prev('comp_tabs--1'); }, false);
+         addEvent(elNext_1, "click", function (e) { next('comp_tabs--1'); }, false);
     </script>
 
 
@@ -171,6 +222,25 @@
                 </ul>
             </div>
 
+             <div class='tabs-panel' data-index="0" data-display="true">
+                <div class="tabs-cont">content--1</div>
+            </div>
+            <div class='tabs-panel' data-index="1" data-display="false">
+                <div class="tabs-cont">content--2</div>
+            </div>
+            <div class='tabs-panel' data-index="2" data-display="false">
+                <div class="tabs-cont">content--3</div>
+            </div>
+            <div class='tabs-panel' data-index="3" data-display="false">
+                <div class="tabs-cont">content--4</div>
+            </div>
+            <div class='tabs-panel' data-index="4" data-display="false">
+                <div class="tabs-cont">content--5</div>
+            </div>
+            <div class='tabs-panel' data-index="5" data-display="false">
+                <div class="tabs-cont">content--6</div>
+            </div>
+
         </div>
 
         <div class="tabs-control">
@@ -182,9 +252,10 @@
     <script>
         var elPrev_2 = document.getElementById('prev--2');
         var elNext_2 = document.getElementById('next--2');
-        elPrev_2.addEventListener('click', function (e){  prev('comp_tabs--2'); });
-        elNext_2.addEventListener('click', function (e){  next('comp_tabs--2'); });
-
+        //elPrev_2.addEventListener('click', function (e){  prev('comp_tabs--2'); });
+        //elNext_2.addEventListener('click', function (e){  next('comp_tabs--2'); });
+        addEvent(elPrev_2, "click", function (e) { prev('comp_tabs--2'); }, false);
+        addEvent(elNext_2, "click", function (e) { next('comp_tabs--2'); }, false);
     </script>
 
 
@@ -194,15 +265,21 @@
         var current = 0;
 
         //이벤트
-        function setTabsCurrent(idx, count, tabs){
+        function setTabsCurrent(idx, count, tabs, panel){
             var el_idx = idx;
             var el_tabs_length = count;
             var el_tabs = tabs;
+            var el_panel = panel;
+
+            //console.log(el_panel[0])
+
 
             //repaint(el_tabs);
 
             for (var k = 0; k < el_tabs_length ; k++){
+
                 el_tabs[k].dataset.selected = "false";
+                el_panel[k].dataset.display = "false";
             }
 
             //move
@@ -211,6 +288,7 @@
             //setting
             console.log(el_idx);
             el_tabs[el_idx].dataset.selected = "true";
+            el_panel[el_idx].dataset.display = "true";
 
             return false;
         }
@@ -220,6 +298,7 @@
 
             var el = id;
             var el_tabs = document.getElementById(el).querySelectorAll(".tabs-item");
+            var el_panel = document.getElementById(el).querySelectorAll(".tabs-panel");
             var el_tabs_length = el_tabs.length;
 
             current = Number(current + 1);
@@ -228,7 +307,7 @@
                 current = 0;
             }
 
-            setTabsCurrent(current, el_tabs_length, el_tabs);
+            setTabsCurrent(current, el_tabs_length, el_tabs, el_panel);
             //alert("next");
         }
 
@@ -237,6 +316,7 @@
             //alert("prev");
             var el = id;
             var el_tabs = document.getElementById(el).querySelectorAll(".tabs-item");
+            var el_panel = document.getElementById(el).querySelectorAll(".tabs-panel");
             var el_tabs_length = el_tabs.length;
 
              current = Number(current - 1);
@@ -245,13 +325,12 @@
                 current = Number( el_tabs_length - 1);
             }
 
-            setTabsCurrent(current, el_tabs_length, el_tabs);
+            setTabsCurrent(current, el_tabs_length, el_tabs, el_panel);
         }
 
-        //reaint
-        function repaint( el ) {
-            el.className = el.className;
-        }
+        //var element = document.getElementById("div3");
+        //addEvent(element, "click", function (e) {alert("clicked!");}, false);
+        //브라우져 체크
     </script>
 
 <!--
