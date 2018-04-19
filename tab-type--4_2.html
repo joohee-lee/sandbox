@@ -133,13 +133,13 @@
         }
 
         //addEventListener attachevent ( IE10 이하 호환 )
-        function addEvent(el, eventName, cb, isCapture) {
+        function addEvent(el, eventName, fn, isCapture) {
             if (window.addEventListener) {
-                el.addEventListener(eventName, cb, isCapture);
-            } else if (window.attachEvent) {
-                el.attachEvent("on" + eventName, cb);
+                el.addEventListener(eventName, fn, isCapture);  // ie 외 브라우져
+            } else if (window.attachEvent) { // ie 10 이하 브라우져
+                el.attachEvent("on" + eventName, fn);
             } else {
-                el["on" + eventName] = cb;
+                el["on" + eventName] = fn;
             }
        }
 
@@ -272,9 +272,6 @@
             var el_panel = panel;
 
             //console.log(el_panel[0])
-
-
-            //repaint(el_tabs);
 
             for (var k = 0; k < el_tabs_length ; k++){
 
