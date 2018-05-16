@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>toggle</title>
+	<style>
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+.none {display:none;}
+
+
+.div-menu{ 
+	float: left;
+	margin-right: 10px;
+}
+	</style>
+
+</head>
+
+<body>
+	
+	<h2>Clickable Dropdown Menu</h2>
+	<p>javascript - ClassLisst </p>
+	<div class="dropdown">
+		<div class="div-menu">
+			<button id="myBtn--0" class="dropbtn" onclick="fc_dropdown('0'); return false;">Dropdown--1</button>
+			<div id="myDropdown--0" class="dropdown-content">
+				<a href="#home">Home</a>
+				<a href="#about">About</a>
+				<a href="#contact">Contact</a>
+			</div>
+		</div>
+
+		<div class="div-menu">
+			<button id="myBtn--1" class="dropbtn" onclick="fc_dropdown('1'); return false;">Dropdown--2</button>
+			<div id="myDropdown--1" class="dropdown-content">
+				<a href="#home">Home</a>
+				<a href="#about">About</a>
+				<a href="#contact">Contact</a>
+			</div>
+		</div>	
+		
+		<div class="div-menu">
+			<button id="myBtn--2" class="dropbtn" onclick="fc_dropdown('2'); return false;">Dropdown--3</button>
+			<div id="myDropdown--2" class="dropdown-content">
+				<a href="#home">Home</a>
+				<a href="#about">About</a>
+				<a href="#contact">Contact</a>
+			</div>
+		</div>	
+	</div>
+
+	<script>
+
+		function fc_dropdown(idx){
+
+			var el_idx = idx;
+			var el_dropdown = document.getElementsByClassName("dropdown-content");
+			var el_dropdown_length = el_dropdown.length;
+
+		
+			for (var k = 0; k < el_dropdown_length ; k++){
+
+                 el_dropdown[k].classList.remove("show");	
+            }
+
+			el_dropdown[el_idx].classList.add("show");
+			
+		}
+	
+		
+	</script>
+</body>
+</html>
