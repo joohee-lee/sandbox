@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body style="position: fixed; height: 100%; overflow: hidden; background: yellow;">
+    <div class="wrap">
+        <div class="header">header</div>
+        <div class="body">
+            <ul>
+                <li> screen-width: <span id="sWidth"></span></li>
+                <li> screen-height: <span id="sHeight"></span></li>
+
+
+                <li>document-Width: <span id="dWidth"></span></li>
+                <li>document-height: <span id="dHeight"></span></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var elWidth = document.getElementById('sWidth');
+        var elHeight = document.getElementById('sHeight');
+
+        var docWidth = document.getElementById('dWidth');
+        var docHeight = document.getElementById('dHeight');
+        
+        
+        var swidth = window.screen.width;
+        var sheight = window.screen.height;
+       
+        var dwidth = document.body.clientWidth;
+        var dhieight = document.body.clientHeight;
+
+        elWidth.innerHTML = swidth;
+        elHeight.innerHTML = sheight;
+
+        docWidth.innerHTML = dwidth;
+        docHeight.innerHTML = dhieight;
+
+       console.log(swidth); 
+       console.log(sheight); 
+
+       
+    </script>
+</body>
+</html>
