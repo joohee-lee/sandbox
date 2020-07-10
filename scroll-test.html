@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,15 +19,18 @@
 <body>
     <div class="wrap">
         <div class="wrap-inner">
+            <a href="javascript: setOpen();" style="position:absolute; right: 40px; top: 0;">open</a>
+            <a href="javascript: setSize();" style="position:absolute; right: 0; top: 0;">close</a>
+            
+            
             <!-- -->
             <div class="a">a</div>
             <div class="b">a</div>
             <div class="c">a</div>
             <div class="d">
-                <a href="javascript: setOpen();" style="position:absolute; right: 0; top: 0;">open</a>
                 <div class="d-1">지도영역</div>
-                <div class="d-2">
-                    <div class="list">
+                <div class="d-2" data-scroll="false">
+                       <div class="list">
                         <ul>
                             <li class="pin-item">
                                 가나다라마바사 <br>
@@ -95,9 +97,14 @@
 
             d.style.height = displayH + "px";
             elDisplay.style.top =  posTop + "px";
+            elDisplay.style.overflow = "hidden";
 
 
         }   
+
+        window.onload = function() {
+            setSize();
+        }
 
         function setOpen() {
             var aH = document.querySelector(".a").clientHeight;
@@ -107,32 +114,41 @@
             var displayH = deviceH - (aH+bH+cH);
 
             console.log(displayH);
-
-            var elDisplay = document.querySelector(".d-2");
             elDisplay.style.height = displayH + "px";
             elDisplay.style.top = "0";
             elDisplay.style.overflow = "auto";
 
         }
 
+      
+
        
 
-        window.onload = function(){
-            setSize();
-   
-        }
+       
 
-        elDisplay.addEventListener('touchstart', function(e){
-            touchobj = e.changedTouches[0] // reference first touch point
-            e.preventDefault() // prevent default click behavior
-        }, false);
-    
-        elDisplay.addEventListener('touchmove', function(e){
-            touchobj = e.changedTouches[0] // reference first touch point for this event
-            setOpen();
-            e.preventDefault()
-        }, false);
-        
+       //touch event 
+        var isStartTop = 0, isClientY = 0, isLastY = 0;
+
+        elDisplay.addEventListener('touchstart', function(event) {
+            isStartTop = elDisplay.scrollTop
+            isClientY = event.touches[0].clientY;
+        });
+
+        elDisplay.addEventListener('touchmove', function(event){
+            isLastY = event.touches[0].clientY;
+        });
+
+        elDisplay.addEventListener('touchend', function(event) {
+            if (isStartTop === 0 && isClientY < isLastY) {
+                setSize();
+            }
+
+            if (elDisplay.getAttribute('data-scroll') == 'false' && isClientY > isLastY ) {
+                setOpen();
+            }
+        });
+
+       
         
 
        
