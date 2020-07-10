@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        body{ overflow: hidden; position: relative;}
+        .a{ height: 50px; background: green;}
+        .b{ height: 130px; background: yellow;}
+        .c{ height: 48px; background: red;}
+
+        .d{ position: relative; background: #ccc; width: 100%;}
+        .d-1{ position: absolute; left: 0; top: 0;}
+        .d-2{ position: absolute; left: 0; background: orange; width: 100%; transition: top .5s;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="wrap-inner">
+            <!-- -->
+            <div class="a">a</div>
+            <div class="b">a</div>
+            <div class="c">a</div>
+            <div class="d">
+                <a href="javascript: setOpen();" style="position:absolute; right: 0; top: 0;">open</a>
+                <div class="d-1">지도영역</div>
+                <div class="d-2">
+                    <div class="list">
+                        <ul>
+                            <li class="pin-item">
+                                가나다라마바사 <br>
+                                가나다라마바사 <br>
+                                가나다라마바사  <br>
+                                가나다라마바사 <br>
+                                가나다라마바사 
+                            </li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var deviceH = window.innerHeight;
+        var d = document.querySelector(".d");
+        var elDisplay = document.querySelector(".d-2");
+            
+        
+
+
+        function setSize(){
+
+            console.log("ddd");
+            var aH = document.querySelector(".a").clientHeight;
+            var bH = document.querySelector(".b").clientHeight;
+            var cH = document.querySelector(".c").clientHeight;
+            var elliH = document.querySelector(".pin-item").clientHeight;
+            
+
+            var displayH = deviceH - (aH+bH+cH);
+            var posTop = displayH - elliH;
+
+            console.log(displayH);
+            console.log(posTop);
+            console.log(elliH);
+
+            d.style.height = displayH + "px";
+            elDisplay.style.top =  posTop + "px";
+
+
+        }   
+
+        function setOpen() {
+            var aH = document.querySelector(".a").clientHeight;
+            var bH = document.querySelector(".b").clientHeight;
+            var cH = document.querySelector(".c").clientHeight;
+            
+            var displayH = deviceH - (aH+bH+cH);
+
+            console.log(displayH);
+
+            var elDisplay = document.querySelector(".d-2");
+            elDisplay.style.height = displayH + "px";
+            elDisplay.style.top = "0";
+            elDisplay.style.overflow = "auto";
+
+        }
+
+       
+
+        window.onload = function(){
+            setSize();
+   
+        }
+
+        elDisplay.addEventListener('touchstart', function(e){
+            touchobj = e.changedTouches[0] // reference first touch point
+            e.preventDefault() // prevent default click behavior
+        }, false);
+    
+        elDisplay.addEventListener('touchmove', function(e){
+            touchobj = e.changedTouches[0] // reference first touch point for this event
+            setOpen();
+            e.preventDefault()
+        }, false);
+        
+        
+
+       
+        
+
+    </script>
+</body>
+</html>
