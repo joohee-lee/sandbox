@@ -13,7 +13,7 @@
 
         .d{ position: relative; background: #ccc; width: 100%;}
         .d-1{ position: absolute; left: 0; top: 0;}
-        .d-2{ position: absolute; left: 0; background: orange; width: 100%; transition: top .5s;}
+        .d-2{ position: absolute; left: 0; background: orange; width: 100%;}
     </style>
 </head>
 <body>
@@ -110,13 +110,18 @@
             var aH = document.querySelector(".a").clientHeight;
             var bH = document.querySelector(".b").clientHeight;
             var cH = document.querySelector(".c").clientHeight;
+            var elliH = document.querySelector(".pin-item").clientHeight;
+            
             
             var displayH = deviceH - (aH+bH+cH);
+            var posTop = displayH - elliH;
 
             console.log(displayH);
+            elDisplay.style.overflow = "auto";
             elDisplay.style.height = displayH + "px";
             elDisplay.style.top = "0";
-            elDisplay.style.overflow = "auto";
+            elDisplay.style.transition = "top .5s";
+            
 
         }
 
@@ -136,6 +141,10 @@
 
         elDisplay.addEventListener('touchmove', function(event){
             isLastY = event.touches[0].clientY;
+
+            if (elDisplay.getAttribute('data-scroll') == 'false' && isClientY > isLastY ) {
+                setOpen();
+            }
         });
 
         elDisplay.addEventListener('touchend', function(event) {
