@@ -188,12 +188,16 @@
                var transY = Math.abs(posTop - isLastY);
 
                console.log("transY:" + transY);
+		    
+	       if (topY === 0) {
+                    return;
+                }	    
 
                elDisplay.style.transform =  "translateY(" + transY + "px)";
 
                 setTimeout(function(){
                     d.style.overflow = "auto";
-				}, 500);
+				}, 200);
 
           
             }
