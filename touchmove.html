@@ -158,7 +158,7 @@
         });
 
         elDisplay.addEventListener('touchmove', function(event){
-            event.preventDefault();
+            //event.preventDefault();
             isLastY = event.touches[0].clientY;
 
             var displayH = deviceH - (aH+bH+cH);
@@ -177,6 +177,8 @@
                elDisplay.style.transform =  "translateY(" + transY + "px)";
                elDisplay.style.overflow = "auto";
                elDisplay.style.height = displayH + "px";
+                
+               return false;
               
             }
         });
