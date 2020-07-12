@@ -180,12 +180,18 @@
             if (elDisplay.getAttribute('data-scroll') == 'false' && isClientY > isLastY ) {
             
                var touches = event.changedTouches;
+		
+	      	    
               
                // console.log(touches[0].screenY)
 
                var transY = Math.abs(posTop - isLastY);
 
                console.log("transY:" + transY);
+		    
+	        if (topY === 0) {
+                    return;
+                }	    
 
                elDisplay.style.transform =  "translateY(" + transY + "px)";
 
