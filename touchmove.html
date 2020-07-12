@@ -158,7 +158,7 @@
         });
 
         elDisplay.addEventListener('touchmove', function(event){
-           // event.preventDefault();
+            event.preventDefault();
             isLastY = event.touches[0].clientY;
 
             var displayH = deviceH - (aH+bH+cH);
