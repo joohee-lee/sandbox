@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        body{ overflow: hidden; position: relative;}
+        .a{ height: 50px; background: green;}
+        .b{ height: 130px; background: yellow;}
+        .c{ height: 48px; background: red;}
+
+        .d{ position: relative; background: #ccc; width: 100%;}
+        .d-1{ position: absolute; left: 0; top: 0;}
+        .d-2{ position: absolute; left: 0; background: orange; width: 100%; overflow: hidden}
+    </style>
+</head>
+<body>
+  <!--  positon top 으로 코딩  -->
+    <div class="wrap">
+        <div class="wrap-inner">
+            <a href="javascript: setOpen();" style="position:absolute; right: 40px; top: 0;">open</a>
+            <a href="javascript: setSize();" style="position:absolute; right: 0; top: 0;">close</a>
+            
+            
+            <!-- -->
+            <div class="a">a</div>
+            <div class="b">a</div>
+            <div class="c">a</div>
+            <div class="d">
+                <div class="d-1">지도영역</div>
+                <div class="d-2" data-scroll="false">
+                       <div class="list">
+                        <ul>
+                            <li class="pin-item">
+                                가나다라마바사 <br>
+                                가나다라마바사 <br>
+                                가나다라마바사  <br>
+                                가나다라마바사 <br>
+                                가나다라마바사 
+                            </li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                            <li  class="item">2</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var deviceH = window.innerHeight;
+        var d = document.querySelector(".d");
+        var elDisplay = document.querySelector(".d-2");
+            
+        var aH = document.querySelector(".a").clientHeight;
+        var bH = document.querySelector(".b").clientHeight;
+        var cH = document.querySelector(".c").clientHeight;
+        var elliH = document.querySelector(".pin-item").clientHeight;
+            
+
+
+        function setSize(){
+
+            console.log("ddd");
+            
+
+            var displayH = deviceH - (aH+bH+cH);
+            var posTop = displayH - elliH;
+
+            console.log(displayH);
+            console.log(posTop);
+            console.log(elliH);
+
+            d.style.height = displayH + "px";
+            elDisplay.style.top =  posTop + "px";
+            elDisplay.style.overflow = "hidden";
+            elDisplay.style.transition = "top .5s";
+
+
+        }   
+
+        window.onload = function() {
+            setSize();
+        }
+
+        function setOpen() {
+            /*
+            var aH = document.querySelector(".a").clientHeight;
+            var bH = document.querySelector(".b").clientHeight;
+            var cH = document.querySelector(".c").clientHeight;
+            var elliH = document.querySelector(".pin-item").clientHeight;
+            */
+            
+            var displayH = deviceH - (aH+bH+cH);
+            var posTop = displayH - elliH;
+
+            console.log(displayH);
+            elDisplay.style.overflow = "auto";
+            elDisplay.style.height = displayH + "px";
+            elDisplay.style.top = "0";
+            elDisplay.style.transition = "top .5s";
+            
+
+        }
+
+
+       //touch event 
+        var isStartTop = 0, isClientY = 0, isLastY = 0;
+
+        elDisplay.addEventListener('touchstart', function(event) {
+            isStartTop = elDisplay.scrollTop
+            isClientY = event.touches[0].clientY;
+        });
+
+        elDisplay.addEventListener('touchmove', function(event){
+            console.log("move");
+
+            isLastY = event.touches[0].clientY;
+            var displayH = deviceH - (aH+bH+cH);
+            var posTop = displayH - elliH;
+            
+           
+
+            if (elDisplay.getAttribute('data-scroll') == 'false' && isClientY > isLastY ) {
+            
+                var touches = event.changedTouches;
+            
+                // console.log(touches[0].screenY)
+
+                var topY = Math.abs(posTop - isLastY);
+                if (topY === 0) {
+                    return;
+                }
+                elDisplay.style.top=  topY + "px";
+                return false;
+
+            }
+
+            if (isStartTop === 0 && isClientY < isLastY) {
+
+                var topY = Math.abs(isLastY-posTop);
+                console.log(topY);
+                elDisplay.style.top=  topY + "px";
+            }
+     
+        });
+
+        elDisplay.addEventListener('touchend', function(event) {
+         
+            if (isStartTop === 0 && isClientY < isLastY) {
+                setSize();
+            }
+
+            if (elDisplay.getAttribute('data-scroll') == 'false' && isClientY > isLastY ) {
+                setOpen();          
+            }
+           
+        });
+
+       
+        
+
+       
+        
+
+    </script>
+</body>
+</html>
