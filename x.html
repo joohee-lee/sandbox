@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, address=no, email=no" />
+    <link rel="shortcut icon" href="/img/common/favicon.ico" />
+    <link rel="shortcut icon" href="/img/common/favicon.png" />
+    <link rel="apple-touch-icon" href="/img/common/favicon.png" />
+    <meta name="description" content="페이지설명" />
+    <meta name="keywords" content="서비스키워드" />
+    <meta property="og:title" content="SKT 홈페이지" />
+    <meta property="og:site_name" content="SKT" />
+    <meta property="og:image" content="/image/common/skt_facebook.jpg" />
+    <meta property="og:description" content="SKT framework" />
+    <title>SKT</title>
+    <link rel="stylesheet" type="text/css" href="/css/common.css" media="all" /><!-- [C] 공통 스타일 -->
+    <link rel="stylesheet" type="text/css" href="/css/layout.css" media="all" /><!-- [C] 박스 모델 -->
+    <link rel="stylesheet" type="text/css" href="/css/widgets.css" media="all" /><!-- [C] 기능별 위젯 -->
+    <link rel="stylesheet" type="text/css" href="/css/components.css" media="all" /><!-- [C] 단락별 컴퍼넌트 -->
+    <script type="text/javascript" src="/lib/jquery-1.12.3.min.js"></script><!--[C] jquery API-->
+    <script type="text/javascript" src="/lib/handlebars-v4.0.5.js"></script><!--[C] handlebars tmpl API-->
+    <script type="text/javascript" src="/lib/slick.js"></script><!--[C] iscroll API -->
+    <script type="text/javascript" src="/js/$vars.js"></script><!--[C] 전역 변수 -->
+    <script type="text/javascript" src="/js/common.js"></script><!--[C] 공통 기능 -->
+    <script type="text/javascript" src="/js/widgets.js"></script><!--[C] 기능별 위젯 -->
+    <style>
+       .rolling-wrap{
+            border: 1px solid #ddd;
+            border-radius: 10px;
+           /*  max-width: 360px; */ 
+            margin: 0 10px;
+        }
+
+        .rolling-wrap .inner{
+            padding: 10px 20px;
+        }
+
+        .ul-rolllig{
+            width: 100%;
+            height: 34px;
+            overflow: hidden;
+        }
+
+        .ul-rolllig > li{
+            height: 34px;
+        }
+
+        .ul-rolllig .item{
+            width: 100%;
+            text-align: left;
+        }
+
+        .btn-close{ background: #ccc; width: 40px; height: 40px; border-radius: 50%;}
+
+
+
+        .tod-combot-ctype-wrap{
+            /*
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+            */
+            position: fixed;
+            left: 0;
+            bottom: -100px;
+            transition : all .2s;
+            width: 100%;
+        }
+        .tod-combot-ctype-wrap .ico-chatbot {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            margin-right: 0.875rem;
+        }
+
+        .tod-combot-ctype-wrap .ico-chatbot.initial{background:url('/img/common/chatbot/ico-ai.png') no-repeat 0 0; background-size: 100% 100%;}
+        .tod-combot-ctype-wrap .ico-chatbot.pay_mthd,
+        .tod-combot-ctype-wrap .ico-chatbot.micro_pay{background:url('/img/common/chatbot/ico-pay.png') no-repeat 0 0; background-size: 100% 100%;}
+        .tod-combot-ctype-wrap .ico-chatbot.data_gift{background:url('/img/common/chatbot/ico-data.png') no-repeat 0 0; background-size: 100% 100%;}
+        .tod-combot-ctype-wrap .ico-chatbot.refill_coupon{background:url('/img/common/chatbot/ico-coupon.png') no-repeat 0 0; background-size: 100% 100%;}
+        .tod-combot-ctype-wrap .ico-chatbot.unpaid_amt{background:url('/img/common/chatbot/ico-unpaid-charge.png') no-repeat 0 0; background-size: 100% 100%;}
+        .tod-combot-ctype-wrap .ico-chatbot.hotbill{background:url('/img/common/chatbot/ico-live-charge.png') no-repeat 0 0; background-size: 100% 100%;}
+        .tod-combot-ctype-wrap .ico-chatbot.pay_bill{background:url('/img/common/chatbot/ico-thismonth-charge.png') no-repeat 0 0;background-size: 100% 100%;}
+        .tod-combot-ctype-wrap .ico-chatbot.membership_benefit{background:url('/img/common/chatbot/ico-membership.png') no-repeat 0 0;background-size: 100% 100%;}
+        .tod-combot-ctype-wrap .ico-chatbot.hotdata{ background:url('/img/common/chatbot/ico-dataused.png') no-repeat 0 0; background-size: 100% 100%;}
+        /* //201012 [OP002-10741] 추가 : keyword(발화어) - class naming change */
+
+
+        .tod-combot-ctype-wrap.slideUp{
+            /* -webkit-transform: translateY(0%);
+            transform: translateY(0%); */
+            bottom: 40px;
+        }
+
+        .tod-combot-ctype-wrap .close-wrap{
+            position: absolute;
+            right: -100px;
+            bottom: 10px;
+            transition : all .2s;
+            transition-delay: .2s;
+        }
+
+        .tod-combot-ctype-wrap.moveLeft{
+            left: -60px;
+        }
+        .tod-combot-ctype-wrap.moveLeft .close-wrap{
+            right: -50px;
+        }
+
+        .item{ position: relative;}
+
+    </style>
+</head>
+<!--
+    1. 아래서 위로  진입경로 컴봇  노출 
+    2. 컴봇 발화어  롤링 (1-3위 롤링)
+    3. 컴봇 좌측으로  tocuch  이벤트 발생시
+        - 텍스트 롤링 멈춤.
+        - 닫기 버튼 
+-->
+<body class="" style="background: #fff; ">
+    <div class="tod-combot-ctype-wrap">
+       
+        <!-- rolling -->
+        <div class="rolling-wrap">
+            <div class="inner">
+                <ul class="ul-rolllig js-rolling">
+                    <li>
+                        <a class="item" href="http://naver.com"><span class="ico-chatbot initial"><em class="tod-blind">Ai</em></span><span class="txt">챗봇으로 빠른 상담하기</span></a>
+                    </li>
+                    <li>
+                        <button class="item"><span class="ico-chatbot hotbill"><em class="tod-blind">실시간 요금</em></span><span class="txt">실시간 이용 요금 알려줘</span></button>
+                    </li>
+                    <li>
+                        <button class="item"><span class="ico-chatbot pay_bill"><em class="tod-blind">이번달 요금</em></span><span class="txt">이번 달 요금 얼마 나왔어</span></button>
+                    </li>
+                    <li>
+                        <button class="item"><span class="ico-chatbot hotdata"><em class="tod-blind">실시간 잔여량</em></span><span class="txt">실시간 잔여량 알려줘</span></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- x 버튼 -->
+        <div class="close-wrap">
+            <button class="btn-close">X</button>
+        </div>
+    
+    </div>
+
+    <script>
+        /* http://jooe.kr/jooui/rolling/ui_rangking.html */
+        
+        $(document).ready(function () {
+
+            var timer, rollingTimer, 
+            isStartX = 0,
+            isLastX = 0;
+
+            // 3초후 슬라이드 업
+            timer = setTimeout(function() {
+                $(".tod-combot-ctype-wrap").addClass("slideUp");
+            }, 3000);
+
+            
+            //발화어 롤링 
+            function rolling(){
+                $(".js-rolling li:first").slideUp(
+                    function() { 
+                        $(this).appendTo(".js-rolling").slideDown();
+                    }
+                );
+            }
+        
+            rollingTimer = setTimeout( function() { 
+                    setInterval(function(){ rolling()}, 2000);
+                }, 3000);
+
+            //touch evnet 발생시 
+            //touch event
+            $(".tod-combot-ctype-wrap").on('touchstart', function(e) {
+                e.preventDefault();
+                isStartX = e.originalEvent.touches[0].clientX;
+                console.log("start : " + isStartX);
+                
+            });
+
+            $(".tod-combot-ctype-wrap").on('touchmove', function(e) {
+                e.preventDefault();
+                isLastX = e.originalEvent.touches[0].clientX;
+                console.log("last : " + isLastX);
+            });
+
+            $(".tod-combot-ctype-wrap").on('touchend', function(e) {
+					e.preventDefault();
+					
+					if ( isStartX - isLastX > 0) {
+                        clearInterval(rollingTimer); // 롤링멈춤
+                        $(this).addClass("moveLeft");
+         			} else{
+                        alert("+++");
+                    }
+			});
+            //close 
+
+        });        
+    </script>
+
+</body>
+</html>
