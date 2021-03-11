@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>js-row-scroll</title>
+	<style>
+		* {
+      margin: 0;
+			padding: 0;
+		}
+
+  body{
+     overflow: hidden;
+    }
+
+    .container {
+      background-color: yellow;
+      width: 1000vw;
+      height: 100vh;
+    }
+
+    .flex{
+      display: flex;
+    }
+    .item{
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .item:nth-child(1){background: #ccc;}
+    .item:nth-child(2){background: #d3d3d3;}
+    .item:nth-child(3){background: #333;}
+    .item:nth-child(4){background:#444;}
+    .item:nth-child(5){background: #yellow;}
+    .item:nth-child(6){background: #666;}
+    .item:nth-child(7){background: #777}
+    .item:nth-child(8){background: #888;}
+    .item:nth-child(9){background:#c1c1c1;}
+    .item:nth-child(10){background: #000;}
+    
+	</style>
+</head>
+<body>
+	<div class="container flex">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div>
+  </div>
+  <script>
+    const container = document.querySelector('.container');
+    let posX = 0;
+    let maxWindow = -(container.clientWidth - window.innerWidth + 300);
+
+    console.log(container);
+    
+    window.addEventListener('wheel', function (e) {
+      console.log(e.deltaY);
+      posX -= e.deltaY;
+
+      if (posX > 0) posX = 0;
+      if (posX < maxWindow) posX = maxWindow;
+      container.style.transform = `translateX(${posX}px)`;
+    });
+  </script>
+</body>
+</html>
