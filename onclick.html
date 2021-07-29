@@ -249,12 +249,12 @@
             let tablink;
 
 
-            tabpanel = document.querySelector("tab-panel");
+            tabpanel = document.querySelectorAll(".tab-panel");
             for (i = 0; i < tabpanel.length; i++) {
                 tabpanel[i].style.display = "none";
             }
 
-            tablink = document.querySelector("tab-link");
+            tablink = document.querySelectorAll(".tab-link");
             for (i = 0; i < tablink.length; i++) {
                 tablink[i].className = tablink[i].className.replace(" on", "");
             }
