@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <!-- main -->
+      <!-- <link rel="stylesheet" href="../css/main.css"> -->
+
+     
+    <style>
+.pf-tab-wrapper .tab-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pf-tab-wrapper .tab-list .tab-item {
+  margin-right: 30px;
+}
+
+.pf-tab-wrapper .tab-list .tab-link {
+  display: block;
+  padding-bottom: 15px;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  color: #8a949b;
+}
+
+.pf-tab-wrapper .tab-list .tab-link > span {
+  margin-left: 10px;
+}
+
+.pf-tab-wrapper .tab-list .tab-link.on {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  color: #424952;
+  border-bottom: 4px solid #424952;
+}
+
+.pf-tab-wrapper .tab-panel {
+  display: none;
+}
+
+.pf-tab-wrapper .tab-idea {
+  background: #ddd;
+  display: block;
+}
+
+.pf-tab-wrapper .tab-message {
+  background: yellow;
+}
+
+.pf-tab-wrapper .tab-users {
+  background: green;
+}
+
+.pf-tab-wrapper .message-list {
+  width: 100%;
+  border: 1px solid #ddd;
+  background: #fff;
+  -webkit-box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08);
+          box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}
+
+.pf-tab-wrapper .message-list .card-message {
+  border-top: 1px solid #ddd;
+}
+
+.pf-tab-wrapper .message-list .card-message:first-child {
+  border-top: 0;
+}
+
+.pf-tab-wrapper .card-message {
+  position: relative;
+  padding: 25px 20px;
+  line-height: 1;
+}
+
+.pf-tab-wrapper .card-message > p {
+  padding-top: 15px;
+}
+
+.pf-tab-wrapper .card-message > p:first-child {
+  padding-top: 0;
+}
+
+.pf-tab-wrapper .card-message .btn-del {
+  position: absolute;
+  right: 25px;
+  top: 30px;
+}
+
+.pf-tab-wrapper .card-message:hover {
+  background-color: #ddd;
+}
+
+.pf-tab-wrapper .select-sort {
+  width: 100%;
+  text-align: right;
+}
+
+.pf-tab-wrapper .select-sort .btn-sort {
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 28px;
+}
+
+.pf-tab-wrapper .select-sort .on {
+  font-weight: bold;
+}
+
+.pf-tab-wrapper .select-sort .on:before {
+  content: '';
+  display: inline-block;
+}
+
+.alam-round {
+  display: inline-block;
+  border: 5px solid transparent;
+  border-radius: 20px;
+  padding: 0 3px;
+  background-color: #ed568f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  min-width: 14px;
+  vertical-align: top;
+  margin-top: 2px;
+}
+
+.btn-list-more {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px 30px;
+  background: #ffffff;
+  -webkit-box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08);
+          box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+  .tab-list-scroll .tab-list {
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+     -ms-user-select: none;
+         user-select: none;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.tab-panel {
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+    </style>
+</head>
+<body>
+    <section style="margin:40px;">
+       
+        <div class="pf-tab-wrapper">
+            <div class="tab-list-scroll">
+                <ul class="tab-list">
+                    <li class="tab-item"><button class="tab-link on" type="button"  onclick="setTab(this, 'tab-1');">AAAAA<span class="num">200</span></button></li>
+                    <li class="tab-item"><button class="tab-link" type="button" onclick="setTab(this, 'tab-2');">BBB<span class="alam-round">7</span></button></li>
+                    <li class="tab-item"><button class="tab-link" type="button" onclick="setTab(this, 'tab-3');">CCCC 사용자<span class="num">200</span></button></li>
+                </ul>
+             </div>
+
+            <section id="tab-1" class="tab-idea tab-panel"> 
+                <!-- sort -->
+                <!-- <div class="select-sort">
+                    <a onclick='setTab(this, "tab-1");' role="button" class="btn-sort on" >최신순</a>
+                    <a onclick='setTab(this, "tab-2");' role="button" class="btn-sort">베스트순</a>
+                    <a onclick='setTab(this, "tab-3");' role="button" class="btn-sort">의견순</a>
+                    <a onclick='setTab(this, "tab-4");' role="button" class="btn-sort">찬성순</a>
+                </div>
+                -->
+
+                <div class="card-list">
+                   
+                </div>
+                <br>
+                <!-- 더보기 -->
+                <div class="action-more-wrap">
+                    <button class="btn-list-more">더보기</button>
+                </div>
+            </section>
+
+
+            <br>
+            <section id="tab-2" class="tab-message tab-panel">
+                <div class="message-list">
+                    <div class="card-message">
+                        <p class="tit"><i class="icon "></i><i class="icon "></i>레벨이 상승하였습니다.</p>
+                        <p class="desc">레벨이 상승하였습니다.</p>
+                        <p class="date">2121-07-08 12:34</p>
+                        <button class="btn-del"><i>x</i></button>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="tab-3" class="tab-users tab-panel">
+                관심사용자.
+            </section>
+        </div>
+    </section>
+
+    <script>
+       /* function setTab(el, tabName) {
+            
+            let i, tabpanel, tablink;
+            alert(el.currentTarget);
+            tabpanel = document.getElementsByClassName("tab-panel");
+            for (i = 0; i < tabpanel.length; i++) {
+                tabpanel[i].style.display = "none";
+            }
+            tablink = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablink.length; i++) {
+                tablink[i].className = tablink[i].className.replace(" on", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            el.currentTarget.className += " on";
+        }
+        */
+
+        function setTab(el, tabName) {
+            let i;
+            let tabpanel;
+            let tablink;
+
+
+            tabpanel = document.querySelector("tab-panel");
+            for (i = 0; i < tabpanel.length; i++) {
+                tabpanel[i].style.display = "none";
+            }
+
+            tablink = document.querySelector("tab-link");
+            for (i = 0; i < tablink.length; i++) {
+                tablink[i].className = tablink[i].className.replace(" on", "");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            el.className += " on";
+        }
+    </script>
