@@ -69,5 +69,15 @@ button {
 </head>
 <body>
     <button type='button' class="btn-add"> <i class="heart"></i> 좋아요</button>
+    
+     <script>
+        var eleBtn = document.querySelector(".btn-add");
+
+        function add (){
+            eleBtn.classList.toggle("on");
+        }
+
+        eleBtn.addEventListener("click", add, false);
+    </script>
 </body>
 </html>
