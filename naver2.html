@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap {
+            width: 100%;
+            background: #ccc;
+            
+        }
+
+        .wrap > .inner {
+            max-width: 1130px;
+            margin: 0 auto;
+        }
+
+        .header {
+            width: 100%;
+            height: 70px;
+            background: yellow;
+        }
+
+
+
+        .content {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding-top: 10px;
+        }
+        .column-left {
+            float: left; 
+            width: calc( 100% - 370px);
+            margin-right: 20px;
+            background: red;
+        }
+        .column-right {
+            float: right; 
+            width: 350px;
+            background: green;
+        }
+
+        .box {
+            height: 300px;
+            margin: 10px;
+            border: 1px dotted #ddd;
+            background-color: #fff;
+        }
+
+        .footer {
+            height: 100px;
+            background: #fff;
+            margin-top: 20px;
+        }
+
+        .column_fixed {
+            position: relative;
+            width: 350px;
+            background-color: red;
+        }
+
+        .column-right.is_stop .column_fixed{
+            position: absolute;
+            top: auto;
+            bottom: 0; 
+        }
+
+        .column-right.is_bfixed .column_fixed {
+            position: fixed;
+            top: auto;
+            bottom: 128px;
+            -webkit-transition: bottom .3s cubic-bezier(.215,.61,.355,1);
+            transition: bottom .3s cubic-bezier(.215,.61,.355,1);
+        }
+
+        .column-right.is_tfixed .column_fixed {
+            position: fixed;
+            top: 20px;
+            bottom: auto;
+        }
+
+        .column-right.is_absolute .column_fixed { 
+
+        } /* inline style */
+
+        .header-content {
+            height: 662px;
+            background: #ddd;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="wrap">  
+        <div class="inner">
+            <div class="header">
+                헤더영역 
+            </div>
+            <div class="header-content">   
+                상단 컨텐츠 
+            </div>
+            <div class="content">
+                <div class="column-left">
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                    <div class="box">  box1   </div>
+                </div>
+                <div id="column-right" class="column-right">
+                    <div class="inner column_fixed">
+                        <div class="box">  box1   </div>
+                        <div class="box">  box1   </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="footer">
+                footer footer test
+            </div>
+        </div> 
+    </div>
+</body>
+
+<script>
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+
+        console.log ("scroll");
+
+         var el = document.getElementById("column-right");
+         var elHeight = el.clientHeight;
+         var elBottom = el.getBoundingClientRect().bottom;
+         var elTop = el.getBoundingClientRect().top;
+         console.log (
+            "bottom: " + el.getBoundingClientRect().bottom
+         )
+
+         console.log (
+            "top: " + el.getBoundingClientRect().top
+         )
+
+
+
+        if (  elTop <= 0){
+            document.getElementById("column-right").classList.add("is_tfixed");
+        } else {
+            //document.getElementById("colum-right").classList.add("is_stop");
+            document.getElementById("column-right").classList.remove("is_tfixed");
+        }
+    }
+</script>
+</html>
