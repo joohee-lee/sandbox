@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .text{
+            display: block;
+            height: 50px;
+            width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            background-color: aqua;
+            padding: 20px;
+        }
+
+        .inner {
+            width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            background-color: red
+
+        }
+
+        .inner:before {
+            content: '...';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+        }
+
+        .inner:after {
+           
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;  /* 배경색과 동일하게 적용 */
+
+        }
+
+        button, .btn {
+           
+            display: inline-flex;
+           /* display: contents; */
+
+            border: 1px solid #ddd;
+            border-radius: 3px ;
+            padding: 3px;
+            background-color: #fff;
+        }
+
+        .mulit-line-ellipsis {
+  width: calc(200px - 1em);
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  max-height: 1.6em;
+  margin-right: -1em;
+  padding-right: 1em;
+}
+
+.mulit-line-ellipsis:before {
+  content: '...';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mulit-line-ellipsis:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+}
+
+    </style>
+</head>
+<body>
+    <div class="text">
+        <div class="inner">
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            dfddfd
+        </div>
+    </div>
+
+    <div class="text">
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+    </div>
+
+    <div class="text">
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+        <span class="btn">test</span>
+    </div>
+
+    <div class="text">
+        testsetetstsetststeststessets testsetetstsetststeststessets testsetetstsetststeststessets
+    </div>
+
+    <div class="mulit-line-ellipsis">
+        <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+            <button>test</button>
+    </div>
+</body>
+</html>
