@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        ul, li { list-style: none;}
+
+        .sdm-step-container {
+            margin: 0 40px;
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        .sdm-step-container ul {
+            display: block;
+            font-size: 0;
+        }
+
+        .sdm-step-container  li {
+            width: 25%;
+            display: inline-block;
+            font-size: 12px;
+        }
+
+        .sdm-step-container:after{
+            position: absolute;
+            bottom: 0;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background-color: #ddd;
+        }
+
+        .sdm-step-container.step1 ul:after,
+        .sdm-step-container.step2 ul:after,
+        .sdm-step-container.step3 ul:after,
+        .sdm-step-container.step4 ul:after{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            content: '';
+            display: block;
+            height: 10px;
+            border-radius: 5px;
+            background: linear-gradient(to right, blue, pink);
+            z-index: 2;
+            /*background-color: blue; */
+           /* transition: all .8s ease-in-out; */
+          /*  transition-delay: .3s; */
+        }
+
+   
+        .sdm-step-container.step1 ul:after{
+           animation: stack1 .5s 1;
+           animation-fill-mode:both
+           
+        }
+
+        .sdm-step-container.step2 ul:after{
+            animation: stack2 .5s 1;
+            animation-fill-mode:both
+        }
+        .sdm-step-container.step3 ul:after{
+            animation: stack3 .5s 1;
+            animation-fill-mode:both
+        }
+
+        .sdm-step-container.step4 ul:after{
+            animation: stack4 .5s 1;
+            animation-fill-mode:both
+      
+        }
+
+        .sdm-step-container .txt:after {
+            z-index: 3;
+            position: absolute;
+            bottom: -5px;
+            content: '';
+            display: block;
+            border-radius: 10px;
+            width: 20px;
+            height: 20px;
+            background: green;
+
+        }
+
+        .sdm-step-container.step1 .txt::after {
+            left: 0;
+        }
+
+        .sdm-step-container.step2 .txt::after {
+            left: 25%;
+        }
+
+        .sdm-step-container.step3 .txt::after {
+            left: 50%;
+        }
+
+        .sdm-step-container.step4 .txt::after {
+            left: 75%;
+        }
+
+        @keyframes stack1 {
+            0% { width: 0;}
+           100% { width: 25%; }
+        }
+
+        @keyframes stack2 {
+            0% { width: 0;}
+           100% { width: 50%; }
+        }
+
+        @keyframes stack3 {
+            0% { width: 0;}
+           100% { width: 75%; }
+        }
+
+        @keyframes stack4 {
+            0% { width: 0;}
+           100% { width: 100%; }
+        }
+
+        
+
+    </style>
+</head>
+<body>
+
+    <div id="ele" class="sdm-step-container step1">
+        <ul>
+            <li>
+                <div class="txt">1</div>
+            </li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+    <script>
+        const ele = document.querySelector("#ele");
+        const step = ele.dataset.case;
+        console.log(ele.dataset.case);
+
+        // if (step === "step1") {
+        //     setTimeout(() => ele.classList.add("step1"), 1000);
+        // } else if (step === "step2") {
+        //     setTimeout(() => ele.classList.add("step2"), 500);
+        // } else if (step === "step3") {
+        //     setTimeout(() => ele.classList.add("step3"), 500);
+        // } else {
+        //     setTimeout(() => ele.classList.add("step4"), 1000);
+        // }
+
+        //ele.data-case step1이ㄹ 경우 
+        //setTimeout(() => alert('안녕하세요.'), 1000);
+
+    </script>
+    
+</body>
+</html>
