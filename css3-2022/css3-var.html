@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>var</title>
+    <style>
+        :root {
+            --main-bg-color: #000;
+            --content-bg-color: #ddd;
+            --font-size-16: 16px;
+            --font-size-17: 17px;
+            --font-size-18: 18px;
+            --font-size-20: 20px;
+        }
+
+        .one {
+            color: #fff;
+            background-color: var(--main-bg-color);
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            font-size : var(--font-size-20);
+        }
+        
+        .two {
+            color: #fff;
+            background-color: var(--content-bg-color);
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            font-size : var(--font-size-16);
+        }
+    </style>
+</head>
+<body>
+    <!--
+        :root {
+            --var-name: value;
+        }
+
+        root{}
+        커스텀 속성을 전역으로 사용하고자 할 때, :root {} 에 커스텀 속성을 정의합니다.
+        커스텀 속성은 CSS 변수처럼 [속성]: [값]; 의 구문을 따르기 때문에 반드시 범위(중괄호) 내에 정의되어야 합니다
+
+        –var-name
+        커스텀 속성의 이름입니다. 이름은 —(이중 하이픈)로 시작하며, 속성 이름은 작성자가 정의합니다.
+        CSS 커스텀 속성은 CSS 변수처럼 보이고 작동하며, 보통은 속성 이름에 작동 방식을 반영합니다.
+        그리고 다른 CSS 속성들과는 달리 CSS 커스텀 속성은 대소문자를 구분합니다.
+
+
+        value
+        커스텀 속성의 값입니다. 값에는 모든 CSS 값이 들어갈 수 있습니다.(색상, 문자열, 레이아웃값, 표현식 등)
+
+
+        :root {
+        --main-color: #f00;
+        --main-bg: #0f0;
+        --border-color: #ff0;
+        --header-height: 70px;
+        --content-padding: 10px 20px;
+        --base-line-height: 1.5;
+        --transition-duration: 0.5s;
+        --external-link: "external link";
+        --margin-top: calc(2vh + 20px);
+        /* 유효 커스텀 속성은 후에 JavaScript에서 재사용될 수 있다. */
+        --foo: if(x > 5) this.width = 10;
+        
+    }
+
+
+     CSS 커스텀 속성 사용
+        .foo {
+            color: var(--var-name);
+            }
+
+    -->
+    <div class="one">
+        TEST
+        TEST
+        TEST
+    </div>
+    <div class="two">
+        TEST
+        TEST
+        TEST
+    </div>
+</body>
+</html>
