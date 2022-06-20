@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css3-2022-has</title>
+    <style>
+        * { 
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+        }
+
+        /*
+            chrome 10.5 ~
+            ios 15.4 ~
+            android x 
+            ie edge x
+        */
+        section:has(h1) {
+            background-color: aquamarine;
+        }
+        section:has(h2) img {
+            border: 5px solid blue;
+        }
+
+        section:has(img) {
+            border: 5px solid blue;
+        }
+
+        section:has(img[alt]) {
+            border: 5px solid red;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Lorem ipsum dolor sit amet</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <img src='https://images.unsplash.com/photo-1638417568431-d518a9b7c11e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDY0MzIxNg&ixlib=rb-1.2.1&q=80&w=400' alt="">
+    </section>
+    <section>
+        <h2>Lorem ipsum dolor sit amet</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <a href="/">Duis aute</a> irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <img src='https://images.unsplash.com/photo-1638417568431-d518a9b7c11e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDY0MzIxNg&ixlib=rb-1.2.1&q=80&w=400'>
+    </section>
+</body>
+</html>
