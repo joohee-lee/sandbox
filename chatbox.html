@@ -10,6 +10,41 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 Author: Eric Bidelman (@ebidel)
+
+https://runebook.dev/ko/docs/css/overscroll-behavior
+
+overscroll-behavior 스크롤 영역의 경계에 도달 할 때 브라우저가 무엇 CSS 속성을 설정합니다. 
+overscroll-behavior-x 및 overscroll-behavior-y 의 약어입니다 .
+
+
+ * 키워드 값 * /
+overscroll-behavior: auto; /* 기본 */
+overscroll-behavior: contain;
+overscroll-behavior: none;
+
+/ * 두 값 * /
+overscroll-behavior: auto contain;
+
+/ * 글로벌 값 * /
+overscroll-behavior: inherit;
+overscroll-behavior: initial;
+overscroll-behavior: revert;
+overscroll-behavior: revert-layer;
+overscroll-behavior: unset;
+
+
+
+auto
+기본 스크롤 오버플로 동작은 정상적으로 발생합니다.
+
+contain
+기본 스크롤 오버플로 동작은이 값이 설정된 요소 내에서 관찰되지만 (예 : "바운스"효과 또는 새로 고침) 인접 스크롤 영역에는 스크롤 체인이 발생하지 않습니다 (예 : 기본 요소가 스크롤되지 않음).
+
+none
+인접 스크롤 영역에는 스크롤 체인이 발생하지 않으며 기본 스크롤 오버플로 동작이 방지됩니다.
+
+
+
 -->
 <!DOCTYPE html>
 <html lang="en">
