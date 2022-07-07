@@ -12,33 +12,37 @@
             padding: 0;
         }
         html,
-        body {
-        position: fixed;
-        overflow: hidden;
+        body { 
+            background: greenyellow;
         }
 
+        body > .headerwrapper {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #ddd;
+        }
         body > .mainwrapper {
-            background-color: #ccc;
-            width: 100vw;
-            height: 100vh;
-            overflow-y: scroll;
-            -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
+            padding-top: 60px;
         }
     </style>
 </head>
 <body>
     <!--
-        .mainwrapper IOS 15 // scroll 작동하지 않음 
+       
     -->
+    <div class="headerwrapper">헤더</div>
     <div class="mainwrapper">
         <div>내용 1 </div>
-        <div>내용 1 </div>
-        <div>내용 1 </div>
-        <div>내용 1 </div>
-        <div>내용 1 </div>
-        <div>내용 1 </div>
-        <div>내용 1 </div>
-        <div>내용 1 </div>
+        <div>내용 2 </div>
+        <div>내용 3 </div>
+        <div>내용 4 </div>
+        <div>내용 5 </div>
+        <div>내용 6 </div>
+        <div>내용 7 </div>
+        <div>내용 8 </div>
         <div>내용 1 </div>
         <div>내용 1 </div>
         <div>내용 1 </div>
