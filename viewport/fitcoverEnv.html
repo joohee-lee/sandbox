@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Document</title>
+    <style>
+        *{ margin: 0; padding: 0; box-sizing: border-box;}
+        body {
+            font-size: 14px;
+            line-height: 1.4;
+            color: #000;
+        }
+        .wrap { width: 100%; }
+        .header { color:#fff; background: #333; height: 100px; line-height: 100px; text-align: center; font-size: 20px;}
+        .main { background: #ddd;padding: 20px; }
+        .footer { background: yellow; padding: 20px; height: 100px; line-height: 100px;}
+
+        img {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        /* 아이폰 safe-area-inset 적용 */
+
+        .header,
+        .main,
+        .footer {
+            padding:
+            env(safe-area-inset-top, 20px)
+            env(safe-area-inset-right, 20px)
+            env(safe-area-inset-bottom, 20px)
+            env(safe-area-inset-left, 20px);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 아이폰 safe-area-inset 적용과 meta tag viewport 설정 -->
+    <div class="wrap">
+        <div class="header">Header</div>
+        <div class="main">
+            <div class="const">
+<img src="a.png" >
+Watch the emotional farewell to the Queen
+
+Watch the emotional farewell to the Queen
+Close
+Queen Elizabeth II has been laid to rest following a private burial ceremony at St George's Chapel in Windsor.
+Thousands of people turned out to watch the monarch's funeral in Westminster Abbey in London. Huge crowds then lined the route as her coffin was taken on a gun carriage through London and then by hearse to Windsor.
+The Queen was buried alongside her late husband, the Duke of Edinburgh, and her father, mother and sister.
+
+Watch the emotional farewell to the Queen
+Close
+Queen Elizabeth II has been laid to rest following a private burial ceremony at St George's Chapel in Windsor.
+Thousands of people turned out to watch the monarch's funeral in Westminster Abbey in London. Huge crowds then lined the route as her coffin was taken on a gun carriage through London and then by hearse to Windsor.
+The Queen was buried alongside her late husband, the Duke of Edinburgh, and her father, mother and sister.
+
+
+Watch the emotional farewell to the Queen
+Close
+Queen Elizabeth II has been laid to rest following a private burial ceremony at St George's Chapel in Windsor.
+Thousands of people turned out to watch the monarch's funeral in Westminster Abbey in London. Huge crowds then lined the route as her coffin was taken on a gun carriage through London and then by hearse to Windsor.
+The Queen was buried alongside her late husband, the Duke of Edinburgh, and her father, mother and sister.
+
+Watch the emotional farewell to the Queen
+Close
+Queen Elizabeth II has been laid to rest following a private burial ceremony at St George's Chapel in Windsor.
+Thousands of people turned out to watch the monarch's funeral in Westminster Abbey in London. Huge crowds then lined the route as her coffin was taken on a gun carriage through London and then by hearse to Windsor.
+The Queen was buried alongside her late husband, the Duke of Edinburgh, and her father, mother and sister.
+
+
+            </div>
+        </div>
+        <div class="footer">footer</div>
+    </div>
+    
+</body>
+</html>
