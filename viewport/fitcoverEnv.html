@@ -11,6 +11,12 @@
             font-size: 14px;
             line-height: 1.4;
             color: #000;
+
+            padding:
+            env(safe-area-inset-top, 20px)
+            env(safe-area-inset-right, 20px)
+            env(safe-area-inset-bottom, 20px)
+            env(safe-area-inset-left, 20px);
         }
         .wrap { width: 100%; }
         .header { color:#fff; background: #333; height: 100px; line-height: 100px; text-align: center; font-size: 20px;}
@@ -23,7 +29,7 @@
         }
 
         /* 아이폰 safe-area-inset 적용 */
-
+/* 
         .header,
         .main,
         .footer {
@@ -32,7 +38,7 @@
             env(safe-area-inset-right, 20px)
             env(safe-area-inset-bottom, 20px)
             env(safe-area-inset-left, 20px);
-        }
+        } */
 
     </style>
 </head>
