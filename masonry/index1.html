@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>masonry-01</title>
+    <style>
+        /* reset */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Roboto, 'Segoe UI', Arial, sans-serif;
+        }
+
+        body,
+        ul,
+        li,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .list {
+            column-count: 4;
+            column-gap: 20px;
+            padding: 20px;
+        }
+
+        .item {
+            display: inline-block;
+            width: 100%;
+            break-inside: avoid;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #eee;
+            font-size: 40px;
+            font-weight: 700;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul class="list">
+            <li class="item">
+              <div class="card" style="height: 250px"> 1</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 120px"> 2</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 180px"> 3</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 130px">4</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 270px">5</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 320px">6</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 110px">7</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 190px">8</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 210px">9</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 80px">10</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 220px">11</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 210px">12</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 100px">13</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 160px">14</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 190px">15</div>
+            </li>
+            <li class="item">
+              <div class="card" style="height: 320px">16</div>
+            </li>
+          </ul>
+    </div>
+</body>
+</html>
