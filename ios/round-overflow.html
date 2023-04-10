@@ -51,13 +51,12 @@
 </head>
 <body>
     <h1>[CSS] z-index와 쌓임 맥락 (stacking context) / isolation 과 쌓임 맥락</h1>
-    <div>
-        issue - 
-        1. image 를 div 로 감싼 후, div 에 overflow:hidden 과 border-radius 를 줘 스타일을 구현
-        2. div 에 마우스 포인터를 대면 image 의 scale 이 커지는 식의 인터랙션을 추가
-        3. 크롬에선 정상적으로 잘 작동했는데, 이상하게 사파리에선 그렇지 않음. 
-           호버 이벤트를 발생시켰을 때, 애니메이션 시간 동안 border-radius 가 제대로 동작하지 않는 것처럼 보임
-    </div> 
+     <ul>
+            <li>1. image 를 div 로 감싼 후, div 에 overflow:hidden 과 border-radius 를 줘 스타일을 </li>
+            <li>2. div 에 마우스 포인터를 대면 image 의 scale 이 커지는 식의 인터랙션을 추가</li>
+            <li> 3. 크롬에선 정상적으로 잘 작동했는데, 이상하게 사파리에선 그렇지 않음. 
+                호버 이벤트를 발생시켰을 때, 애니메이션 시간 동안 border-radius 가 제대로 동작하지 않는 것처럼 보임</li>
+        </ul>
     <p> 이슈 : 1. 기본형 </p>
     <div class="round-box hover">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
