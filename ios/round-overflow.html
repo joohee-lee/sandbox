@@ -57,10 +57,10 @@
             z-index: 1;
         }
         
-/*         .opacity7 {
-            opacity : 0.7;
+        .opacity5 {
+            opacity : 0.5;
         }
-         */
+
          .round-box.opacity7 img {
             height: 200px;
             opacity : 0.2;
@@ -109,8 +109,8 @@
     <div class="round-box">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
-    <p>hove evnet 적용하지 않은 상태 + opacity : 0.7 < 1 </p>
-    <div class="round-box">
+    <p>hove evnet 적용하지 않은 상태 + opacity : 0.5 < 1 </p>
+    <div class="round-box opacity5">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
     <p> 이슈 : 1. 기본형 </p>
@@ -121,28 +121,32 @@
      <div class="round-box hover isolation">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
-    <p>2. flex 속성 추가 : hover round </p>
+    <p>이슈 : 2. flex 속성 추가 : hover round </p>
     <div class="round-box flex hover">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
 
-    <p>2. flex 속성 추가 /  : hover round  </p>
-    <div class="round-box flex">
+    <p>해결 : 2. flex 속성 추가 /  : hover round + isolation </p>
+    <div class="round-box flex isolation">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
     
-     <p>이슈 - 3.position 속성 추가 : hover round </p>
+     <p>이슈 : 3.position 속성 추가 : hover round </p>
     <div class="round-box position hover">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
 
-    <p>해결 - 3. position속성 추가 + z-index:1 로 해결 /  : hover round  </p>
+    <p>해결 : 3. position속성 추가 + z-index:1 로 해결 /  : hover round  </p>
      <div class="round-box position hover z-index1">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
         
-     <p>hove evnet + hover img opacity </p>
+     <p>이슈 : hove evnet + hover img opacity </p>
     <div class="round-box opacity7">
+        <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
+    </div>
+         <p>해결 : hove evnet + hover img opacity   + isolation </p>
+    <div class="round-box opacity7 isolation">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
 </body>
