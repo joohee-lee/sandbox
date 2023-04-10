@@ -7,6 +7,9 @@
     <title>border-radius</title>
     <style>
         * {margin: 0; padding: 0;}
+        body {
+            padding: 100px ;
+        }
         img {
             border: 0;
             width: 100%;
@@ -19,14 +22,17 @@
             height: 200px;
             border-radius: 100px;
             overflow: hidden;
-        }
-        
-        .round-box:hover {
-            border-color: aqua;
+            transform: scale(1);
+            transition: transform .2s ease-in;
         }
 
         .round-box img {
             height: 200px;
+        }
+
+        .round-box:hover {
+            border-color: aqua;
+            transform: scale(1.2);
         }
 
         .flex {
@@ -36,9 +42,16 @@
     </style>
 </head>
 <body>
+    <p> 1. 기본형 </p>
     <div class="round-box">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
+    <p>2. flex 속성 추가 : hover round </p>
+    <div class="round-box flex">
+        <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
+    </div>
+
+    <p>2. flex 속성 추가 /  : hover round  </p>
     <div class="round-box flex">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
