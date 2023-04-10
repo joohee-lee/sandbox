@@ -66,11 +66,16 @@
             <li> 3. 크롬에선 정상적으로 잘 작동했는데, 이상하게 사파리에선 그렇지 않음. 
                 호버 이벤트를 발생시켰을 때, 애니메이션 시간 동안 border-radius 가 제대로 동작하지 않는 것처럼 보임</li>
         </ul>
+    
+     <p>hove evnet 적용하지 않은 상태 </p>
+    <div class="round-box">
+        <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
+    </div>
     <p> 이슈 : 1. 기본형 </p>
     <div class="round-box hover">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
-    <p> 해결:  1. 기본형 + isolation </p>
+    <p> 해결:  1. 기본형 + isolation 해결 </p>
      <div class="round-box hover isolation">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
@@ -84,12 +89,12 @@
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
     
-     <p>3.position 속성 추가 : hover round </p>
+     <p>이슈 - 3.position 속성 추가 : hover round </p>
     <div class="round-box position hover">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
 
-    <p>3. flex 속성 추가 /  : hover round  </p>
+    <p>해결 - 3. position속성 추가 + z-index:1 로 해결 /  : hover round  </p>
      <div class="round-box position hover z-index1">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
