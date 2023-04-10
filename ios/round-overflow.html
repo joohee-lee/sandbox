@@ -56,16 +56,43 @@
         .z-index1 {
             z-index: 1;
         }
+        
+        .opacity7 {
+            opacity7 : 0.7;
+        }
     </style>
 </head>
 <body>
     <h1>[CSS] z-index와 쌓임 맥락 (stacking context) / isolation 과 쌓임 맥락</h1>
-     <ul style="margin: 20px;">
-            <li>1. image 를 div 로 감싼 후, div 에 overflow:hidden 과 border-radius 를 줘 스타일을 </li>
-            <li>2. div 에 마우스 포인터를 대면 image 의 scale 이 커지는 식의 인터랙션을 추가</li>
-            <li> 3. 크롬에선 정상적으로 잘 작동했는데, 이상하게 사파리(pc,M(ios)) 브라우져 에선 그렇지 않음. 
+  
+    <h2>쌓임 맥락을 만드는 CSS 속성</h2>
+    <ul>
+        문서의 루트 요소. (<html>)<br>
+        position이 absolute 또는 relative이고, z-index가 auto가 아닌 요소.<br>
+        position이 fixed 또는 sticky인 요소. (sticky는 모든 모바일 브라우저에서는 해당하지만 구형 데스크톱 브라우저에서는 해당하지 않음)<br>
+        플렉스(flexbox) 컨테이너의 자식 중 z-index가 auto가 아닌 요소.<br>
+        그리드(grid) 컨테이너의 자식 중 z-index가 auto가 아닌 요소.<br>
+        opacity가 1보다 작은 요소. (불투명도 명세 참고)<br>
+        mix-blend-mode가 normal이 아닌 요소. <br>
+        다음 속성 중 하나라도 none이 아닌 값을 가진 요소. <br>
+        transform<br>
+        filter<br>
+        perspective<br>
+        clip-path<br>
+        mask / mask-image / mask-border<br>
+        isolation이 isolate인 요소.<br>
+        -webkit-overflow-scrolling이 touch인 요소.<br>
+        will-change의 값으로, 초깃값이 아닐 때 새로운 쌓임 맥락을 생성하는 속성을 지정한 요소.<br>
+        contain이 layout, paint, 또는 둘 중 하나를 포함하는 값(strict, content 등)인 요소.<br>
+    </ul>
+    
+    
+    <ul style="margin: 20px;">
+        <li>1. image 를 div 로 감싼 후, div 에 overflow:hidden 과 border-radius 를 줘 스타일을 </li>
+        <li>2. div 에 마우스 포인터를 대면 image 의 scale 이 커지는 식의 인터랙션을 추가</li>
+        <li> 3. 크롬에선 정상적으로 잘 작동했는데, 이상하게 사파리(pc,M(ios)) 브라우져 에선 그렇지 않음. 
                 호버 이벤트를 발생시켰을 때, 애니메이션 시간 동안 border-radius 가 제대로 동작하지 않는 것처럼 보임</li>
-        </ul>
+    </ul>
     
      <p>hove evnet 적용하지 않은 상태 </p>
     <div class="round-box">
