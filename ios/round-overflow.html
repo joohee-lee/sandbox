@@ -57,8 +57,19 @@
             z-index: 1;
         }
         
-        .opacity7 {
+/*         .opacity7 {
             opacity : 0.7;
+        }
+         */
+         .round-box.opacity7 img {
+            height: 200px;
+            opacity : 0.2;
+            transition:  opacity .1s ease-in;
+        
+        }
+
+        .round-box.opacity7:hover img {
+            opacity : 0.8;
         }
     </style>
 </head>
@@ -99,7 +110,7 @@
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
     <p>hove evnet 적용하지 않은 상태 + opacity : 0.7 < 1 </p>
-    <div class="round-box opacity7">
+    <div class="round-box">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
     <p> 이슈 : 1. 기본형 </p>
@@ -127,6 +138,11 @@
 
     <p>해결 - 3. position속성 추가 + z-index:1 로 해결 /  : hover round  </p>
      <div class="round-box position hover z-index1">
+        <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
+    </div>
+        
+     <p>hove evnet + hover img opacity </p>
+    <div class="round-box opacity7">
         <img src="https://demo.ycart.kr/shopboth_farm_max5_001/data/editor/1612/cd2f39a0598c81712450b871c218164f_1482469221_493.jpg" />
     </div>
 </body>
