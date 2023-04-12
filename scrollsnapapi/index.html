@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll snap api</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <style>
+        .carousel {
+            width: 500px;
+            height: 300px;
+            border: 4px solid white;
+        }
+
+        .carousel__slides {
+            display: flex;
+            align-items: center;
+            column-gap: 40px;
+            height: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carousel__slides__slide {
+            flex: 0 0 auto;
+            width: 80%;
+            height: 80%;
+            scroll-snap-align: start;
+        }
+
+        .fruit-image {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        /*
+
+        1.
+         # scroll-snap-type: none | [scroll-snap-axis] | [scroll-snap-strictness]
+         - scroll-snap-axis: x | y | block | inline | both
+         - scroll-snap-strictness: none | mandatory | proximity
+
+         scroll-snap-axis는 어느 축으로 스크롤 하는 상황에 스크롤 스냅을 발생시킬지 결정합니다. 
+         그리고 scroll-snap-strictness는 스크롤 정도에 따른 스크롤 스냅의 발생 여부를 결정합니다.
+         none은 스냅을 발생시키지 않습니다. 
+         mandatory는 반드시 스냅을 발생시키고 
+         proximity는 스크롤을 자식 요소 A와 B 사이에 놓을 수 있는 기회를 제공하며 스크롤 하는 양이 스냅이 필요한 정도에 가까워졌을 때만 스냅을 발생시킵니다.
+
+        2.스크롤 컨테이너의 자식 요소에 scroll-snap-align 스타일 속성을 지정
+         # scroll-snap-align: none | start | center | end
+
+
+         */
+    </style>
+
+</head>
+<body>
+    <!--
+        스냅(snap)이란 스크롤 컨테이너에서 터치 스와이프 혹은 휠 스크린 액션을 발생시킨 정도에 따라 
+        컨테이너의 스크롤을 제어하여 스냅 포트(컨텐트 영역)를 현재 표시하고 있는 
+        자식 요소에 계속 위치시키거나 다음의 자식 요소로 이동시키는 동작입니다.
+    -->
+    <article class="carousel">
+        <div class="carousel__slides">
+          <section class="carousel__slides__slide"><img class="image" src="img/01.jpg" alt="fruit" /></section>
+          <section class="carousel__slides__slide"><img class="image" src="img/02.jpg" alt="fruit" /></section>
+          <section class="carousel__slides__slide"><img class="image" src="img/03.jpg" alt="fruit" /></section>
+          <section class="carousel__slides__slide"><img class="image" src="img/01.jpg" alt="fruit" /></section>
+        </div>
+      </article>
+    
+</body>
+</html>
