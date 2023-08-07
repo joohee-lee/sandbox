@@ -20,13 +20,13 @@
 .chatbot-wrap {
     max-width: 1024px;
     margin: 0 auto;
-    /* height: 100vh; */
+    height: 100vh;
 }
 .chatbot-panel {
     position: relative;
     background-color: #fff;
-    /* box-shadow: 2px 6px 32px rgba(0, 0, 0, 0.16);
-    border-radius: 8px;*/
+    box-shadow: 2px 6px 32px rgba(0, 0, 0, 0.16);
+    border-radius: 8px;
     overflow: hidden; 
     width: 100%;
     height: 100%;
@@ -55,17 +55,19 @@
     position: absolute;
     top: 0;
     left: 0;
-    overflow-y: auto;
+    width: 100%;
     height: calc(100% - 62px) !important;
-    padding: 88px 16px 0 16px;
     background-color: pink;
-    display: block;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
+.chatbot-panel .ch-content .inner {
+    padding: 88px 16px 8px;
+}
+
 .chatbot-panel .ch-form {
-    /* position: absolute; */
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     background: white;
