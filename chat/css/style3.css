@@ -37,7 +37,8 @@
 .chatbot-panel {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
+    height: 100vh; 
     background-color: pink;
 }
 
@@ -63,6 +64,8 @@
     position: absolute;
     left: 0;
     bottom: 0;
+    bottom: constant(safe-area-inset-bottom);
+    bottom: env(safe-area-inset-bottom);
     right: 0;
     width: 100%;
     height: 60px;
