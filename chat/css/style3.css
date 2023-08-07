@@ -61,7 +61,7 @@
 }
 
 .chatbot-panel .ch-form {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     bottom: constant(safe-area-inset-bottom);
