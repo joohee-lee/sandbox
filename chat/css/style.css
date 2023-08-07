@@ -30,7 +30,7 @@
     border-radius: 8px;
     overflow: hidden; 
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .chatbot-panel .ch-header{
