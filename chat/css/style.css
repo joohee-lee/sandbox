@@ -20,7 +20,7 @@
 .chatbot-wrap {
     max-width: 1024px;
     margin: 0 auto;
-    height: 100vh;
+    /* height: 100vh; */
 }
 .chatbot-panel {
     position: relative;
