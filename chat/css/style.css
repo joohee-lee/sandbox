@@ -64,6 +64,8 @@
 
 .chatbot-panel .ch-content .inner {
     padding: 88px 16px 8px;
+    overflow-x: hidden;
+    word-break: break-all;
 }
 
 .chatbot-panel .ch-form {
