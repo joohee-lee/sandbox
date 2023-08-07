@@ -33,21 +33,29 @@ body, html {
 }
 
 .chat-conts  .chat-list {
-    position: absolute;
+    /* position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 55px;
     padding: 19px 10px;
     overflow-x: hidden;
-    overflow-y: scroll;
-    
+    overflow-y: scroll; */
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    padding: 19px 10px 65px;
 }
-.chat-conts  .chat-form {
+    
+
+ .chat-form {
     position: fixed;
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 2;
     bottom: constant(safe-area-inset-bottom);
     bottom: env(safe-area-inset-bottom);
     min-height: 55px;
