@@ -51,7 +51,7 @@ body {
     padding: 66px 16px 20px;
     overflow: hidden;
     overflow-y: auto;
-    height: calc( 100% - 123px);
+    height: calc( 100vh - 123px);
 
 }
 
