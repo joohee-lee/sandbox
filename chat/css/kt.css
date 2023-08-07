@@ -16,8 +16,7 @@ body {
 }
 
 .chat-wrap {
-    min-width: 360px;
-    max-width: 1024px;
+    
     margin: 0 auto;
     height: 100%; 
     overflow: hidden;
@@ -60,3 +59,13 @@ body {
     background-color: #fff;
 }
 
+
+.inp-chat {
+    display: inline-block;
+    width: 80%;
+    width: calc(100% - 100px);
+    height: 100%;
+    padding: 10px 10px 10px;
+    vertical-align: top;
+    border: none;
+}
