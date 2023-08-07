@@ -1,0 +1,47 @@
+.chat-wrap {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.cht-contatiner {
+    position: relative;
+    height: 100vh;
+}
+.chat-header {
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #000;
+    color: #fff;
+}
+
+.chat-conts {
+    
+    height: calc( 100% - 123px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 60px;
+
+}
+
+.divscsroll {
+    padding: 10px;
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 10px 10px 143px 10px;
+}
+
+.chat-form {
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width:  100%;
+    height: 123px;
+    border-top: 1px solid #000;
+    background-color: #fff;
+}
