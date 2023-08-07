@@ -20,6 +20,7 @@
 .chatbot-wrap {
     width: 100%;
     margin: 0 auto;
+    background-color: #ccc;
 }
 
 .ch-header {
@@ -35,6 +36,7 @@
 
 .chatbot-panel {
     position: relative;
+    width: 100%;
     height: 100vh;
     background-color: pink;
     /* display: table-row; */
