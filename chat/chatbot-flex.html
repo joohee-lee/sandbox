@@ -8,18 +8,18 @@
 	<meta name="format-detection" content="telephone=no">
     <title>Document</title>
     <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/n.css">
+    <link rel="stylesheet" href="./css/flex.css">
 </head>
 <body>
-    <div class="chat">
+    <div class="singlex-chat">
        <div class="chat-wrap">
             <div class="chat-header">
-                <div class="chat-header-inner"> 
+                <div class="inner"> 
                     <div class="title">챗봇</div>
                 </div>
             </div>
             <div class="chat-container">
-                <div class="chat-conts">
+                <div class="chat-window">
                     <div class="chat-list">
                         리스트 영역 ssssss<br>
                         리스트 영역 <br>
@@ -63,12 +63,15 @@
                         eeeee리스트 영역 <br>
 
                     </div>
-                    <div class="chat-form">
-
-                        <div class="textarea-wrap">
-                            <textarea rows="1"></textarea>
-                        </div>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <div class="chat-form">
+                    <button type="button" class="more">+</button>
+                    <div class="write-area">
+                       <textarea class=""></textarea>
                     </div>
+                    <button type="button" class="more">전송</button>
                 </div>
             </div>
        </div>
