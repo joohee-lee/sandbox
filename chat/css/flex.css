@@ -151,6 +151,7 @@
 
 .msg-box {
     display: inline-block;
+    max-width: 60%;
 }
 .bollon {
     /* padding: 10px;
@@ -187,12 +188,11 @@
 }
 
 .chat-item {
+    position: relative;
     clear: both;
     display: block;
     padding: 0 0 0 0!important;
-    float: none;
     margin-bottom: 0;
-    position: unset;
 }
 
 .chat-item + .chat-item {
@@ -201,14 +201,18 @@
 
 .chat-item.bot {
     float: left;
+    width: 100%;
+    text-align: left;
 }
 .chat-item.user {
     float: right;
+    width: 100%;
+    text-align: right;
 }
 
 
 .simple-text {
-    max-width: 270px;
+    /* max-width: 255px; */
 }
 
 .profile {
