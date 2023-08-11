@@ -88,47 +88,6 @@
                             </div>
                         </div> -->
 
-                        <!-- 리스트 영역 ssssss<br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 ssssss<br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        리스트 영역 <br>
-                        eeeee리스트 영역 <br> -->
-
                     </div>
                 </div>
             </div>
@@ -136,6 +95,10 @@
             <div class="chat-footer">
                 <div class="inner">
                     <div class="chat-quick-menu">
+                        <button type="button" class="btn-more">열기</button>
+                        <button class="quick-link">링크1</button>
+                        <button class="quick-link">링크2</button>
+                        <button class="quick-link">링크dddd3</button>
                         <button class="quick-link">링크1</button>
                         <button class="quick-link">링크2</button>
                         <button class="quick-link">링크dddd3</button>
@@ -164,6 +127,16 @@
        </div>
 
     </div>
+
+     <script>
+        const e = document.querySelector(".btn-more");
+        const eBox = document.querySelector(".chat-quick-menu")
+        
+        e.addEventListener( "click", function(){
+            eBox.classList.toggle("auto");
+
+        }, false);
+     </script>
     
 </body>
 </html>
