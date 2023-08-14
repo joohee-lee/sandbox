@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="chat-container">
-                <div class="chat-window scroll-area" style="">
+                <div class="chat-window scroll-area" id="mydiv">
                     <div class="chat-list-section">
 
                         
@@ -154,13 +154,18 @@
     </div>
 
      <script>
+        
         const e = document.querySelector(".btn-more");
-        const eBox = document.querySelector(".chat-quick-menu")
+        const eBox = document.querySelector(".chat-quick-menu");
+        const objDiv = document.getElementById("mydiv");
         
         e.addEventListener( "click", function(){
             eBox.classList.toggle("auto");
+            objDiv.scrollTop = objDiv.scrollHeight;
 
         }, false);
+
+        objDiv.scrollTop = objDiv.scrollHeight;
      </script>
     
 </body>
