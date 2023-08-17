@@ -28,7 +28,7 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    background-color: #9bb6d6;
+   
 }
 
 .chat-wrap .chat-header {
@@ -54,7 +54,8 @@
     height: 56px;
     padding-right: 10px;
     border-bottom: 1px solid rgba(0,0,0,.06);
-    background: #eaedf0;
+    background: rgba(255,255,255, .8);
+    backdrop-filter: blur(4px);
 }
 
 .chat-wrap .chat-container {
@@ -66,6 +67,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    background-color: #9bb6d6;
 }
 
 .scroll-area {
