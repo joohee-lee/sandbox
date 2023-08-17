@@ -33,7 +33,8 @@
 
 .chat-wrap .chat-header {
     z-index: 10;
-    position: relative;
+   /* position: relative; */
+   position: absolute;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
@@ -99,7 +100,7 @@
 }
 
 .chat-container .chat-window {
-    padding: 16px;
+    padding: 72px 16px 16px;
 }
 
 .chat-wrap .chat-footer {
