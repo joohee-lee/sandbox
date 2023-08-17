@@ -12,6 +12,10 @@
     border-radius: 20px;
 } */
 
+body {
+    overflow: hidden;
+}
+
 .singlex-chat {
     height: 100%;
     /* height: 100vh; */
