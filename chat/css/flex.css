@@ -141,7 +141,8 @@ body {
     padding-bottom: 10px;
 }
 
-.quick-link {
+.quick-link,
+.quick-link2  {
     padding: 8px 12px;
     font-size: 13px;
     color: #3f4A54;
@@ -158,6 +159,11 @@ body {
     font-weight: 500;
 }
 
+.quick-link2:hover {
+    background-color: #c9396e;
+    border: 1px solid green;
+    font-weight: 500;
+}
 
 .msg-box {
     display: inline-block;
