@@ -151,7 +151,8 @@ body {
     margin-bottom: 5px;
 }
 
-.quick-link:hover {
+.quick-link:hover,
+.quick-link:active {
     background-color: #fff4f8;
     border: 1px solid #ff88ad;
     font-weight: 500;
