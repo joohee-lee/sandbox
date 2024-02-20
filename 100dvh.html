@@ -47,12 +47,15 @@
             position: relative;
             width: 100%;
             height:  100%;
-            padding-top: 50px;
             overflow: hidden;
         }
 
-         .a  {
-            background-color: violet;
+        .box > div {
+            padding-top: 50px;
+        }
+
+        .a  {
+            background-color: yellow;
             position: relative;
         }
 
@@ -101,11 +104,11 @@
     </div>
     <div class="pageWrapper-wrap">    
         <div class="pageWrapper" style="transform: translate3d(0, 0, 0);">
-            <section class="box a"> 1   번 섹션<span class="text">TEST</span></section>
-            <section class="box b"> 2   번 섹션</section>
-            <section class="box c"> 3   번 섹션</section>
-            <section class="box d"> 4   번 섹션</section>
-            <section class="box e"> 5   번 섹션</section>
+            <section class="box a"> <div>1   번 섹션<span class="text">TEST</span></div></section>
+            <section class="box b"> <div> 2   번 섹션</div></section>
+            <section class="box c"> <div> 3   번 섹션</div></section>
+            <section class="box d"> <div> 4   번 섹션</div></section>
+            <section class="box e"> <div> 5   번 섹션</div></section>
         </div> 
     </div>        
 </body>
