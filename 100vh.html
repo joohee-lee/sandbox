@@ -43,6 +43,16 @@
 
         .a  {
             background-color: aqua;
+            position: relative;
+        }
+
+        .a .text {
+            position: absolute;
+            bottom: 100px;
+            right: 20px;
+            font-size: 50px;
+            font-weight: bold;
+            color: #fff;
         }
 
         .b {
@@ -80,7 +90,7 @@
         <a class="n2">tab2</a>
     </div>
     <div class="pageWrapper" style="transform: translate3d(0, 0, 0);">
-        <section class="box a"> 1   번 섹션</section>
+        <section class="box a"> 1   번 섹션<span class="text">TEST</span></section>
         <section class="box b"> 2   번 섹션</section>
         <section class="box c"> 3   번 섹션</section>
         <section class="box d"> 4   번 섹션</section>
