@@ -387,15 +387,7 @@ ul li {
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-    / 브라우저의 scroll 위치 복원 기능 끄기
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-
-  // 강제로 스크롤 최상단으로
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 0);
+   history.scrollRestoration = "manual";
 
     
   const tabs = document.querySelectorAll('.tab-menu a');
