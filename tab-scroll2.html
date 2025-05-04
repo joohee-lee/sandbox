@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테스트</title>
+    <link rel="stylesheet" type="text/css" href="/css/financial_style.css" media="all" />
+    <style>
+@charset "utf-8";
+
+/* reset */
+html, body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, a, button, input, textarea, table, th, td, figure, hr, i, b {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  -webkit-text-size-adjust: none;
+  font-family: Pretendard Variable,Pretendard,system-ui,sans-serif;
+  font-style: normal;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  color: #000;
+  line-height: 1.4;
+  word-break: keep-all;
+  background: #fff;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+}
+
+input,
+select {
+  padding: 0;
+  color: #3c3c3c;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+input.textarea,
+select,
+button {
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+  border: none;
+  background-color: transparent;
+}
+
+input[type=text],
+input[type=file],
+input[type=password],
+input[type=number],
+input[type=email],
+input[type=tel] {
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+fieldset {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Pretendard Variable;
+  font-style: normal;
+  font-weight: 45 920;
+  src: url(https://cdn.sktapollo.com/developers/poc/app.apollo.agent/static/common/PretendardVariable.woff2) format("woff2-variations")
+}
+
+/* style */
+.fina_container {
+  margin: 0 auto;
+  max-width: 768px;
+  padding: 0 0 40px;
+}
+
+/* header */
+.fina-hdr {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #fff;
+    width: 100%;
+    max-width: 768px;
+    padding: 20px 20px;
+}
+
+.fina-body {
+  padding: 0 20px;
+}
+
+
+.hdr {
+  border-bottom: 3px solid;
+  color: #3617ce;
+  height: 44px; 
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+
+.hdr__hdng {
+  background-image: url(https://cdn.sktapollo.com/developers/poc/app.apollo.agent/static/usim-booking/t-symbol.svg);
+  background-position: 100%;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.4
+}
+
+/* TEST */
+.idx{
+  box-sizing: border-box;
+  margin: 0 20px;
+  width: calc(100% - 40px);
+}
+
+
+.fina-body {
+}
+
+.fina-tab-menu .tab-menu {
+  display: flex;
+  align-items: center;
+}
+
+.fina-tab-menu .tab-item{
+  flex-shrink: 0;
+  width: 25%;
+  height: 50px;
+  border: 1px solid #ddd;
+  border-left: 0;
+
+}
+
+.fina-tab-menu .tab-item:first-child {
+  border-left: 1px solid #ddd;
+}
+
+.fina-tab-menu .tab-item > a{
+  color: #333;
+  font-weight: 500;
+  height: 100%;
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fina-tab-menu .tab-item.active {
+  background-color: #3617ce;
+  color: #fff;
+}
+
+.fina-tab-menu .tab-item.active a{
+  color: #fff;
+}
+
+.fina-body {}
+@media (min-height: 1024px) {
+  .fina-body {padding-bottom: 300px;}
+}/* pc 브라우져 4번탭으로 가기 위한 여백 */
+
+.fina-cont {
+  padding: 30px 0;
+  min-height: 500px;
+}
+
+#tab01 { background-color: violet}
+#tab02 { background-color: yellow;}
+#tab03 { background-color: green;}
+#tab04 { background-color: blue;}
+
+
+    </style>
+</head>
+
+<body>
+<div class="fina_container">
+  <!-- header -->
+  <header class="fina-hdr">
+    <div class="hdr">
+      <h1 class="hdr__hdng">제목 </h1>
+    </div>
+    <div class="fina-hdr__summary">
+        <p class="it">테스트 </p>
+        <ul class="list">
+            <li class="item">테스트</li>
+            <li class="item">테스트</li>
+        </ul>
+    </div>
+    <div class="fina-tab-menu">
+        <ul class="tab-menu">
+            <li class="tab-item active"><a href="#tab01">1.가입대상 및<br> 보장기간</a></li>
+            <li class="tab-item"><a href="#tab02">2가입대상</a></li>
+            <li class="tab-item"><a href="#tab03">3가입대상</a></li>
+            <li class="tab-item"><a href="#tab04">4가입대상</a></li>
+        </ul>
+    </div>
+  </header>
+  <!-- //header --> 
+
+  <div class="fina-body">
+    <section class="fina-cont" id="tab01">
+      <h4>1.제목에 넣자 </h4>
+      01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+
+      01111111111111111111111111111111
+    </section>
+
+    <section class="fina-cont" id="tab02">
+      <h4>2.제목에 넣자 </h4>
+      02222222222222222222222222222222
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+      01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+      01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+    </section>
+
+    <section class="fina-cont" id="tab03">
+      <h4>3.제목에 넣자 </h4>
+      030303030303030303
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+    </section>
+
+    <section class="fina-cont"id="tab04">
+      <h4>제목에 넣자 </h4>
+      0404040404040404040404040404
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 01111111111111111111111111111111
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+      내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 
+    </section>
+  </div>
+</div> 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+   history.scrollRestoration = "manual";
+
+    
+  const tabs = document.querySelectorAll('.tab-menu a');
+  const sections = document.querySelectorAll('.fina-cont');
+  //header 높이값 가져오기
+  const offset = document.querySelector('.fina-hdr').clientHeight;
+
+  // 탭메뉴 클릭 : 스크롤 처리
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // 클래스 변경
+      //document.querySelectorAll('.tab-item').forEach((item) => item.classList.remove('active'));
+      this.parentElement.classList.add('active');
+      const targetId = this.getAttribute('href').slice(1);
+      const target = document.getElementById(targetId);
+      const targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth'
+      });
+      // setTimeout(() => {
+      //   window.scrollTo({
+      //     top: targetY,
+      //     behavior: 'smooth'
+      //   });
+      // }, 50); // 100ms 지연
+    });
+  });
+
+  // 탭메뉴 온 스크롤
+  window.addEventListener('scroll', () => {
+    
+    let scrollY = window.pageYOffset; //scroll value
+    console.log("scroll" + scrollY);
+
+    sections.forEach((section, index) => {
+      const sectionTop = section.offsetTop - offset - 1;
+      const sectionBottom = sectionTop + section.offsetHeight;
+      console.log("scrollY" + sectionBottom);
+      console.log("st" + sectionTop);
+      console.log("sb" + sectionBottom);
+      if (scrollY >= sectionTop && scrollY < sectionBottom) {
+        document.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
+        tabs[index].parentElement.classList.add('active');
+      }
+    });
+  });
+
+  //새로고침 
+//  window.addEventListener('beforeunload', () => {
+  //  window.scrollTo(0, 0);
+//  });
+
+    
+
+});
+
+</script>
+</body>
+
+</html>
