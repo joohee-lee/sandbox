@@ -386,6 +386,18 @@ ul li {
 </div> 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
+    / 브라우저의 scroll 위치 복원 기능 끄기
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // 강제로 스크롤 최상단으로
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 0);
+
+    
   const tabs = document.querySelectorAll('.tab-menu a');
   const sections = document.querySelectorAll('.fina-cont');
   //header 높이값 가져오기
@@ -436,9 +448,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   //새로고침 
-  window.addEventListener('beforeunload', () => {
-    window.scrollTo(0, 0);
-  });
+//  window.addEventListener('beforeunload', () => {
+  //  window.scrollTo(0, 0);
+//  });
+
+    
 
 });
 
