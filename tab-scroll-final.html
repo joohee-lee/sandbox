@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -165,10 +164,16 @@ ul li {
   height: 50px;
   border: 1px solid #ddd;
   border-left: 0;
+
 }
 
 .fina-tab-menu .tab-item:nth-child(2n+1) {
   border-left: 1px solid #ddd;
+}
+
+.fina-tab-menu .tab-item:nth-child(3),
+.fina-tab-menu .tab-item:nth-child(4) {
+  border-top: 0;
 }
 
 .fina-tab-menu .tab-item > a{
@@ -197,14 +202,16 @@ ul li {
   min-height: 500px;
 }
 
-.fina-cont {
-  padding: 30px 0;
-  min-height: 500px;
-}
 
 .fina-tab-panel {
   padding: 30px 0;
   min-height: 500px;
+}
+
+@media (min-height: 800px) {
+  .fina-conts {
+    padding-bottom: 300px;
+  }  
 }
 
 
