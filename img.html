@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .blind {display: none;}
+
+    img {
+      width: 100%;
+      max-width: 320px;
+    }
+
+
+    .modal {
+    right: 0
+}
+
+.modal .modal-dialog {
+    transform: translateY(0)
+}
+
+.modal.show .modal-dialog {
+    transition: transform .3s ease-out;
+    transform: none
+}
+
+.modal .modal-dialog {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+    min-height: 100%
+}
+
+.modal .modal-dialog .modal-footer {
+    position: relative;
+    padding: 20px 20px 24px;
+    border-top: none
+}
+
+.modal .modal-dialog .modal-footer:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -10px;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(180deg,hsla(0,0%,100%,0),#fff)
+}
+
+.modal .modal-dialog .modal-footer .c-btn-group {
+    flex: 1 1 auto
+}
+
+.modal .modal-dialog .modal-footer .c-btn-group>button {
+    padding: 0
+}
+
+.m-bv-modal .modal-content {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 0;
+    margin: 0 32px;
+}
+
+.m-bv-modal .modal-content .modal-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 52px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    background-color: #f5f5f5;
+    border-bottom: none
+}
+
+.m-bv-modal .modal-content .modal-header .pop-tit-1 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000
+}
+
+.m-bv-modal .modal-content .modal-header .pop-tit-1 .txt-desc-1 {
+    display: inline-flex;
+    font-size: 16px;
+    color: #666
+}
+
+.m-bv-modal .modal-content .c-btn-close {
+    overflow: hidden;
+    position: absolute;
+    right: 4px;
+    top: 6px;
+    width: 0;
+    height: 40px;
+    padding-left: 40px;
+    color: hsla(0,0%,100%,0);
+    white-space: nowrap;
+    border: 0
+}
+
+.m-bv-modal .modal-content .c-btn-close:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://m.lguplus.com/static/mb-static/common/images/indv-biz/base/m-sprites-common.svg);
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: -400px -160px
+}
+
+.m-bv-modal .modal-content .modal-body {
+    padding: 0;
+    max-height: calc(100vh - 240px);
+    min-height: 60px;
+    overflow-y: auto
+}
+
+.m-bv-modal .modal-content .modal-body .c-body-content {
+    padding: 28px 20px 5px;
+    word-break: keep-all;
+    color: #666
+}
+
+.m-bv-modal .modal-content .modal-body .c-body-content .radio-box-group {
+    margin: -28px -20px -5px
+}
+
+.m-bv-modal .modal-content .modal-body .modal-footer-none {
+    padding: 40px 64px
+}
+
+.m-bv-modal .modal-content .modal-body .h3 .h5 {
+    font-weight: 400
+}
+
+.m-bv-modal .modal-content .modal-footer>* {
+    margin: 0
+}
+
+.m-bv-modal.c-layer-embed {
+    max-width: 100%!important;
+    padding: 0 20px
+}
+
+.m-bv-modal.c-layer-embed .modal-content {
+    margin: 0 auto;
+    background-color: transparent;
+    border-radius: 0;
+    max-width: 420px
+}
+
+.m-bv-modal.c-layer-embed .modal-content .c-btn-close {
+    right: 0;
+    top: 0;
+    width: 25px;
+    height: 40px;
+    padding: 0
+}
+
+.m-bv-modal.c-layer-embed .modal-content .c-btn-close:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 17px;
+    height: 17px;
+    background-position: -372px -171px
+}
+
+.m-bv-modal.c-layer-embed .modal-content .modal-header {
+    background-color: transparent;
+    padding: 0;
+    height: 44px
+}
+
+.m-bv-modal.c-layer-embed .modal-content .modal-body {
+    min-height: auto!important;
+    max-height: none!important
+}
+
+.m-bv-modal.c-layer-embed .modal-content .modal-footer {
+    display: none
+}
+
+.m-bv-modal.c-layer-full {
+    transform: translateY(50vh);
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%
+}
+
+.m-bv-modal.c-layer-full .modal-content {
+    margin: 0;
+    height: 100%;
+    border-radius: 0
+}
+
+.m-bv-modal.c-layer-full .modal-content .modal-header {
+    flex: none;
+    height: 72px;
+    padding-top: 25px;
+    padding-right: 48px;
+    border-radius: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd
+}
+
+.m-bv-modal.c-layer-full .modal-content .modal-header .c-btn-close {
+    top: 28px;
+    right: 4px
+}
+
+.m-bv-modal.c-layer-full .modal-content .modal-body {
+    max-height: calc(100vh - 136px);
+    min-height: 142px
+}
+
+.m-bv-modal.c-layer-full .modal-content .modal-body .c-body-content {
+    padding: 0
+}
+
+.m-bv-modal.c-layer-full .modal-content .modal-body .c-body-content .c-caution-1-1 {
+    margin-top: 12px
+}
+
+.m-bv-modal.c-layer-alert {
+    text-align: center
+}
+
+.m-bv-modal.c-layer-alert .modal-body {
+    padding-top: 40px
+}
+
+.m-bv-modal.c-layer-alert .modal-content .modal-header {
+    display: none
+}
+
+.m-bv-modal.c-layer-alert .modal-content .c-body-content {
+    padding: 0 27px
+}
+
+.m-bv-modal.c-layer-alert .modal-content .c-body-content .h2:first-of-type {
+    color: #000
+}
+
+.m-bv-modal.c-layer-alert .modal-content .c-body-content .h2:first-of-type+* {
+    margin-top: 16px
+}
+
+.m-bv-modal.c-layer-alert .modal-content .c-body-content .c-card-box-2 .info-top dl dt .h5 {
+    word-break: break-all
+}
+
+.m-bv-modal.c-layer-alert .modal-content .c-body-content p {
+    font-size: 14px;
+    letter-spacing: -.02em
+}
+
+.m-bv-modal.c-layer-alert .modal-content .c-body-content [class*=section-caution] {
+    padding-bottom: 0
+}
+
+.m-bv-modal.c-layer-alert .modal-content .modal-body {
+    min-height: 100px;
+    padding-bottom: 40px
+}
+
+.m-bv-modal.c-layer-alert .modal-content .modal-footer {
+    border-top: none;
+    padding: 0 64px 32px
+}
+
+.m-bv-modal.c-layer-alert .modal-content .modal-footer>* {
+    margin: 0
+}
+
+.m-bv-modal.c-layer-dropdown .modal-content .modal-header {
+    justify-content: center
+}
+
+.m-bv-modal.c-layer-dropdown .modal-content .modal-body {
+    max-height: 260px;
+    min-height: 104px
+}
+
+.m-bv-modal.c-layer-dropdown .modal-content .modal-footer {
+    padding: 0
+}
+
+.m-bv-modal.c-layer-footbtn-fixed .modal-header {
+    background-color: transparent
+}
+
+.m-bv-modal.c-layer-footbtn-fixed .modal-footer {
+    padding: 0
+}
+
+.m-bv-modal .c-arrow-list-1 {
+    position: absolute;
+    left: 32px;
+    top: 16px
+}
+
+.m-bv-modal .c-arrow-list-1 .arrow-list {
+    padding-top: 0
+}
+
+.m-bv-modal .c-step-wrap+.h3,.m-bv-modal .c-step-wrap+.h3+.c-card-list-icon {
+    margin-top: 40px
+}
+
+  </style>
+</head>
+<body>
+
+  <div id="main_167" role="dialog" class="modal show" aria-modal="true" style="display: block;"><div class="modal-dialog modal-md modal-dialog-centered m-bv-modal popup-notice"><span tabindex="0"></span><div id="main_167___BV_modal_content_" tabindex="-1" class="modal-content"><header id="main_167___BV_modal_header_" class="modal-header"><h1 class="pop-tit-1">안내</h1> <button type="button" class="c-btn-close">닫기</button></header><div id="main_167___BV_modal_body_" class="modal-body"><div class="c-body-content"><div class="c-section-popup"><div class="admin-area"><div><!-- mw -->
+    <style type="text/css">
+      div[id$="BV_modal_outer_"][id^="main_"] {
+        z-index: 8000 !important;
+      }
+      .main-notice-pop {
+        overflow-y: hidden;
+        position: relative;
+      }
+      .notice-btn-wrap .event_detail_btn {
+        position: absolute;
+        left: 15%;
+        width: 70%;
+        height: 5%;
+      }
+      .notice-btn-wrap .event_detail_btn.type1 {
+        top: 58.95%;
+      }
+      .notice-btn-wrap .event_detail_btn.type2 {
+        top: 66.43%;
+      }
+      .notice-btn-wrap .event_detail_btn.type3 {
+        top: 73.92%;
+      }
+    </style>
+    <div class="main-notice-pop">
+      <img alt="하단 내용 참조" src="https://image.lguplus.com/static/mb-contents/images/fcmm/cnts/imge/20250911-015005-503-jXQFiMcN.png">
+    
+      <div class="blind">
+        <h1>LG유플러스는 안전합니다.</h1>
+        <p>
+          LG유플러스 기지국은 암호화되어 안전하게 관리하고 있습니다. 소액결제도
+          강화된 2단계 인증 절차로 철저히 보호됩니다. 고객님께서 더욱 안심하고
+          이용하실 수 있도록 소액결제를 직접 관리하실 수 있는 방법을 함께 안내해
+          드립니다.
+        </p>
+        <strong>소액결제 차단/한도 조정 방법</strong>
+      </div>
+      <div class="notice-btn-wrap">
+        <a data-route="" href="http://cv.uplus.kr/149.html" target="_blank" title="새창열기" class="event_detail_btn type1"><span class="blind">휴대폰 결제 차단</span>
+        </a>
+      </div>
+      <div class="notice-btn-wrap">
+        <a data-route="" href="http://cv.uplus.kr/114.html" target="_blank" title="새창열기" class="event_detail_btn type2"><span class="blind">휴대폰 결제 한도 변경 및 확인</span>
+        </a>
+      </div>
+      <div class="notice-btn-wrap">
+        <a data-route="" href="http://cv.uplus.kr/116.html" target="_blank" title="새창열기" class="event_detail_btn type3"><span class="blind">휴대폰 결제 이용 내역 확인</span>
+        </a>
+      </div>
+      <div class="blind">
+        앞으로도 고객님의 소중한 정보와 결제 안전을 지키기 위해 최선을 다하겠습니다.
+        감사합니다.
+      </div>
+    </div>
+    </div></div> <div class="optional-box"><span class="c-checkbox" tabindex="0"><input id="main_167_checkbox" name="main_167_checkbox" true-value="true" type="checkbox"> <label for="main_167_checkbox" class="text-chkbox"><i class="icon"></i> <span class="txt"><span>7일간 보지 않기</span></span></label> </span> <button id="_uid_28" class="c-btn-rect-3">확인</button></div></div></div></div><!----></div><span tabindex="0"></span></div></div>
+  <!-- <div class="admin-area"><div>
+    <style type="text/css">
+      div[id$="BV_modal_outer_"][id^="main_"] {
+        z-index: 8000 !important;
+      }
+      .main-notice-pop {
+        overflow-y: hidden;
+        position: relative;
+      }
+      .notice-btn-wrap .event_detail_btn {
+        position: absolute;
+        left: 15%;
+        width: 70%;
+        height: 5%;
+      }
+      .notice-btn-wrap .event_detail_btn.type1 {
+        top: 58.95%;
+      }
+      .notice-btn-wrap .event_detail_btn.type2 {
+        top: 66.43%;
+      }
+      .notice-btn-wrap .event_detail_btn.type3 {
+        top: 73.92%;
+      }
+    </style>
+    <div class="main-notice-pop">
+      <img alt="하단 내용 참조" src="https://image.lguplus.com/static/mb-contents/images/fcmm/cnts/imge/20250911-015005-503-jXQFiMcN.png">
+    
+      <div class="blind">
+        <h1> 안전합니다.</h1>
+        <p>
+          기지국은 암호화되어 안전하게 관리하고 있습니다. 소액결제도
+          강화된 2단계 인증 절차로 철저히 보호됩니다. 고객님께서 더욱 안심하고
+          이용하실 수 있도록 소액결제를 직접 관리하실 수 있는 방법을 함께 안내해
+          드립니다.
+        </p>
+        <strong>소액결제 차단/한도 조정 방법</strong>
+      </div>
+      <div class="notice-btn-wrap">
+        <a data-route="" href="http://cv.uplus.kr/149.html" target="_blank" title="새창열기" class="event_detail_btn type1"><span class="blind">휴대폰 결제 차단</span>
+        </a>
+      </div>
+      <div class="notice-btn-wrap">
+        <a data-route="" href="http://cv.uplus.kr/114.html" target="_blank" title="새창열기" class="event_detail_btn type2"><span class="blind">휴대폰 결제 한도 변경 및 확인</span>
+        </a>
+      </div>
+      <div class="notice-btn-wrap">
+        <a data-route="" href="http://cv.uplus.kr/116.html" target="_blank" title="새창열기" class="event_detail_btn type3"><span class="blind">휴대폰 결제 이용 내역 확인</span>
+        </a>
+      </div>
+      <div class="blind">
+        앞으로도 고객님의 소중한 정보와 결제 안전을 지키기 위해 최선을 다하겠습니다.
+        감사합니다.
+      </div>
+    </div>
+    </div></div> -->
+</body>
+</html>
