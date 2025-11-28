@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <style>
+* {margin: 0; padding: 0;}
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+[type=checkbox], [type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0);
+    vertical-align: middle;
+    color: inherit;
+    font-size: inherit;
+    line-height: 1;
+    font-family: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline;
+}
+
+
+.calendar-filter .checkbox-box~.checkbox-box, .calendar-filter .checkbox-box~.radio-box, .calendar-filter .radio-box~.checkbox-box, .calendar-filter .radio-box~.radio-box {
+    margin-left: 4px;
+}
+.calendar-filter .checkbox-box, .calendar-filter .radio-box {
+    display: inline-block;
+    height: 34px;
+}
+
+
+.calendar-filter {
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    white-space: nowrap
+}
+
+.calendar-filter::-webkit-scrollbar {
+    display: none
+}
+
+.calendar-filter .checkbox-box,.calendar-filter .radio-box {
+    display: inline-block;
+    height: 34px
+}
+
+.calendar-filter .checkbox-box input[type=checkbox]:checked~label,.calendar-filter .checkbox-box input[type=radio]:checked~label,.calendar-filter .radio-box input[type=checkbox]:checked~label,.calendar-filter .radio-box input[type=radio]:checked~label {
+    color: #000;
+    font-weight: 700
+}
+
+.calendar-filter .checkbox-box~.checkbox-box,.calendar-filter .checkbox-box~.radio-box,.calendar-filter .radio-box~.checkbox-box,.calendar-filter .radio-box~.radio-box {
+    margin-left: 4px
+}
+
+.calendar-filter .checkbox-box .checkbox-label,.calendar-filter .checkbox-box .radio-label,.calendar-filter .radio-box .checkbox-label,.calendar-filter .radio-box .radio-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px 0 8px;
+    border: 1px solid #4130df;
+    border-radius: 17px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 14.4px;
+    color: #909090
+}
+
+.calendar-filter .checkbox-box .checkbox-label:after,.calendar-filter .checkbox-box .checkbox-label:before,.calendar-filter .checkbox-box .radio-label:after,.calendar-filter .checkbox-box .radio-label:before,.calendar-filter .radio-box .checkbox-label:after,.calendar-filter .radio-box .checkbox-label:before,.calendar-filter .radio-box .radio-label:after,.calendar-filter .radio-box .radio-label:before {
+    display: none
+}
+
+.calendar-filter .checkbox-box .checkbox-label i,.calendar-filter .checkbox-box .radio-label i,.calendar-filter .radio-box .checkbox-label i,.calendar-filter .radio-box .radio-label i {
+    width: 20px;
+    height: 20px
+}
+
+
+
+    </style>
+</head>
+<body>
+    
+    <ul class="calendar-filter">
+        <li class="checkbox-box">
+            <input id="datatalk" type="checkbox" name="filterGroup" checked="">
+            <label for="datatalk" class="checkbox-label" style="border-color: rgba(7, 165, 115, 0.7);">
+                <i class="svg-icon" aria-hidden="true" style="background-image: url(&quot;https://cdnm.tworld.co.kr/adminupload/tcalendar/17939/96845/1865277506.png&quot;);"></i><span>데이터/통화</span>
+            </label>
+        </li>
+        <li class="checkbox-box">
+            <input id="bills" type="checkbox" name="filterGroup" checked="">
+            <label for="bills" class="checkbox-label" style="border-color: rgba(250, 88, 88, 0.7);">
+                <i class="svg-icon" aria-hidden="true" style="background-image: url(&quot;https://cdnm.tworld.co.kr/adminupload/tcalendar/17939/96845/1393670439.png&quot;);"></i><span>요금</span></label>
+        </li>
+        <li class="checkbox-box">
+            <input id="information" type="checkbox" name="filterGroup" checked=""><label for="information" class="checkbox-label" style="border-color: rgba(255, 62, 200, 0.7);">
+            <i class="svg-icon" aria-hidden="true" style="background-image: url(&quot;https://cdnm.tworld.co.kr/adminupload/tcalendar/17939/96845/1379796278.png&quot;);"></i><span>가입정보</span></label>
+        </li>
+        <li class="checkbox-box"><input id="shopping" type="checkbox" name="filterGroup" checked=""><label for="shopping" class="checkbox-label" style="border-color: rgba(28, 150, 236, 0.7);">
+                <i class="svg-icon" aria-hidden="true" style="background-image: url(&quot;https://cdnm.tworld.co.kr/adminupload/tcalendar/17939/96845/584799437.png&quot;);"></i><span>쇼핑</span></label>
+        </li>
+        <li class="checkbox-box">
+            <input id="benefit" type="checkbox" name="filterGroup" checked="">
+            <label for="benefit" class="checkbox-label" style="border-color: rgba(115, 100, 255, 0.7);">
+            <i class="svg-icon" aria-hidden="true" style="background-image: url(&quot;https://cdnm.tworld.co.kr/adminupload/tcalendar/17939/96845/1113087303.png&quot;);"></i><span>혜택/이벤트</span>
+        </label>
+        </li>
+    </ul>
+</body>
+</html>
