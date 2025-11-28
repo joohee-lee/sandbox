@@ -52,8 +52,9 @@ button, input, optgroup, select, textarea {
     margin-left: 4px;
 }
 .calendar-filter .checkbox-box, .calendar-filter .radio-box {
-    display: inline-block;
+    display: inline-flex;
     height: 34px;
+    position: relative;
 }
 
 
@@ -115,10 +116,12 @@ button, input, optgroup, select, textarea {
     height: 20px
 }
 
-.calendar-filter .checkbox-box input[type=checkbox]:focus {
-    outline: green solid 1px;
-    height: 32px;
-    display: inline-block;
+.calendar-filter .checkbox-box input[type=checkbox] {
+    width: 100%;
+    height: 100%;
+    position: aboslute;
+    left: 0;
+    top: 0; 
 }
 
     </style>
@@ -134,8 +137,8 @@ button, input, optgroup, select, textarea {
     
     <ul class="calendar-filter">
         <li class="checkbox-box">
-            <input id="datatalk" type="checkbox" name="filterGroup" checked="" aria-label="데이터/통화">
-            <label for="datatalk" aria-hidden="true" class="checkbox-label" style="border-color: rgba(7, 165, 115, 0.7);">
+            <input id="datatalk" type="checkbox" name="filterGroup" checked="">
+            <label for="datatalk"  class="checkbox-label" style="border-color: rgba(7, 165, 115, 0.7);">
                 <i class="svg-icon" aria-hidden="true" style="background-image: url(&quot;https://cdnm.tworld.co.kr/adminupload/tcalendar/17939/96845/1865277506.png&quot;);"></i><span>데이터/통화</span>
             </label>
         </li>
