@@ -45,7 +45,7 @@ button, input, optgroup, select, textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-   /* display: inline; */
+   display: inline;
 }
 
 
@@ -112,12 +112,6 @@ button, input, optgroup, select, textarea {
     height: 20px
 }
 
-.calendar-filter [type=checkbox] {
-  display: inline-block;
-}
-
-
-
     </style>
 </head>
 <body style="background:yellow;">
@@ -130,7 +124,7 @@ button, input, optgroup, select, textarea {
             </label>
         </li>
         <li class="checkbox-box">
-            <input id="bills" type="checkbox" name="filterGroup" checked="" title="요금 선택됨됨">
+            <input id="bills" type="checkbox" name="filterGroup" checked="" style="height: 34px;">
             <label for="bills" class="checkbox-label" style="border-color: rgba(250, 88, 88, 0.7);">
                 <i class="svg-icon" aria-hidden="true" style="background-image: url(&quot;https://cdnm.tworld.co.kr/adminupload/tcalendar/17939/96845/1393670439.png&quot;);"></i><span>티월드 요금</span></label>
         </li>
